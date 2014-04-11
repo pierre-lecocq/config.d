@@ -4,7 +4,7 @@ curdir=`pwd`
 
 create_dir()
 {
-    if ! [ -L $1 ]; then
+    if ! [ -d $1 ]; then
         echo " - creating $1"
         mkdir $1
     else

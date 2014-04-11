@@ -1,1 +1,1 @@
-TODO
+TODO: add i3 configs and package install script

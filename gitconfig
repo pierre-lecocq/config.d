@@ -1,0 +1,36 @@
+[push]
+    default = matching
+[user]
+    name = Pierre Lecocq
+    email = pierre.lecocq@gmail.com
+[gc]
+    auto = 1
+[core]
+    editor = emacs
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[alias]
+    last = cat-file commit HEAD
+    lshow = show HEAD
+    st = status
+    co = checkout
+    ba = branch -v -a
+    slog = log --pretty=oneline --abbrev-commit
+    nlog = log --name-status --abbrev-commit
+    dlog = log -p --abbrev-commit
+    olog = log --pretty=oneline ORIG_HEAD.. --stat --no-merges --abbrev-commit
+    ci = commit -v
+    br = branch -v
+    glog = log --pretty=oneline --abbrev-commit --graph --topo-order
+    cp = cherry-pick
+    undo = reset --soft HEAD^
+    undo-real = reset --hard HEAD^
+    amend = commit --amend
+    changes = diff --name-status
+    dic = diff --cached
+    diffstat = diff --stat
+    who = shortlog -s -n -e
+    addm = !git ls-files -m | xargs git-add && git status
+    addu = !git ls-files -o --exclude-standard | xargs git-add && git status
+    rmm  = !git ls-files -d | xargs git-rm && git status
+[color]
+    ui = true

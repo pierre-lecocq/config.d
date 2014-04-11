@@ -23,6 +23,9 @@ create_link()
 }
 
 create_dir "~/.config"
+
+create_link "$curdir/gitconfig" "~/.gitconfig"
+create_link "$curdir/bashrc" "~/.bashrc"
 create_link "$curdir/emacs.d" "~/.emacs.d"
 create_link "$curdir/bin" "~/bin"
 

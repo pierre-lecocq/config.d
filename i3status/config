@@ -1,0 +1,51 @@
+general {
+        colors = false
+        interval = 1
+}
+
+order += "wireless wlan0"
+#order += "ethernet eth0"
+order += "disk /"
+order += "disk /home"
+order += "load"
+order += "battery 0"
+order += "volume master"
+order += "time"
+
+wireless wlan0 {
+        format_up = " Wlan: (%quality at %essid) %ip "
+        format_down = " Wlan: down "
+}
+
+ethernet eth0 {
+        # if you use %speed, i3status requires root privileges
+        format_up = " Eth: %ip (%speed) "
+        format_down = " Eth: down "
+}
+
+battery 0 {
+        format = " %status %percentage %remaining "
+}
+
+time {
+        format = " %A %d %B %Y %H:%M:%S "
+}
+
+load {
+        format = " Load %1min "
+}
+
+disk "/" {
+        format = " /root %used/%total "
+}
+
+disk "/home" {
+        format = " /home %used/%total "
+}
+
+volume master {
+        format = "Volume %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}

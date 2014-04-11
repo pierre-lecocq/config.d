@@ -1,7 +1,5 @@
 #!/bin/sh
 
-curdir=`pwd`
-
 create_dir()
 {
     if ! [ -d $1 ]; then
@@ -22,11 +20,19 @@ create_link()
     fi
 }
 
-create_dir "~/.config"
+curdir=`pwd`
 
-create_link "$curdir/gitconfig" "~/.gitconfig"
-create_link "$curdir/bashrc" "~/.bashrc"
-create_link "$curdir/emacs.d" "~/.emacs.d"
-create_link "$curdir/bin" "~/bin"
+create_link $curdir/gitconfig ~/.gitconfig
+create_link $curdir/bashrc ~/.bashrc
+create_link $curdir/emacs.d ~/.emacs.d
 
-# TODO Add i3 & others ...
+create_dir ~/.config
+create_link $curdir/gtk-3.0 ~/.config/gtk-3.0
+create_link $curdir/conkyrc ~/.config/conkyrc
+create_link $curdir/openbox ~/.config/openbox
+create_link $curdir/tint2 ~/.config/tint2
+create_link $curdir/i3 ~/.config/i3
+create_link $curdir/i3status ~/.config/i3status
+
+create_link $curdir/bin ~/bin
+chmod 700 ~/bin/*

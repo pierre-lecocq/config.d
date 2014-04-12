@@ -141,10 +141,10 @@ do_install_desktop_apps() {
     # Then configure proxy to 127.0.0.1:8118
     # https://check.torproject.org/
 
-    alsactl init
+    # alsactl init
 }
 
-function install_pentesting {
+install_pentesting() {
     printf "\nInstalling pentesting ...\n"
 
     sudo apt-get update
@@ -207,26 +207,29 @@ do_install_emacs_from_source() {
     sudo apt-get update
 
     sudo apt-get install -y \
+        wget \
         gcc \
         gdb \
         build-essential \
         yasm \
         linux-headers-$(uname -r) \
+        git \
+        bzr \
         libxslt-dev \
         libxml2-dev \
         libncurses5-dev \
-        git \
-        bzr \
         libgtk-3-dev \
+        libcanberra-gtk3-dev \
         libgif-dev \
         libxpm-dev \
-        libcanberra-gtk3-dev
+        libjpeg8-dev \
+        libtiff5-dev
 
-    # wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz
-    # tar xvJf emacs-24.3.tar.xz && cd emacs-24.3 && ./configure && make && sudo make install
+    # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
+    # git clone git://git.savannah.gnu.org/emacs.git emacs.src
+    wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz && tar xvJf emacs-24.3.tar.xz && mv emacs-24.3 emacs.src
 
-    ﻿bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs-trunk
-    cd emacs-trunk && ./configure --with-x-toolkit=gtk3 && make && sudo make install
+    cd emacs.src && ./configure --with-x-toolkit=gtk3 && make && sudo make install
 }
 
 

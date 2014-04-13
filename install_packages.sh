@@ -63,6 +63,8 @@ do_install_system() {
 do_install_wm_i3wm() {
     printf "\nInstalling i3wm...\n"
 
+    echo "exec i3" > ~/.xinitrc
+
     sudo apt-get update
 
     sudo apt-get install -y \
@@ -70,13 +72,14 @@ do_install_wm_i3wm() {
         i3 \
         i3lock
 
-    Xorg -configure
 
-    echo > "exec i3" > ~/.xinitrc
+    Xorg -configure
 }
 
 do_install_wm_openbox() {
     printf "\nInstalling openbox...\n"
+
+    echo "exec openbox-session" > ~/.xinitrc
 
     sudo apt-get update
 
@@ -93,8 +96,6 @@ do_install_wm_openbox() {
         xscreensaver
 
     Xorg -configure
-
-    echo > "exec openbox-session" > ~/.xinitrc
 }
 
 do_install_desktop_apps() {

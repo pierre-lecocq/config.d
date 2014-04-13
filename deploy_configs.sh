@@ -34,5 +34,8 @@ create_link $curdir/tint2 ~/.config/tint2
 create_link $curdir/i3 ~/.config/i3
 create_link $curdir/i3status ~/.config/i3status
 
+
 create_link $curdir/bin ~/bin
 chmod 700 ~/bin/*
+
+cp -R $curdir/images ~/images

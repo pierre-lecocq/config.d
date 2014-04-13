@@ -57,7 +57,6 @@ do_install_system() {
         siege \
         iptraf \
         clamav
-
 }
 
 do_install_wm_i3wm() {
@@ -130,7 +129,13 @@ do_install_desktop_apps() {
         filezilla \
         transmission-gtk \
         vlc \
-        flashplugin-nonfree
+        flashplugin-nonfree \
+        ffmpeg \
+        firmware-iwlwifi \
+        wicd \
+        wicd-gtk \
+        wicd-daemon
+
 
     sudo echo "proxyAddress = \"127.0.0.1\"" >> /etc/polipo/config
     sudo echo "proxyPort = 8118" >> /etc/polipo/config
@@ -224,7 +229,13 @@ do_install_emacs_from_source() {
         libgif-dev \
         libxpm-dev \
         libjpeg8-dev \
-        libtiff5-dev
+        libtiff5-dev \
+        w3m \
+        texlive-base \
+        texlive-latex-base \
+        texify \
+        texi2html \
+        texinfo
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src

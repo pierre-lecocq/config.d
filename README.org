@@ -1,1 +1,4 @@
-TODO: add i3 configs and package install script
+* (Debian) Installation and config deployment
+
+- Install packages (base, i3 and/or openbox, pentesting, emacs from sources, ...)
+- Deploy config with symlinks (emacs, i3/openbox, ...)

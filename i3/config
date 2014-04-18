@@ -12,7 +12,7 @@ floating_modifier $mod
 
 # Apps
 bindsym $mod+Return exec terminator #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run -nb '#414141' -nf '#cccccc' -p run
+bindsym $mod+d exec dmenu_run -nb '#313131' -nf '#cccccc' -p run
 bindsym $mod+l exec i3lock -c 414141
 
 # Actions
@@ -87,10 +87,10 @@ bar {
     position top
     status_command i3status
     colors {
-           background #414141
+           background #313131
            focused_workspace  #ffffff #1D68C4
-           active_workspace   #ffffff #414141
-           inactive_workspace #888888 #414141
+           active_workspace   #ffffff #313131
+           inactive_workspace #888888 #313131
     }
 }
 

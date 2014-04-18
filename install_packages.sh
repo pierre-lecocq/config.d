@@ -69,8 +69,8 @@ do_install_wm_i3wm() {
     sudo apt-get install -y \
         xorg \
         i3 \
-        i3lock
-
+        i3lock \
+        dunst
 
     Xorg -configure
 }

@@ -56,7 +56,9 @@ do_install_system() {
         httperf \
         siege \
         iptraf \
-        clamav
+        clamav \
+        mailutils \
+        fetchmail
 }
 
 do_install_wm_i3wm() {
@@ -235,7 +237,9 @@ do_install_emacs_from_source() {
         texlive-latex-base \
         texify \
         texi2html \
-        texinfo
+        texinfo \
+        mailutils \
+        fetchmail
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src

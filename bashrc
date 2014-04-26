@@ -35,3 +35,8 @@ alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|h\|rb\|php\)" -print | xargs etags -a'
+
+alias e='emacs'
+alias en='emacs -nw'
+alias enq='emacs -nw -Q'
+alias gnus='emacs -f gnus &'

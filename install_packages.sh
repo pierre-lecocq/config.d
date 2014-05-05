@@ -16,9 +16,16 @@ main_menu()
 do_install_system() {
     printf "\nInstalling basic system...\n"
 
-    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind
+    # Do not wait 5 secs to boot to the default GRUB entry
+    sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/ /etc/default/grub
+    update-grub
+
+    # Packages
+    echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
     sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
+
+    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind
 
     sudo apt-get update
 
@@ -57,8 +64,7 @@ do_install_system() {
         siege \
         iptraf \
         clamav \
-        mailutils \
-        fetchmail
+        mailutils
 }
 
 do_install_wm_i3wm() {
@@ -205,7 +211,8 @@ do_install_virtualbox() {
 
     sudo apt-get update
 
-    sudo apt-get install -y virtualbox-ose virtualbox-ose-dkms
+    sudo apt-get install -y virtualbox-ose virtualbox-ose-dkms linux-headers-amd64
+    sudo modprobe vboxdrv
 }
 
 do_install_emacs_from_source() {

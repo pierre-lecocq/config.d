@@ -12,7 +12,7 @@ if [ $(id -u) -eq 0 ];
 then
     PS1="\e[0;31m[\A] \u@\h \w # \e[m"
 else
-    PS1="[\A] \u@\h \w $ "
+    PS1="[\A] \e[0;36m\u@\h\e[0m \w $ "
 fi
 
 # Env vars
@@ -35,3 +35,6 @@ alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|h\|rb\|php\)" -print | xargs etags -a'
+alias en='emacs -nw'
+alias enq='emacs -nw -Q'
+alias gnus='emacs -f gnus &'

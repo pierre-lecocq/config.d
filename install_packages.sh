@@ -50,11 +50,14 @@ do_install_system() {
         libxml2-dev \
         libncurses5-dev \
         irb \
-        python \
         ruby \
         libruby \
         ruby-dev \
         rubygems \
+        python \
+        golang \
+        golang-go \
+        golang-dbg \
         nmap \
         fail2ban \
         denyhosts \

@@ -240,8 +240,10 @@ do_install_emacs_from_source() {
         libjpeg8-dev \
         libtiff5-dev \
         w3m \
+        texlive \
         texlive-base \
         texlive-latex-base \
+        texlive-latex-extra \
         texify \
         texi2html \
         texinfo \

@@ -38,3 +38,4 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|h\|rb\|php\)" -print | xargs 
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias gnus='emacs -f gnus &'
+alias irb='irb --simple-prompt'

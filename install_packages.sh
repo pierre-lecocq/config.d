@@ -67,7 +67,8 @@ do_install_system() {
         siege \
         iptraf \
         clamav \
-        mailutils
+        mailutils \
+        lynis
 }
 
 do_install_wm_i3wm() {

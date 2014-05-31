@@ -69,6 +69,8 @@ do_install_system() {
         clamav \
         mailutils \
         lynis
+
+    sudo gem install colorize
 }
 
 do_install_wm_i3wm() {

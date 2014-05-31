@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require_relative 'basecli'
+
+class AutoCleanHome < BaseCli
+
+  def initialize(arguments)
+    super arguments
+
+    @commands << 'rm -rf ~/Desktop'
+    @commands << 'rm -rf ~/Downloads'
+    @commands << 'rm -rf ~/.local/share/Trash/files/'
+    @commands << 'rm -rf ~/.icedove/*'
+    @commands << 'rm -rf ~/.cache/*'
+  end
+
+end
+
+AutoCleanHome.new(ARGV).execute

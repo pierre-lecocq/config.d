@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require_relative 'basecli'
+
+class BackupHome < BaseCli
+
+  def initialize(arguments)
+    super arguments
+
+    home = ENV['HOME']
+    user = ENV['USER']
+
+    device = "/dev/sdc1"
+    volume = "/media/usb"
+    dest = "#{volume}/backups/#{user}/"
+
+    rsyncopts = "-avh --delete --progress"
+    excludes = '--exclude ".*" --exclude "vbox" --exclude "downloads"'
+
+    @commands << "mountpoint #{volume} > /dev/null"
+
+    @commands << "ruby #{home}/bin/cleanhome"
+    @commands << "mkdir -p #{dest}"
+
+    @commands << "rsync #{rsyncopts} #{excludes} #{home}/ #{dest}"
+    @commands << "rsync #{rsyncopts} #{home}/.pro #{dest}"
+    @commands << "rsync #{rsyncopts} #{home}/.ssh #{dest}"
+  end
+
+end
+
+BackupHome.new(ARGV).execute

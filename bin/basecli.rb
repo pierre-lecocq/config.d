@@ -11,13 +11,13 @@ class BaseCli
   def initialize(arguments)
     @commands = []
     @success_color = :green
-    @normal_color = :blue
+    @normal_color = :white
     @warn_color = :yellow
     @error_color = :red
 
     parse_options arguments
 
-    log "#{@@caller.name} initialized"
+    log "[*] #{@@caller.name} initialized."
   end
 
   # Parse options
@@ -42,7 +42,7 @@ class BaseCli
   # Execute commands stack
   def execute
     @commands.each do |command|
-      log "Running #{command}".ljust(72), @normal_color, false
+      log "    Running #{command}".ljust(72), @normal_color, false
 
       if @options[:fake] == true
         log "[FAKE MODE]", @warn_color

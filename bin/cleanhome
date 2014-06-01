@@ -2,7 +2,7 @@
 
 require_relative 'basecli'
 
-class AutoCleanHome < BaseCli
+class CleanHome < BaseCli
 
   def initialize(arguments)
     super arguments
@@ -16,4 +16,4 @@ class AutoCleanHome < BaseCli
 
 end
 
-AutoCleanHome.new(ARGV).execute
+CleanHome.new(ARGV).execute

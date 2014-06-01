@@ -4,8 +4,8 @@ require_relative 'basecli'
 
 class CleanHome < BaseCli
 
-  def initialize(arguments)
-    super arguments
+  def initialize
+    super
 
     @commands << 'rm -rf ~/Desktop'
     @commands << 'rm -rf ~/Downloads'
@@ -16,4 +16,4 @@ class CleanHome < BaseCli
 
 end
 
-CleanHome.new(ARGV).execute
+CleanHome.new.execute

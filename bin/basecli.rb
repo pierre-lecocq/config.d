@@ -3,55 +3,91 @@
 require 'optparse'
 require 'colorize'
 
+## Demo program:
+#
+# require_relative 'basecli'
+#
+# class DemoCli < BaseCli
+#
+#   def initialize
+#     super
+#
+#     # OPTIONAL: define options
+#     @options = { fake: false, bonjour: false }
+#     @option_parser.on('-f', '--fake') { @options[:fake] = true }
+#     @option_parser.on('-b', '--bonjour') { @options[:bonjour] = true }
+#
+#     # Set commands to run
+#     @commands << 'touch ~/testfile'
+#     @commands << 'cp ~/testfile ~/testfile2'
+#   end
+#
+# end
+#
+# DemoCli.new.execute
+
 class BaseCli
-  attr_accessor :options, :commands
-  attr_accessor :success_color, :normal_color, :warn_color, :error_color
+  attr_accessor :option_parser, :options, :commands, :colors
 
   # Initialize
-  def initialize(arguments)
+  def initialize
     @commands = []
-    @success_color = :green
-    @normal_color = :white
-    @warn_color = :yellow
-    @error_color = :red
-
-    parse_options arguments
+    @options = {}
+    @option_parser = OptionParser.new
+    @colors = {
+      success: :green,
+      normal: :white,
+      warning: :yellow,
+      error: :red,
+    }
 
     log "[*] #{@@caller.name} initialized."
   end
 
   # Parse options
-  def parse_options(arguments)
-    @options = {
-      fake: false
-    }
+  def parse_options
+    if @options.empty?
+      @options = { fake: false }
+      @option_parser.on('-f', '--fake') { @options[:fake] = true }
+    end
 
-    opts = OptionParser.new
-    opts.on('-f', '--fake') { @options[:fake] = true }
+    @option_parser.parse!(ARGV)
 
-    opts.parse!(arguments)
+    unless @options.has_key?(:fake)
+      log 'WARNING: There is no "fake" option. It is dangerous.', :warning
+      print 'Continue ? [N/y] '
+      answer = gets.chomp.downcase
+      answer = 'n' if answer.empty?
+
+      case answer
+      when 'y'
+        puts 'Continuing ...'
+      else
+        abort 'Aborting program.'
+      end
+    end
   end
 
   # Output a message
-  def log(str, color = nil, newline = true)
-    color = @normal_color if color.nil?
-    print str.colorize(color) + ' '
-    puts if newline
+  def log(str, type = nil, newline = true)
+    type = :normal if type.nil?
+    print str.colorize(@colors[type]) + (newline ? "\n" : '')
   end
 
   # Execute commands stack
   def execute
-    @commands.each do |command|
-      log "    Running #{command}".ljust(72), @normal_color, false
+    parse_options
 
+    @commands.each do |command|
+      log "    Running #{command}".ljust(72), nil, false
       if @options[:fake] == true
-        log "[FAKE MODE]", @warn_color
+        log "[FAKE MODE]", :warning
       else
         `#{command}`
         if $?.success?
-          log "[OK]", @success_color
+          log "[OK]", :success
         else
-          log "[ERROR]", @error_color
+          log "[ERROR]", :error
         end
       end
     end

@@ -61,6 +61,7 @@ do_install_system() {
         nmap \
         fail2ban \
         denyhosts \
+	nethogs \
         iotop \
         tcpdump \
         httperf \

@@ -68,6 +68,9 @@ do_install_system() {
         iptraf \
         clamav \
         mailutils \
+        fetchmail \
+        procmail \
+        spamassassin \
         lynis
 
     sudo gem install colorize

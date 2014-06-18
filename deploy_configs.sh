@@ -24,6 +24,8 @@ curdir=`pwd`
 
 create_link $curdir/gitconfig ~/.gitconfig
 create_link $curdir/bashrc ~/.bashrc
+create_link $curdir/bashrc_profile ~/.bashrc_profile
+create_link $curdir/xmodmap ~/.xmodmap
 create_link $curdir/emacs.d ~/.emacs.d
 create_link $curdir/gtkrc-2.0 ~/.gtkrc-2.0
 

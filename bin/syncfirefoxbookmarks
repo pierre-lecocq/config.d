@@ -30,9 +30,9 @@ if ! [ -f $filebmk ]; then
     exit 1
 fi
 
-cmd="sqlite3 $filebmk \".$1 $dirbkp\""
+cmd="sqlite3 $filebmk \".$action $dirbkp/ff-bookmarks.bkp\""
 
-echo "Do you really want to $action firefox bookmarks? y/N: "
+echo "Do you really want to $action firefox bookmarks? (y/N) "
 read ans
 
 if [ "$ans" = "y" ]; then

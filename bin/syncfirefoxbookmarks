@@ -1,0 +1,42 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+    echo "Please give an action to do ('backup' or 'restore')"
+    exit 0;
+fi
+
+action=$1
+
+if [ "$action" != "backup" ] && [ "$action" != "restore" ]; then
+    echo "Action must be 'backup' or 'restore'"
+    exit 1;
+fi
+
+command -v sqlite3 > /dev/null 2>&1 || {
+    echo "Sqlite3 binary not available or not in PATH"
+    exit 1
+}
+
+dirbkp=~/work/config.d.priv
+filebmk=$(find ~/ -name places.sqlite)
+
+if ! [ -d $dirbkp ]; then
+    echo "$dirbkp is not a valid directory"
+    exit 1
+fi
+
+if ! [ -f $filebmk ]; then
+    echo "$filebmk is not a valid bookmark files"
+    exit 1
+fi
+
+cmd="sqlite3 $filebmk \".$action $dirbkp/ff-bookmarks.bkp\""
+
+echo "Do you really want to $action firefox bookmarks? (y/N) "
+read ans
+
+if [ "$ans" = "y" ]; then
+    `$cmd`
+else
+    echo "Aborting."
+fi

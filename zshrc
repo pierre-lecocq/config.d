@@ -4,6 +4,8 @@ export EDITOR=emacs
 
 # Completion
 autoload -U compinit && compinit
+setopt completealiases
+zstyle ':completion:*' menu select
 
 # Commands autocorrect
 setopt correctall
@@ -20,8 +22,7 @@ setopt autocd
 # VCS
 setopt prompt_subst
 autoload -Uz vcs_info
-zstyle ':vcs_info:git*' formats "%s[%{$fg[green]%}%r/%b%{$reset_color%}]"
-
+zstyle ':vcs_info:git*' formats "%s://%r/%b"
 vcs_info_wrapper() {
     vcs_info
     if [ -n "$vcs_info_msg_0_" ]; then
@@ -31,12 +32,8 @@ vcs_info_wrapper() {
 
 # Prompt
 autoload -U colors && colors
-if [ $(id -u) -eq 0 ]; then
-    export PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%} %~ $ "
-else
-    export PS1="%n@%{$fg[cyan]%}%m%{$reset_color%} %~ $ "
-fi
-export RPS1=$"(vcs_info_wrapper) %{$fg[yellow]%}%T%{$reset_color%}"
+export PS1="%B%n@%m%b %~ %B%#%b "
+export RPS1=$"(vcs_info_wrapper) %B%T%b"
 
 # Aliases (a.k.a evil)
 arch=`uname`

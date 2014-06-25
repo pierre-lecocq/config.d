@@ -31,6 +31,7 @@ do_install_system() {
 
     sudo apt-get install -y \
         emacs \
+        zsh \
         gnutls-bin \
         git \
         wget \
@@ -61,7 +62,7 @@ do_install_system() {
         nmap \
         fail2ban \
         denyhosts \
-	nethogs \
+        nethogs \
         iotop \
         tcpdump \
         httperf \

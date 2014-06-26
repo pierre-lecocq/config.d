@@ -22,7 +22,7 @@ setopt autocd
 # VCS
 setopt prompt_subst
 autoload -Uz vcs_info
-zstyle ':vcs_info:git*' formats "%s://%r/%b"
+zstyle ':vcs_info:git*' formats "%s://%b"
 vcs_info_wrapper() {
     vcs_info
     if [ -n "$vcs_info_msg_0_" ]; then
@@ -55,3 +55,6 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|h\|rb\|php\)" -print | xargs 
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias irb='irb --simple-prompt'
+
+# Plugins
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

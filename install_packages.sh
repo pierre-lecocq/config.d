@@ -134,8 +134,6 @@ do_install_desktop_apps() {
         libnotify-bin \
         notification-daemon \
         numlockx \
-        tor \
-        polipo \
         alsa \
         alsa-tools \
         alsa-oss \
@@ -156,13 +154,17 @@ do_install_desktop_apps() {
         wicd-daemon
 
 
-    sudo echo "proxyAddress = \"127.0.0.1\"" >> /etc/polipo/config
-    sudo echo "proxyPort = 8118" >> /etc/polipo/config
-    sudo echo "socksParentProxy = \"localhost:9050\"" >> /etc/polipo/config
-    sudo echo "socksProxyType = socks5" >> /etc/polipo/config
-    sudo echo "allowedClients = 127.0.0.1" >> /etc/polipo/config
-    sudo /etc/init.d/tor restart
-    sudo /etc/init.d/polipo restart
+    # sudo apt-get install -y \
+    #     tor \
+    #     polipo \
+    #
+    # sudo echo "proxyAddress = \"127.0.0.1\"" >> /etc/polipo/config
+    # sudo echo "proxyPort = 8118" >> /etc/polipo/config
+    # sudo echo "socksParentProxy = \"localhost:9050\"" >> /etc/polipo/config
+    # sudo echo "socksProxyType = socks5" >> /etc/polipo/config
+    # sudo echo "allowedClients = 127.0.0.1" >> /etc/polipo/config
+    # sudo /etc/init.d/tor restart
+    # sudo /etc/init.d/polipo restart
     # Then configure proxy to 127.0.0.1:8118
     # https://check.torproject.org/
 

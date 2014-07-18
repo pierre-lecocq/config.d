@@ -35,6 +35,10 @@ autoload -U colors && colors
 export PS1="%B%n@%m%b %~ %B%#%b "
 export RPS1=$"(vcs_info_wrapper) %B%T%b"
 
+# Bindings
+bindkey ";5D" backward-word
+bindkey ";5C" forward-word
+
 # Aliases (a.k.a evil)
 arch=`uname`
 if [ $arch = "Darwin" ]; then

@@ -40,7 +40,7 @@ do_install_system() {
         tree \
         htop \
         aria2 \
-        irssi \
+        ssh-askpass \
         secure-delete \
         gcc \
         gdb \

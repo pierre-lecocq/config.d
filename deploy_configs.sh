@@ -22,6 +22,8 @@ create_link()
 
 curdir=`pwd`
 
+create_dir ~/.mail
+
 create_link $curdir/dotfiles/gitconfig ~/.gitconfig
 create_link $curdir/dotfiles/bashrc ~/.bashrc
 create_link $curdir/dotfiles/bashrc_profile ~/.bashrc_profile

@@ -51,14 +51,15 @@ if [ $arch = "Darwin" ]; then
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
-    alias gnus='emacs -f gnus &'
+    alias gnus='env DBUS_SESSION_BUS_ADDRESS="autolaunch:" emacs -f gnus &'
 fi
+
 alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|h\|rb\|php\)" -print | xargs etags -a'
+alias irb='irb --simple-prompt'
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
-alias irb='irb --simple-prompt'
 
 # Plugins
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

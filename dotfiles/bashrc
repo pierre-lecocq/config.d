@@ -32,8 +32,9 @@ if [ $arch = "Darwin" ]; then
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
-    alias gnus='emacs -f gnus &'
+    alias gnus='env DBUS_SESSION_BUS_ADDRESS="autolaunch:" emacs -f gnus &'
 fi
+
 alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'

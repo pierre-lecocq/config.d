@@ -241,6 +241,8 @@ do_install_emacs_from_source() {
         build-essential \
         yasm \
         linux-headers-$(uname -r) \
+	autoconf \
+	cvs \
         git \
         bzr \
         libxslt-dev \

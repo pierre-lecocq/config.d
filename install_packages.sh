@@ -263,7 +263,10 @@ do_install_emacs_from_source() {
         texinfo \
         mailutils \
         fetchmail \
-	fonts-inconsolata
+	fonts-inconsolata \
+	emms \
+	vorbis-tools \
+	mplayer
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src

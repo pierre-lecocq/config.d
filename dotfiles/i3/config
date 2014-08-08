@@ -58,11 +58,15 @@ bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
 bindsym $mod+quotedbl workspace 3
 bindsym $mod+apostrophe workspace 4
+bindsym $mod+parenleft workspace 5
+bindsym $mod+minus workspace 6
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
 
 # Resize
 mode "resize" {

@@ -29,7 +29,6 @@ create_link $curdir/dotfiles/bashrc ~/.bashrc
 create_link $curdir/dotfiles/bashrc_profile ~/.bashrc_profile
 create_link $curdir/dotfiles/zshrc ~/.zshrc
 create_link $curdir/dotfiles/xmodmap ~/.xmodmap
-create_link $curdir/emacs.d ~/.emacs.d
 create_link $curdir/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
 
 create_dir ~/.config

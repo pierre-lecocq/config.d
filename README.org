@@ -1,4 +1,5 @@
 * (Debian) Installation and config deployment
 
-- Install packages (base, i3 and/or openbox, pentesting, emacs from sources, ...)
-- Deploy config with symlinks (emacs, i3/openbox, ...)
+- [[file:install_packages.sh][install_packages.sh]]: Install packages (base, i3 and/or openbox, pentesting, emacs from sources, ...)
+- [[file:deploy_configs.sh][deploy_configs.sh]]: Deploy config with symlinks (shells, window managers, pentest tools, ...)
+- Finally, clone [[https://github.com/pierre-lecocq/emacs.d][emacs.d]] repository and link it to ~/.emacs.d

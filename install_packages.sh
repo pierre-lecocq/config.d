@@ -51,6 +51,7 @@ do_install_system() {
         libxml2-dev \
         libncurses5-dev \
         clisp \
+        sbcl \
         irb \
         ruby \
         libruby \

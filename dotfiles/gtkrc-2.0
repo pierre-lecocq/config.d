@@ -3,4 +3,6 @@ include "/usr/share/themes/Clearlooks/gtk-2.0/gtkrc"
 
 include "/home/pierre/.gtkrc-2.0.mine"
 
+gtk-icon-theme-name = "Tango"
+
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT

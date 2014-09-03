@@ -23,20 +23,18 @@ create_link()
 curdir=`pwd`
 
 create_dir ~/.mail
-create_dir ~/work/bin
 create_dir ~/work/src
 create_dir ~/work/doc
 
 create_link $curdir/dotfiles/gitconfig ~/.gitconfig
 create_link $curdir/dotfiles/bashrc ~/.bashrc
 create_link $curdir/dotfiles/bashrc_profile ~/.bashrc_profile
-create_link $curdir/dotfiles/zshrc ~/.zshrc
-create_link $curdir/dotfiles/xmodmap ~/.xmodmap
+# create_link $curdir/dotfiles/xmodmap ~/.xmodmap
 create_link $curdir/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
 
 create_dir ~/.config
-create_link $curdir/dotfiles/conkyrc ~/.config/conkyrc
-create_link $curdir/dotfiles/openbox ~/.config/openbox
+# create_link $curdir/dotfiles/conkyrc ~/.config/conkyrc
+# create_link $curdir/dotfiles/openbox ~/.config/openbox
 create_link $curdir/dotfiles/tint2 ~/.config/tint2
 create_link $curdir/dotfiles/i3 ~/.config/i3
 create_link $curdir/dotfiles/i3status ~/.config/i3status

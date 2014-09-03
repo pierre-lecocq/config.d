@@ -92,6 +92,7 @@ do_install_wm_i3wm() {
         xorg \
         i3 \
         i3lock \
+	i3status \
         dunst
 
     Xorg -configure

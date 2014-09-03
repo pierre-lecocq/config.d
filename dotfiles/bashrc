@@ -1,5 +1,5 @@
 # Env vars
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/.rvm/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/work/bin:~/.rvm/bin
 export EDITOR=emacs
 
 # Function - set term title

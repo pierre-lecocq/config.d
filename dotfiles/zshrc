@@ -1,5 +1,5 @@
 # Env vars
-export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.rvm/bin:~/bin:$PATH
+export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.rvm/bin:~/bin:~/work/bin:$PATH
 export EDITOR=emacs
 
 # Completion

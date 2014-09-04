@@ -39,6 +39,7 @@ create_link $curdir/dotfiles/tint2 ~/.config/tint2
 create_link $curdir/dotfiles/i3 ~/.config/i3
 create_link $curdir/dotfiles/i3status ~/.config/i3status
 create_link $curdir/dotfiles/dunst ~/.config/dunst
+create_link $curdir/dotfiles/user-dirs.dirs ~/.config/user-dirs.dirs
 
 create_link $curdir/bin ~/work/bin
 chmod 700 ~/work/bin/*

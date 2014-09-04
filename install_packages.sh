@@ -41,11 +41,11 @@ do_install_system() {
         tree \
         htop \
         aria2 \
-        ssh-askpass \
         secure-delete \
         gcc \
         gdb \
         build-essential \
+	cmake \
         yasm \
         linux-headers-$(uname -r) \
         libxslt-dev \
@@ -73,10 +73,8 @@ do_install_system() {
         iptraf \
         clamav \
         mailutils \
-        fetchmail \
-        procmail \
-        spamassassin \
-        lynis
+        lynis \
+	usbmount
 
     sudo gem install colorize
 }

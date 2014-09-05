@@ -137,6 +137,7 @@ do_install_desktop_apps() {
         notification-daemon \
         numlockx \
         alsa-tools \
+	alsa-utils \
         alsa-oss \
         alsamixergui \
         chromium \

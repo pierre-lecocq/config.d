@@ -45,7 +45,7 @@ do_install_system() {
         gcc \
         gdb \
         build-essential \
-	cmake \
+        cmake \
         yasm \
         linux-headers-$(uname -r) \
         libxslt-dev \
@@ -74,7 +74,7 @@ do_install_system() {
         clamav \
         mailutils \
         lynis \
-	usbmount
+        usbmount
 
     sudo gem install colorize
 }
@@ -90,7 +90,7 @@ do_install_wm_i3wm() {
         xorg \
         i3 \
         i3lock \
-	i3status \
+        i3status \
         dunst
 
     Xorg -configure
@@ -137,7 +137,7 @@ do_install_desktop_apps() {
         notification-daemon \
         numlockx \
         alsa-tools \
-	alsa-utils \
+        alsa-utils \
         alsa-oss \
         alsamixergui \
         chromium \
@@ -242,8 +242,8 @@ do_install_emacs_from_source() {
         build-essential \
         yasm \
         linux-headers-$(uname -r) \
-    autoconf \
-    cvs \
+        autoconf \
+        cvs \
         git \
         bzr \
         libxslt-dev \
@@ -264,12 +264,13 @@ do_install_emacs_from_source() {
         texify \
         texi2html \
         texinfo \
+        texlive-generic-recommended \
         mailutils \
         fetchmail \
-    fonts-inconsolata \
-    emms \
-    vorbis-tools \
-    mplayer
+        fonts-inconsolata \
+        emms \
+        vorbis-tools \
+        mplayer
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src

@@ -46,6 +46,9 @@ do_install_system() {
         gdb \
         build-essential \
         cmake \
+	automake \
+	autoconf \
+	gettext \
         yasm \
         linux-headers-$(uname -r) \
         libxslt-dev \

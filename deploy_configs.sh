@@ -26,6 +26,7 @@ create_dir ~/.mail
 create_dir ~/work/src
 create_dir ~/work/doc
 
+create_link $curdir/dotfiles/screenrc ~/.screenrc
 create_link $curdir/dotfiles/gitconfig ~/.gitconfig
 create_link $curdir/dotfiles/bashrc ~/.bashrc
 create_link $curdir/dotfiles/bashrc_profile ~/.bashrc_profile

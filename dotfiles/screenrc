@@ -1,0 +1,7 @@
+startup_message off
+vbell on
+vbell_msg "   Diiiing!!  "
+defscrollback 1024
+defnonblock 5
+caption string "%{=b kg} [%n %t] %{=s ky}%W  %= %{=b}%H %{=s}%c "
+hardstatus alwayslastline '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'

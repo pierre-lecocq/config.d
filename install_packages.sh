@@ -31,6 +31,7 @@ do_install_system() {
     sudo apt-get update
 
     sudo apt-get install -y \
+        screen \
         emacs \
         zsh \
         gnutls-bin \

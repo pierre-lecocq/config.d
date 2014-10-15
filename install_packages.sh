@@ -45,6 +45,7 @@ do_install_system() {
         secure-delete \
         gcc \
         gdb \
+	valgrind \
         build-essential \
         cmake \
 	automake \

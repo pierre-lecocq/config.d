@@ -42,10 +42,10 @@ do_install_system() {
         tree \
         htop \
         aria2 \
-        secure-delete \
         gcc \
         gdb \
 	valgrind \
+	strace \
         build-essential \
         cmake \
 	automake \
@@ -53,8 +53,6 @@ do_install_system() {
 	gettext \
         yasm \
         linux-headers-$(uname -r) \
-        libxslt-dev \
-        libxml2-dev \
         libncurses5-dev \
         clisp \
         sbcl \
@@ -64,9 +62,6 @@ do_install_system() {
         ruby-dev \
         rubygems \
         python \
-        golang \
-        golang-go \
-        golang-dbg \
         nmap \
         fail2ban \
         denyhosts \
@@ -93,6 +88,7 @@ do_install_wm_i3wm() {
 
     sudo apt-get install -y \
         xorg \
+	xtrace \
         i3 \
         i3lock \
         i3status \
@@ -110,6 +106,7 @@ do_install_wm_openbox() {
 
     sudo apt-get install -y \
         xorg \
+	xtrace \
         openbox \
         obconf \
         obmenu \

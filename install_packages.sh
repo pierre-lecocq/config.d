@@ -276,7 +276,7 @@ do_install_emacs_from_source() {
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src
-    wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz && tar xvJf emacs-24.3.tar.xz && mv emacs-24.3 emacs.src
+    wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src
 
     cd emacs.src && ./configure --with-x-toolkit=gtk3 --with-dbus && make && sudo make install
 }

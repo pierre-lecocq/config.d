@@ -6,7 +6,8 @@ export EDITOR=emacs
 autoload -U compinit && compinit
 setopt completealiases
 zstyle ':completion:*' menu select
-
+compdef -d git
+ 
 # Commands autocorrect
 setopt correctall
 

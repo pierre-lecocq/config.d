@@ -258,6 +258,7 @@ do_install_emacs_from_source() {
         libjpeg-dev \
         libtiff5-dev \
         libdbus-1-dev \
+        libgnutls-dev \
         w3m \
         texlive \
         texlive-base \
@@ -278,7 +279,7 @@ do_install_emacs_from_source() {
     # git clone git://git.savannah.gnu.org/emacs.git emacs.src
     wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src
 
-    cd emacs.src && ./configure --with-x-toolkit=gtk3 --with-dbus && make && sudo make install
+    cd emacs.src && ./configure && make && sudo make install
 }
 
 do_exit() {

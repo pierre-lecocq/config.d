@@ -255,7 +255,7 @@ do_install_emacs_from_source() {
         libcanberra-gtk3-dev \
         libgif-dev \
         libxpm-dev \
-        libjpeg8-dev \
+        libjpeg-dev \
         libtiff5-dev \
         libdbus-1-dev \
         w3m \

@@ -76,7 +76,7 @@ do_install_system() {
         lynis \
         usbmount
 
-    sudo gem install colorize
+    sudo gem install colorize pry
 }
 
 do_install_wm_i3wm() {

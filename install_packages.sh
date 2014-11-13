@@ -233,12 +233,11 @@ do_install_virtualbox() {
 
 do_install_emacs_from_source() {
 
-    printf "\nInstalling emacs from source...\n"
+    printf "\nInstalling emacs from source (git repository)...\n"
 
     sudo apt-get update
 
     sudo apt-get install -y \
-        wget \
         gcc \
         gdb \
         build-essential \
@@ -247,7 +246,6 @@ do_install_emacs_from_source() {
         autoconf \
         cvs \
         git \
-        bzr \
         libxslt-dev \
         libxml2-dev \
         libncurses5-dev \
@@ -276,10 +274,10 @@ do_install_emacs_from_source() {
         mplayer
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
-    # git clone git://git.savannah.gnu.org/emacs.git emacs.src
-    wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src
+    # wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src
+    git clone git://git.savannah.gnu.org/emacs.git emacs.src
 
-    cd emacs.src && ./configure && make && sudo make install
+    cd emacs.src && ./autogen.sh && ./configure && make && sudo make install
 }
 
 do_exit() {

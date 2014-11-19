@@ -3,3 +3,192 @@
 - [[file:install_packages.sh][install_packages.sh]]: Install packages (base, i3 and/or openbox, pentesting, emacs from sources, ...)
 - [[file:deploy_configs.sh][deploy_configs.sh]]: Deploy config with symlinks (shells, window managers, pentest tools, ...)
 - Finally, clone [[https://github.com/pierre-lecocq/emacs.d][emacs.d]] repository and link it to ~/.emacs.d
+
+Here are more details:
+
+** Install packages script
+
+This is an interactive script that ask you what kind of action you want to do (fortunately):
+
+#+begin_src sh
+What do you want to do ?
+
+ * 1. Install basic system
+ * 2. Install WM (i3wm)
+ * 3. Install WM (Openbox)
+ * 4. Install desktop apps
+ * 5. Install Pentesting tools
+ * 6. Install VirtualBox
+ * 7. Install emacs from source
+ * 0. Exit
+#+end_src
+
+**** Install basic system
+
+- Switch the GRUB waiting time to 1 second
+- Configure apt to remove recommended packages and add =contrib non-free= sources
+- Removes unwanted packages: =exim4 portmap rpcbind=
+- Installs ruby gems: =colorize pry=
+- Installs the following packages:
+  - screen
+  - emacs
+  - zsh
+  - gnutls-bin
+  - git
+  - wget
+  - curl
+  - rsync
+  - tree
+  - htop
+  - aria2
+  - gcc
+  - gdb
+  - valgrind
+  - strace
+  - build-essential
+  - cmake
+  - automake
+  - autoconf
+  - gettext
+  - yasm
+  - linux-headers-$(uname -r)
+  - libncurses5-dev
+  - clisp
+  - sbcl
+  - irb
+  - ruby
+  - libruby
+  - ruby-dev
+  - rubygems
+  - python
+  - nmap
+  - fail2ban
+  - denyhosts
+  - nethogs
+  - iotop
+  - tcpdump
+  - httperf
+  - siege
+  - iptraf
+  - clamav
+  - mailutils
+  - lynis
+  - usbmount
+
+**** Install window managers
+
+- Installs XOrg server
+- Installs either [[https://i3wm.org/][i3wm]] (choice 2) or [[http://openbox.org/wiki/Main_Page][Openbox]] (choice 3)
+
+**** Install desktop apps
+
+After installing one of the 2 window managers proposed above, it will install the following GUI apps:
+
+- arandr
+- feh
+- terminator
+- tango-icon-theme
+- suckless-tools
+- ttf-bitstream-vera
+- ttf-mscorefonts-installer
+- thunar
+- orage
+- libnotify-bin
+- notification-daemon
+- numlockx
+- alsa-tools
+- alsa-utils
+- alsa-oss
+- alsamixergui
+- chromium
+- scrot
+- pidgin
+- xpdf
+- mirage
+- filezilla
+- transmission-gtk
+- vlc
+- flashplugin-nonfree
+- firmware-iwlwifi
+- wicd
+- wicd-gtk
+- wicd-daemon
+
+**** Install pententing tools
+
+Installs these packages:
+
+- nmap
+- w3af
+- sqlmap
+- tcpdump
+- tcptrace
+- ettercap
+- dsniff
+- netcat
+- ngrep
+- john
+- kismet
+- siege
+- ratproxy
+- nikto
+- build-essential
+- subversion
+- ruby
+- libruby
+- irb
+- rdoc
+- libyaml-ruby
+- libzlib-ruby
+- libopenssl-ruby
+- libdl-ruby
+- libreadline-ruby
+- libiconv-ruby
+- rubygems
+- sqlite3
+- libsqlite3-ruby
+- libsqlite3-dev
+- python-pycurl
+- python-beautifulsoup
+- python-libxml2
+- python-geoip
+
+Also installs from source:
+
+- metasploit
+- xsser
+
+**** Install VirtualBox
+
+Simply installs these packages:
+
+- virtualbox-ose
+- virtualbox-ose-dkms
+- linux-headers-amd64
+
+**** Install Emacs from sources
+
+- Get emacs sources from the git repository (git://git.savannah.gnu.org/emacs.git)
+- Configures it
+- Compiles it
+- Installs it
+
+** Deploy config script
+
+This script will create symbolic links between the =dotfiles= folder and your home folder.
+
+It deploys configurations for:
+
+- dunst
+- gtk
+- i3 and i3 status
+- openbox
+- tint2
+- bash
+- zsh
+- conky
+- git
+- screen
+- xmodmap
+
+It also create a few folders (~/.mail, ~/work/src, ~/work/bin) and copies the images directory.

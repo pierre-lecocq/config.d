@@ -2,15 +2,48 @@
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/work/bin:~/.rvm/bin
 export EDITOR=emacs
 
-# Function - set term title
-function termtitle {
-    if [ -z $1 ]; then
-        title=`hostname`
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Don't put duplicate lines in the history.
+HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoreboth
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        color_prompt=yes
     else
-        title=$1
+        color_prompt=
     fi
-    echo -n -e "\033]0;"$title"\007"
-}
+fi
+
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Enable programmable completion features
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
 # Prompt
 if [ $(id -u) -eq 0 ];
@@ -19,6 +52,19 @@ then
 else
     PS1="[\A] \e[0;34m\u@\h\e[0m \w $ "
 fi
+
+# Set term title
+function termtitle {
+  if [ -z $1 ]; then
+    title=$USER"@"`hostname`
+  else
+    title=$1
+  fi
+
+  echo -n -e "\033]0;"$title"\007"
+}
+
+termtitle
 
 # Aliases (a.k.a evil)
 arch=`uname`

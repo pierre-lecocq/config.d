@@ -10,6 +10,7 @@ main_menu()
     printf " * 5. Install Pentesting tools\n"
     printf " * 6. Install VirtualBox\n"
     printf " * 7. Install emacs from source\n"
+    printf " * 8. Install (plan9) acme-sac from source\n"
     printf " * 0. Exit\n\n"
 }
 
@@ -235,6 +236,8 @@ do_install_emacs_from_source() {
 
     printf "\nInstalling emacs from source (git repository)...\n"
 
+    cd ~/
+    
     sudo apt-get update
 
     sudo apt-get install -y \
@@ -280,6 +283,24 @@ do_install_emacs_from_source() {
     cd emacs.src && ./autogen.sh && ./configure && make && sudo make install
 }
 
+do_install_emacs_from_source() {
+
+    printf "\nInstalling (plan9) acme-sac from source ...\n"
+
+    mkdir -p ~/work/src
+    cd ~/work/src
+    
+    sudo apt-get update
+    
+    sudo apt-get install -y \
+        libx11-dev \
+        libxext-dev \
+        mercurial
+        
+    hg clone https://code.google.com/p/acme-sac
+    cd acme-sac/sys && ./build.sh && cd .. && sudo ln -s sys/emu/Linux/o.emu /usr/bin/acme 
+}
+
 do_exit() {
     printf "\nBye!\n\n"
     exit 0;
@@ -298,6 +319,7 @@ while true; do
         "5") do_install_pentesting ;;
         "6") do_install_virtualbox ;;
         "7") do_install_emacs_from_source ;;
+        "8") do_install_acme_from_source ;;
         *) do_exit ;;
     esac
 done

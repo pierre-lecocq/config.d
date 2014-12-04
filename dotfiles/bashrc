@@ -30,16 +30,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-fi
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # Enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
@@ -66,6 +56,12 @@ function termtitle {
 
 termtitle
 
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+fi
+
 # Aliases (a.k.a evil)
 arch=`uname`
 if [ $arch = "Darwin" ]; then
@@ -88,3 +84,4 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -p
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias irb='irb --simple-prompt'
+alias curl='curl --progress-bar'

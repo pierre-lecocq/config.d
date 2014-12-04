@@ -11,6 +11,7 @@ main_menu()
     printf " * 6. Install VirtualBox\n"
     printf " * 7. Install emacs from source\n"
     printf " * 8. Install (plan9) acme-sac from source\n"
+    printf " * 9. Install guitar studio apps\n"
     printf " * 0. Exit\n\n"
 }
 
@@ -301,6 +302,22 @@ do_install_emacs_from_source() {
     cd acme-sac/sys && ./build.sh && cd .. && sudo ln -s sys/emu/Linux/o.emu /usr/bin/acme 
 }
 
+do_install_guitar_studio() {
+
+    printf "\nInstalling guitar studio ...\n"
+
+    sudo apt-get update
+    
+    sudo apt-get install -y \
+	jackd \
+	qjackctl \
+	ardour \
+	gxtuner \
+	guitarix \
+	rakarrack \
+	audacity
+}
+
 do_exit() {
     printf "\nBye!\n\n"
     exit 0;
@@ -320,6 +337,7 @@ while true; do
         "6") do_install_virtualbox ;;
         "7") do_install_emacs_from_source ;;
         "8") do_install_acme_from_source ;;
+        "9") do_install_guitar_studio ;;
         *) do_exit ;;
     esac
 done

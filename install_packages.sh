@@ -312,10 +312,12 @@ do_install_guitar_studio() {
 	jackd \
 	qjackctl \
 	ardour \
-	gxtuner \
 	guitarix \
-	rakarrack \
-	audacity
+	audacity \
+	alsa-tools \
+        alsa-utils \
+        alsa-oss \
+        alsamixergui
 }
 
 do_exit() {

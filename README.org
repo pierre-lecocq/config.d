@@ -20,6 +20,8 @@ What do you want to do ?
  * 5. Install Pentesting tools
  * 6. Install VirtualBox
  * 7. Install emacs from source
+ * 8. Install (plan9) acme-sac from source
+ * 9. Install guitar studio apps
  * 0. Exit
 #+end_src
 
@@ -172,6 +174,26 @@ Simply installs these packages:
 - Configures it
 - Compiles it
 - Installs it
+
+**** Install Acme from sources
+
+- Get acme sources from the mercurial repository (https://code.google.com/p/acme-sac)
+- builds it
+- installs it
+
+**** Install a guitar studio
+
+Installs these needed packages for a recording session:
+
+- jackd
+- qjackctl
+- ardour
+- guitarix
+- audacity
+- alsa-tools
+- alsa-utils
+- alsa-oss
+- alsamixergui
 
 ** Deploy config script
 

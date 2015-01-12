@@ -1,0 +1,11 @@
+#
+# When on OpenBSD, add ". ~/.kshrc" in ~/.profile
+# 
+
+export PKG_PATH=ftp://fr.ftp.mirror/pub/OpenBSD/`uname -r`/packages/`machine -a`/
+
+alias l='ls -l'
+alias la='ls -la'
+alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \;'
+alias irb='irb --simple-prompt'
+alias curl='curl --progress-bar'

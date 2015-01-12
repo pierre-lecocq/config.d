@@ -28,7 +28,8 @@ battery 0 {
 }
 
 time {
-        format = " %A %d %B %Y %H:%M:%S "
+        # format = " %A %d %B %Y %H:%M:%S "
+        format = " %H:%M:%S "
 }
 
 load {

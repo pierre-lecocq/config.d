@@ -1,0 +1,33 @@
+* pf
+
+copy /etc/pf.conf
+
+** Activate
+pfctl -e
+
+** Deactivate
+
+pfctl -d
+
+* httpd
+
+copy /etc/httpd.conf
+
+** Install fpm
+
+pkg_add -I php-fpm-5.5.14
+
+** Dummy page
+
+echo "<?php echo 'It works'; " > /var/www/htdocs/index.php
+
+** Start services
+
+/etc/rc.d/php-fpm start && /etc/rc.d/httpd start
+
+* To be done
+
+- [ ] relayd for balancing
+- [ ] postgresql
+- [ ] memcached
+- [ ] full archi

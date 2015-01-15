@@ -2,7 +2,9 @@
 # When on OpenBSD, add ". ~/.kshrc" in ~/.profile
 # 
 
-export PKG_PATH=ftp://fr.ftp.mirror/pub/OpenBSD/`uname -r`/packages/`machine -a`/
+export PKG_PATH=ftp://ftp.fr.openbsd.org/pub/OpenBSD/`uname -r`/packages/`machine -a`/
+
+ PS1="\n\u@\H\n\w \\$ "
 
 alias l='ls -l'
 alias la='ls -la'

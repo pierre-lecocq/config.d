@@ -31,7 +31,7 @@ echo "<?php echo 'It works'; " > /var/www/htdocs/index.php
 
 ** Start services
 
-/etc/rc.d/php-fpm start && /etc/rc.d/httpd start
+/etc/rc.d/php_fpm start && /etc/rc.d/httpd start
 
 * To be done
 

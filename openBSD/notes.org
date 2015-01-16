@@ -1,7 +1,9 @@
 * Initialize
 
 export PKG_PATH=ftp://ftp.fr.openbsd.org/pub/OpenBSD/`uname -r`/packages/`machine -a`/
+
 pkg_add -I nmap emacs-24.3p4-no_x11 git curl wget
+
 curl -O https://raw.githubusercontent.com/pierre-lecocq/config.d/master/dotfiles/kshrc && mv kshrc ~/.kshrc
 
 * pf

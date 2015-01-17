@@ -8,9 +8,10 @@ curl -O https://raw.githubusercontent.com/pierre-lecocq/config.d/master/dotfiles
 
 * pf
 
-copy /etc/pf.conf
+cd /etc && wget https://raw.githubusercontent.com/pierre-lecocq/config.d/master/openBSD/pf.conf
 
 ** Activate
+
 pfctl -e
 
 ** Deactivate
@@ -19,11 +20,16 @@ pfctl -d
 
 * httpd
 
-copy /etc/httpd.conf
+cd /etc && wget https://raw.githubusercontent.com/pierre-lecocq/config.d/master/openBSD/httpd.conf
 
 ** Install fpm
 
+mkdir -p /var/www/conf/modules
+
 pkg_add -I php-fpm-5.5.14
+
+mv /etc/php-fpm.conf /etc/php-fpm.conf.ori
+sed -e 's/;listen.allowed_clients = 127\.0\.0\.1/listen.allowed_clients = 127\.0\.0\.1/g' /etc/php-fpm.conf.ori > /etc/php-fpm.conf
 
 ** Dummy page
 

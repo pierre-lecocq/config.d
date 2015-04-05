@@ -25,7 +25,7 @@ do_install_system() {
     # Packages
     echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
-    sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
+    # sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
     sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
 
     sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups

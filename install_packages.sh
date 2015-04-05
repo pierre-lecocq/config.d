@@ -28,7 +28,7 @@ do_install_system() {
     sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
     sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
 
-    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind
+    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups
 
     sudo apt-get update
 
@@ -44,7 +44,6 @@ do_install_system() {
         rsync \
         tree \
         htop \
-        aria2 \
         gcc \
         gdb \
 	valgrind \
@@ -55,7 +54,7 @@ do_install_system() {
 	autoconf \
 	gettext \
         yasm \
-        linux-headers-$(uname -r) \
+        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
         libncurses5-dev \
         clisp \
         sbcl \
@@ -67,16 +66,9 @@ do_install_system() {
         python \
         nmap \
         fail2ban \
-        denyhosts \
-        nethogs \
-        iotop \
         tcpdump \
-        httperf \
-        siege \
-        iptraf \
         clamav \
         mailutils \
-        lynis \
         usbmount
 
     sudo gem install colorize pry
@@ -147,10 +139,8 @@ do_install_desktop_apps() {
         alsamixergui \
         chromium \
         scrot \
-        pidgin \
         xpdf \
         mirage \
-        filezilla \
         transmission-gtk \
         vlc \
         flashplugin-nonfree \
@@ -247,7 +237,7 @@ do_install_emacs_from_source() {
         gdb \
         build-essential \
         yasm \
-        linux-headers-$(uname -r) \
+        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
         autoconf \
         cvs \
         git \

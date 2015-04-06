@@ -23,8 +23,11 @@ do_install_system() {
     update-grub
 
     # Packages
-    echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
-    sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+    sudo echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+    if ! [ -f /etc/apt/sources.list.ori ]; then
+	sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+    fi
+
     # sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
     sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
 
@@ -70,8 +73,6 @@ do_install_system() {
         clamav \
         mailutils \
         usbmount
-
-    sudo gem install colorize pry
 }
 
 do_install_wm_i3wm() {
@@ -127,7 +128,9 @@ do_install_desktop_apps() {
         tango-icon-theme \
         suckless-tools \
         ttf-bitstream-vera \
-        ttf-mscorefonts-installer \
+	ttf-inconsolata \
+	fonts-inconsolata \
+	ttf-dejavu \
         thunar \
         orage \
         libnotify-bin \
@@ -263,10 +266,7 @@ do_install_emacs_from_source() {
         texlive-generic-recommended \
         mailutils \
         fetchmail \
-        fonts-inconsolata \
-        emms \
-        vorbis-tools \
-        mplayer
+        fonts-inconsolata
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src

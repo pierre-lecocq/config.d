@@ -28,10 +28,12 @@ create_dir ~/work/doc
 
 create_link $curdir/dotfiles/screenrc ~/.screenrc
 create_link $curdir/dotfiles/gitconfig ~/.gitconfig
+create_link $curdir/dotfiles/gemrc ~/.gemrc
 create_link $curdir/dotfiles/bashrc ~/.bashrc
 create_link $curdir/dotfiles/bashrc_profile ~/.bashrc_profile
 # create_link $curdir/dotfiles/xmodmap ~/.xmodmap
 create_link $curdir/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
+create_link $curdir/dotfiles/gtk-3.0 ~/.gtk-3.0
 
 create_dir ~/.config
 # create_link $curdir/dotfiles/conkyrc ~/.config/conkyrc

@@ -99,12 +99,12 @@ bar {
 }
 
 # Colors [class border backgr. text indicator]
-#exec xsetroot -solid '#414141'
 client.focused #414141 #1D68C4 #ffffff #cccccc
 client.focused_inactive #414141 #414141 #cccccc #cccccc
 client.unfocused #414141 #414141 #cccccc #cccccc
 
 # Exec at startup
+# exec xsetroot -solid '#414141'
 exec --no-startup-id xset b 0 0
 exec --no-startup-id numlockx on
 exec --no-startup-id synclient tapButton1=1

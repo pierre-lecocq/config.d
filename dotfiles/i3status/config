@@ -24,12 +24,12 @@ ethernet eth0 {
 }
 
 battery 0 {
-        format = " %status %percentage %remaining "
+        format = " Bat. %status %percentage %remaining "
 }
 
 time {
-        # format = " %A %d %B %Y %H:%M:%S "
-        format = " %H:%M:%S "
+        format = " %A %d %B %Y %H:%M:%S "
+        # format = " %H:%M:%S "
 }
 
 load {

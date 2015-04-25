@@ -72,7 +72,10 @@ do_install_system() {
         tcpdump \
         clamav \
         mailutils \
-        usbmount
+        usbmount \
+        aspell \
+        aspell-fr \
+        aspell-en
 }
 
 do_install_wm_i3wm() {
@@ -266,6 +269,9 @@ do_install_emacs_from_source() {
         texlive-generic-recommended \
         mailutils \
         fetchmail \
+        aspell \
+        aspell-fr \
+        aspell-en \
         fonts-inconsolata
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src

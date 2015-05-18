@@ -1,3 +1,5 @@
+arch=`uname`
+
 # Env vars
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/work/bin:~/.rvm/bin
 export TERM=xterm-256color
@@ -41,7 +43,11 @@ if [ $(id -u) -eq 0 ];
 then
     PS1="\e[0;31m[\A] \u@\h \w # \e[m"
 else
-    PS1="[\A] \e[0;34m\u@\h\e[0m \w $ "
+    if [ $arch = "Darwin" ]; then
+        PS1="[\A] \e[0;34m\u@\h\e[0m \w \360\237\215\272  "
+    else
+        PS1="[\A] \e[0;34m\u@\h\e[0m \w $ "
+    fi
 fi
 
 # Set term title
@@ -64,7 +70,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Aliases (a.k.a evil)
-arch=`uname`
 if [ $arch = "Darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced

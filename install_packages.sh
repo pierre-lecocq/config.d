@@ -23,12 +23,15 @@ do_install_system() {
     update-grub
 
     # Packages
-    echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
-    sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
-    sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
+    sudo echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+    if ! [ -f /etc/apt/sources.list.ori ]; then
+	sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+    fi
+
+    # sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
     sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
 
-    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind
+    sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups
 
     sudo apt-get update
 
@@ -44,7 +47,6 @@ do_install_system() {
         rsync \
         tree \
         htop \
-        aria2 \
         gcc \
         gdb \
 	valgrind \
@@ -55,7 +57,7 @@ do_install_system() {
 	autoconf \
 	gettext \
         yasm \
-        linux-headers-$(uname -r) \
+        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
         libncurses5-dev \
         clisp \
         sbcl \
@@ -67,19 +69,13 @@ do_install_system() {
         python \
         nmap \
         fail2ban \
-        denyhosts \
-        nethogs \
-        iotop \
         tcpdump \
-        httperf \
-        siege \
-        iptraf \
         clamav \
         mailutils \
-        lynis \
-        usbmount
-
-    sudo gem install colorize pry
+        usbmount \
+        aspell \
+        aspell-fr \
+        aspell-en
 }
 
 do_install_wm_i3wm() {
@@ -135,7 +131,9 @@ do_install_desktop_apps() {
         tango-icon-theme \
         suckless-tools \
         ttf-bitstream-vera \
-        ttf-mscorefonts-installer \
+	ttf-inconsolata \
+	fonts-inconsolata \
+	ttf-dejavu \
         thunar \
         orage \
         libnotify-bin \
@@ -147,10 +145,8 @@ do_install_desktop_apps() {
         alsamixergui \
         chromium \
         scrot \
-        pidgin \
         xpdf \
         mirage \
-        filezilla \
         transmission-gtk \
         vlc \
         flashplugin-nonfree \
@@ -247,7 +243,7 @@ do_install_emacs_from_source() {
         gdb \
         build-essential \
         yasm \
-        linux-headers-$(uname -r) \
+        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
         autoconf \
         cvs \
         git \
@@ -273,10 +269,10 @@ do_install_emacs_from_source() {
         texlive-generic-recommended \
         mailutils \
         fetchmail \
-        fonts-inconsolata \
-        emms \
-        vorbis-tools \
-        mplayer
+        aspell \
+        aspell-fr \
+        aspell-en \
+        fonts-inconsolata
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src

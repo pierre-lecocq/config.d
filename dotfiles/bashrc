@@ -92,3 +92,5 @@ alias enq='emacs -nw -Q'
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

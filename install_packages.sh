@@ -10,8 +10,6 @@ main_menu()
     printf " * 5. Install Pentesting tools\n"
     printf " * 6. Install VirtualBox\n"
     printf " * 7. Install emacs from source\n"
-    printf " * 8. Install (plan9) acme-sac from source\n"
-    printf " * 9. Install guitar studio apps\n"
     printf " * 0. Exit\n\n"
 }
 
@@ -25,7 +23,7 @@ do_install_system() {
     # Packages
     sudo echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
     if ! [ -f /etc/apt/sources.list.ori ]; then
-	sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+        sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
     fi
 
     # sudo sed -e 's/wheezy/jessie/g' -i /etc/apt/sources.list
@@ -36,46 +34,46 @@ do_install_system() {
     sudo apt-get update
 
     sudo apt-get install -y \
-        screen \
-        mg \
-        emacs \
-        zsh \
-        gnutls-bin \
-        git \
-        wget \
-        curl \
-        rsync \
-        tree \
-        htop \
-        gcc \
-        gdb \
-	valgrind \
-	strace \
-        build-essential \
-        cmake \
-	automake \
-	autoconf \
-	gettext \
-        yasm \
-        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
-        libncurses5-dev \
-        clisp \
-        sbcl \
-        irb \
-        ruby \
-        libruby \
-        ruby-dev \
-        rubygems \
-        python \
-        nmap \
-        fail2ban \
-        tcpdump \
-        clamav \
-        mailutils \
-        usbmount \
-        aspell \
-        aspell-fr \
-        aspell-en
+         screen \
+         mg \
+         emacs \
+         zsh \
+         gnutls-bin \
+         git \
+         wget \
+         curl \
+         rsync \
+         tree \
+         htop \
+         gcc \
+         gdb \
+         valgrind \
+         strace \
+         build-essential \
+         cmake \
+         automake \
+         autoconf \
+         gettext \
+         yasm \
+         linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+         libncurses5-dev \
+         clisp \
+         sbcl \
+         irb \
+         ruby \
+         libruby \
+         ruby-dev \
+         rubygems \
+         python \
+         nmap \
+         fail2ban \
+         tcpdump \
+         clamav \
+         mailutils \
+         usbmount \
+         aspell \
+         aspell-fr \
+         aspell-en
 }
 
 do_install_wm_i3wm() {
@@ -86,12 +84,12 @@ do_install_wm_i3wm() {
     sudo apt-get update
 
     sudo apt-get install -y \
-        xorg \
-	xtrace \
-        i3 \
-        i3lock \
-        i3status \
-        dunst
+         xorg \
+         xtrace \
+         i3 \
+         i3lock \
+         i3status \
+         dunst
 
     Xorg -configure
 }
@@ -104,17 +102,17 @@ do_install_wm_openbox() {
     sudo apt-get update
 
     sudo apt-get install -y \
-        xorg \
-	xtrace \
-        openbox \
-        obconf \
-        obmenu \
-        tint2 \
-        xcompmgr \
-        conky \
-        grun \
-        gksu \
-        xscreensaver
+         xorg \
+         xtrace \
+         openbox \
+         obconf \
+         obmenu \
+         tint2 \
+         xcompmgr \
+         conky \
+         grun \
+         gksu \
+         xscreensaver
 
     Xorg -configure
 }
@@ -125,35 +123,35 @@ do_install_desktop_apps() {
     sudo apt-get update
 
     sudo apt-get install -y \
-        arandr \
-        feh \
-        terminator \
-        tango-icon-theme \
-        suckless-tools \
-        ttf-bitstream-vera \
-	ttf-inconsolata \
-	fonts-inconsolata \
-	ttf-dejavu \
-        thunar \
-        orage \
-        libnotify-bin \
-        notification-daemon \
-        numlockx \
-        alsa-tools \
-        alsa-utils \
-        alsa-oss \
-        alsamixergui \
-        chromium \
-        scrot \
-        xpdf \
-        mirage \
-        transmission-gtk \
-        vlc \
-        flashplugin-nonfree \
-        firmware-iwlwifi \
-        wicd \
-        wicd-gtk \
-        wicd-daemon
+         arandr \
+         feh \
+         terminator \
+         tango-icon-theme \
+         suckless-tools \
+         ttf-bitstream-vera \
+         ttf-inconsolata \
+         fonts-inconsolata \
+         ttf-dejavu \
+         thunar \
+         orage \
+         libnotify-bin \
+         notification-daemon \
+         numlockx \
+         alsa-tools \
+         alsa-utils \
+         alsa-oss \
+         alsamixergui \
+         chromium \
+         scrot \
+         xpdf \
+         mirage \
+         transmission-gtk \
+         vlc \
+         flashplugin-nonfree \
+         firmware-iwlwifi \
+         wicd \
+         wicd-gtk \
+         wicd-daemon
 
 
     # sudo apt-get install -y \
@@ -179,40 +177,40 @@ install_pentesting() {
     sudo apt-get update
 
     sudo apt-get install -y \
-        nmap \
-        w3af \
-        sqlmap \
-        tcpdump \
-        tcptrace \
-        ettercap \
-        dsniff \
-        netcat \
-        ngrep \
-        john \
-        kismet \
-        siege \
-        ratproxy \
-        nikto \
-        build-essential \
-        subversion \
-        ruby \
-        libruby \
-        irb \
-        rdoc \
-        libyaml-ruby \
-        libzlib-ruby \
-        libopenssl-ruby \
-        libdl-ruby \
-        libreadline-ruby \
-        libiconv-ruby \
-        rubygems \
-        sqlite3 \
-        libsqlite3-ruby \
-        libsqlite3-dev \
-        python-pycurl \
-        python-beautifulsoup \
-        python-libxml2 \
-        python-geoip
+         nmap \
+         w3af \
+         sqlmap \
+         tcpdump \
+         tcptrace \
+         ettercap \
+         dsniff \
+         netcat \
+         ngrep \
+         john \
+         kismet \
+         siege \
+         ratproxy \
+         nikto \
+         build-essential \
+         subversion \
+         ruby \
+         libruby \
+         irb \
+         rdoc \
+         libyaml-ruby \
+         libzlib-ruby \
+         libopenssl-ruby \
+         libdl-ruby \
+         libreadline-ruby \
+         libiconv-ruby \
+         rubygems \
+         sqlite3 \
+         libsqlite3-ruby \
+         libsqlite3-dev \
+         python-pycurl \
+         python-beautifulsoup \
+         python-libxml2 \
+         python-geoip
 
     svn co http://www.metasploit.com/svn/framework3/trunk /usr/local/metasploit;
     ln -s /usr/local/metasploit/msfconsole /usr/local/bin/msfconsole
@@ -235,86 +233,50 @@ do_install_emacs_from_source() {
     printf "\nInstalling emacs from source (git repository)...\n"
 
     cd ~/
-    
+
     sudo apt-get update
 
     sudo apt-get install -y \
-        gcc \
-        gdb \
-        build-essential \
-        yasm \
-        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
-        autoconf \
-        cvs \
-        git \
-        libxslt-dev \
-        libxml2-dev \
-        libncurses5-dev \
-        libgtk-3-dev \
-        libcanberra-gtk3-dev \
-        libgif-dev \
-        libxpm-dev \
-        libjpeg-dev \
-        libtiff5-dev \
-        libdbus-1-dev \
-        libgnutls-dev \
-        w3m \
-        texlive \
-        texlive-base \
-        texlive-latex-base \
-        texlive-latex-extra \
-        texify \
-        texi2html \
-        texinfo \
-        texlive-generic-recommended \
-        mailutils \
-        fetchmail \
-        aspell \
-        aspell-fr \
-        aspell-en \
-        fonts-inconsolata
+         gcc \
+         gdb \
+         build-essential \
+         yasm \
+         linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+         autoconf \
+         cvs \
+         git \
+         libxslt-dev \
+         libxml2-dev \
+         libncurses5-dev \
+         libgtk-3-dev \
+         libcanberra-gtk3-dev \
+         libgif-dev \
+         libxpm-dev \
+         libjpeg-dev \
+         libtiff5-dev \
+         libdbus-1-dev \
+         libgnutls-dev \
+         w3m \
+         texlive \
+         texlive-base \
+         texlive-latex-base \
+         texlive-latex-extra \
+         texify \
+         texi2html \
+         texinfo \
+         texlive-generic-recommended \
+         mailutils \
+         fetchmail \
+         aspell \
+         aspell-fr \
+         aspell-en \
+         fonts-inconsolata
 
     # bzr branch bzr://bzr.savannah.gnu.org/emacs/trunk emacs.src
     # wget ftp://ftp.gnu.org/pub/gnu/emacs/emacs-24.4.tar.xz && tar xvJf emacs-24.4.tar.xz && mv emacs-24.4 emacs.src
     git clone git://git.savannah.gnu.org/emacs.git emacs.src
 
     cd emacs.src && ./autogen.sh && ./configure && make && sudo make install
-}
-
-do_install_emacs_from_source() {
-
-    printf "\nInstalling (plan9) acme-sac from source ...\n"
-
-    mkdir -p ~/work/src
-    cd ~/work/src
-    
-    sudo apt-get update
-    
-    sudo apt-get install -y \
-        libx11-dev \
-        libxext-dev \
-        mercurial
-        
-    hg clone https://code.google.com/p/acme-sac
-    cd acme-sac/sys && ./build.sh && cd .. && sudo ln -s sys/emu/Linux/o.emu /usr/bin/acme 
-}
-
-do_install_guitar_studio() {
-
-    printf "\nInstalling guitar studio ...\n"
-
-    sudo apt-get update
-    
-    sudo apt-get install -y \
-	jackd \
-	qjackctl \
-	ardour \
-	guitarix \
-	audacity \
-	alsa-tools \
-        alsa-utils \
-        alsa-oss \
-        alsamixergui
 }
 
 do_exit() {
@@ -335,8 +297,6 @@ while true; do
         "5") do_install_pentesting ;;
         "6") do_install_virtualbox ;;
         "7") do_install_emacs_from_source ;;
-        "8") do_install_acme_from_source ;;
-        "9") do_install_guitar_studio ;;
         *) do_exit ;;
     esac
 done

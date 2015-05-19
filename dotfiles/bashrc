@@ -43,10 +43,10 @@ if [ $(id -u) -eq 0 ];
 then
     PS1="\e[0;31m[\A] \u@\h \w # \e[m"
 else
-    if [ $arch = "Darwin" ]; then
-        PS1="[\A] \e[0;34m\u@\h\e[0m \w \360\237\215\272  "
-    else
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         PS1="[\A] \e[0;34m\u@\h\e[0m \w $ "
+    else
+        PS1="[\A] \e[0;34m\u@\h\e[0m \w \360\237\215\272  "
     fi
 fi
 

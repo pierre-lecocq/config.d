@@ -41,12 +41,12 @@ fi
 # Prompt
 if [ $(id -u) -eq 0 ];
 then
-    PS1="\e[0;31m[\A] \u@\h \w # \e[m"
+    PS1="\e[0;31m[\A] \w # \e[m"
 else
     if [ $arch = "Darwin" ]; then
-        PS1="[\A] \e[0;34m\u@\h\e[0m \w \360\237\215\272  "
+        PS1="[\A] \w \360\237\215\272  "
     else
-        PS1="[\A] \e[0;34m\u@\h\e[0m \w $ "
+        PS1="[\A] \w $ "
     fi
 fi
 

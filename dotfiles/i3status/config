@@ -5,8 +5,8 @@ general {
 
 order += "wireless wlan0"
 #order += "ethernet eth0"
-#order += "disk /"
-#order += "disk /home"
+order += "disk /"
+order += "disk /home"
 #order += "load"
 order += "battery 0"
 order += "volume master"
@@ -24,7 +24,7 @@ ethernet eth0 {
 }
 
 battery 0 {
-        format = " Bat %percentage "
+        format = " ☢ %percentage "
 }
 
 time {
@@ -36,15 +36,15 @@ load {
 }
 
 disk "/" {
-        format = " /root %used/%total "
+        format = " ★ %used/%total "
 }
 
 disk "/home" {
-        format = " /home %used/%total "
+        format = " ☆ %used/%total "
 }
 
 volume master {
-        format = " Vol %volume "
+        format = " ♪ %volume "
         device = "default"
         mixer = "Master"
         mixer_idx = 0

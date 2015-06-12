@@ -36,11 +36,11 @@ load {
 }
 
 disk "/" {
-        format = " ★ %used/%total "
+        format = " ★ %free "
 }
 
 disk "/home" {
-        format = " ☆ %used/%total "
+        format = " ☆ %free "
 }
 
 volume master {

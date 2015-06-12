@@ -3,7 +3,7 @@ general {
         interval = 1
 }
 
-#order += "wireless wlan0"
+order += "wireless wlan0"
 #order += "ethernet eth0"
 #order += "disk /"
 #order += "disk /home"
@@ -13,7 +13,7 @@ order += "volume master"
 order += "time"
 
 wireless wlan0 {
-        format_up = " Wlan: (%quality at %essid) %ip "
+        format_up = " %essid %quality "
         format_down = " Wlan: down "
 }
 
@@ -24,12 +24,11 @@ ethernet eth0 {
 }
 
 battery 0 {
-        format = " Bat. %status %percentage %remaining "
+        format = " Bat %percentage "
 }
 
 time {
         format = " %A %d %B %Y %H:%M:%S "
-        # format = " %H:%M:%S "
 }
 
 load {
@@ -45,7 +44,7 @@ disk "/home" {
 }
 
 volume master {
-        format = "Volume %volume"
+        format = " Vol %volume "
         device = "default"
         mixer = "Master"
         mixer_idx = 0

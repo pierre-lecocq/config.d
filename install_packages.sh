@@ -126,6 +126,7 @@ do_install_desktop_apps() {
          arandr \
          feh \
          terminator \
+         rxvt-unicode-256color \
          tango-icon-theme \
          suckless-tools \
          ttf-bitstream-vera \

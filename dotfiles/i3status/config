@@ -13,14 +13,14 @@ order += "volume master"
 order += "time"
 
 wireless wlan0 {
-        format_up = " %essid %quality "
-        format_down = " Wlan: down "
+        format_up = " wlan %essid %quality "
+        format_down = " wlan ☠ "
 }
 
 ethernet eth0 {
         # if you use %speed, i3status requires root privileges
-        format_up = " Eth: %ip (%speed) "
-        format_down = " Eth: down "
+        format_up = " eth %speed "
+        format_down = " eth ☠ "
 }
 
 battery 0 {

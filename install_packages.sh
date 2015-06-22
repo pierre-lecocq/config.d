@@ -73,7 +73,11 @@ do_install_system() {
          usbmount \
          aspell \
          aspell-fr \
-         aspell-en
+         aspell-en \
+         zip \
+         unzip \
+         unrar \
+         p7zip
 }
 
 do_install_wm_i3wm() {

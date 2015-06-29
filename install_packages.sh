@@ -59,6 +59,7 @@ do_install_system() {
          libncurses5-dev \
          clisp \
          sbcl \
+         cl-asdf \
          irb \
          ruby \
          libruby \

@@ -17,7 +17,7 @@ gaps inner 10
 gaps outer 10
 
 # Remove title bar
-new_window 1pixel
+new_window pixel 2
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode #bindsym $mod+Return exec i3-sensible-terminal

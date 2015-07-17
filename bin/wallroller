@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'rbconfig'
+
+os = case RbConfig::CONFIG['host_os']
+     when /darwin|mac/ then
+       'mac'
+     when /linux/ then
+       'linux'
+     else
+       raise 'Unsupported OS'
+     end
+
+# Set variables
+walldir = File.expand_path(os == "linux" ? "~/images/wallpapers" : "~/Pictures")
+savefile = File.expand_path "~/.wallroll"
+file, cmd = nil, nil
+
+begin
+  raise 'Dir error' unless File.exists?(walldir)
+
+  # Get file
+  loop do
+    prevfile = (File.exists?(savefile)) ? File.open(savefile, &:readline) : ""
+    file = Dir.glob("#{walldir}/*").sample
+    if file != prevfile
+      File.write(savefile, file)
+      break
+    end
+  end
+
+  # Build command
+  cmd = case os
+        when 'mac' then
+          'osascript -e \'tell application "Finder" to set desktop picture to POSIX file "' + file + '"\''
+        when 'linux' then
+          "feh --bg-scale #{file}"
+        end
+
+  # Run command
+  `cmd`
+rescue Exception => e
+  puts "Error: #{e.message}"
+end

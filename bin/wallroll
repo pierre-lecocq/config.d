@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Add this line to the crontab to run it every 30mn:
+# 0,30 *  * * *   pierre  HOME=/home/pierre DISPLAY=:0 ruby /home/pierre
+
 require 'rbconfig'
 
 os = case RbConfig::CONFIG['host_os']

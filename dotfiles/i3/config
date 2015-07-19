@@ -12,12 +12,17 @@ font -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
 #font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
-# gaps
+# Colors (1D68C4 = blue, D64937 = red)
+
+# set $maincolor #1D68C4
+set $maincolor #D64937
+
+# Gaps
 gaps inner 10
 gaps outer 10
 
 # Remove title bar
-new_window pixel 2
+new_window 1pixel
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode #bindsym $mod+Return exec i3-sensible-terminal
@@ -101,14 +106,14 @@ bar {
     status_command i3status
     colors {
            background #313131
-           focused_workspace  #ffffff #1D68C4
+           focused_workspace  #ffffff $maincolor
            active_workspace   #ffffff #313131
            inactive_workspace #888888 #313131
     }
 }
 
 # Colors [class border backgr. text indicator]
-client.focused #414141 #1D68C4 #ffffff #cccccc
+client.focused #414141 $maincolor #ffffff #cccccc
 client.focused_inactive #414141 #414141 #cccccc #cccccc
 client.unfocused #414141 #414141 #cccccc #cccccc
 

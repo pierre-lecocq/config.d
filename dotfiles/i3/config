@@ -14,8 +14,8 @@ floating_modifier $mod
 
 # Colors (1D68C4 = blue, D64937 = red)
 
-# set $maincolor #1D68C4
-set $maincolor #D64937
+set $maincolor #1D68C4
+# set $maincolor #D64937
 
 # Gaps
 gaps inner 10

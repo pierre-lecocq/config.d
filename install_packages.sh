@@ -141,6 +141,7 @@ do_install_desktop_apps() {
          ttf-dejavu \
          thunar \
          orage \
+         xclip \
          libnotify-bin \
          notification-daemon \
          numlockx \

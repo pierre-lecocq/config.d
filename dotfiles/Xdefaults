@@ -7,3 +7,5 @@ URxvt*foreground: #b8b8b8
 URxvt*background: #181818
 URxvt*color4: RoyalBlue
 URxvt*color12: RoyalBlue
+URxvt.transparent:   true
+URxvt.shading:       10

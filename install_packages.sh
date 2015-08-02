@@ -94,7 +94,8 @@ do_install_wm_i3wm() {
          i3 \
          i3lock \
          i3status \
-         dunst
+         dunst \
+         compton
 
     Xorg -configure
 }

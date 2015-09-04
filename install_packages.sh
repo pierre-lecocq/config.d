@@ -47,6 +47,7 @@ do_install_system() {
          htop \
          gcc \
          gdb \
+	 manpages-dev \
          valgrind \
          strace \
          build-essential \

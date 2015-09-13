@@ -82,7 +82,7 @@ elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
     alias gnus='env DBUS_SESSION_BUS_ADDRESS="autolaunch:" emacs -f gnus &'
-    alias mousefix='sudo modprobe -r psmouse && sudo modprobe psmouse'
+    alias mousefix='sudo modprobe -r psmouse && sudo modprobe psmouse && synclient tapButton1=1'
 fi
 
 alias grep='grep --color=auto'

@@ -8,7 +8,7 @@ main_menu()
     printf " * 3. Install WM (Openbox)\n"
     printf " * 4. Install desktop apps\n"
     printf " * 5. Install Pentesting tools\n"
-    printf " * 6. Install VirtualBox\n"
+    printf " * 6. Install Virtualizers\n"
     printf " * 7. Install emacs from source\n"
     printf " * 0. Exit\n\n"
 }
@@ -47,7 +47,7 @@ do_install_system() {
          htop \
          gcc \
          gdb \
-	 manpages-dev \
+         manpages-dev \
          valgrind \
          strace \
          build-essential \
@@ -228,13 +228,15 @@ install_pentesting() {
     ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
 }
 
-do_install_virtualbox() {
-    printf "\nInstalling virtualbox ...\n"
+do_install_virtualizers() {
+    printf "\nInstalling virtualizers ...\n"
 
     sudo apt-get update
 
     sudo apt-get install -y virtualbox-ose virtualbox-ose-dkms linux-headers-amd64
     sudo modprobe vboxdrv
+
+    sudo apt-get install -y qemu-kvm libvirt-bin virtinst bridge-utils xtightvncviewer
 }
 
 do_install_emacs_from_source() {
@@ -304,7 +306,7 @@ while true; do
         "3") do_install_wm_openbox ;;
         "4") do_install_desktop_apps ;;
         "5") do_install_pentesting ;;
-        "6") do_install_virtualbox ;;
+        "6") do_install_virtualizers ;;
         "7") do_install_emacs_from_source ;;
         *) do_exit ;;
     esac

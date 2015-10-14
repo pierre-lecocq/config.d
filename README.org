@@ -1,216 +1,286 @@
-* (Debian) Installation and config deployment
+#+TITLE: Debian install and config deployment
+#+AUTHOR: Pierre Lecocq
+#+EMAIL: pierre.lecocq@gmail.com
+#+STARTUP: content
 
-- [[file:install_packages.sh][install_packages.sh]]: Install packages (base, i3 and/or openbox, pentesting, emacs from sources, ...)
-- [[file:deploy_configs.sh][deploy_configs.sh]]: Deploy config with symlinks (shells, window managers, pentest tools, ...)
-- Finally, clone [[https://github.com/pierre-lecocq/emacs.d][emacs.d]] repository and link it to ~/.emacs.d
+** Prepare
 
-Here are more details:
+*** Grub timeout
 
-** Install packages script
-
-This is an interactive script that ask you what kind of action you want to do (fortunately):
-
-#+begin_src sh
-What do you want to do ?
-
- * 1. Install basic system
- * 2. Install WM (i3wm)
- * 3. Install WM (Openbox)
- * 4. Install desktop apps
- * 5. Install Pentesting tools
- * 6. Install VirtualBox
- * 7. Install emacs from source
- * 8. Install (plan9) acme-sac from source
- * 9. Install guitar studio apps
- * 0. Exit
+#+begin_src sh :tangle 010-prepare.sh
+sudo sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/ /etc/default/grub
+sudo update-grub
 #+end_src
 
-**** Install basic system
+*** Apt
 
-- Switch the GRUB waiting time to 1 second
-- Configure apt to remove recommended packages and add =contrib non-free= sources
-- Removes unwanted packages: =exim4 portmap rpcbind=
-- Installs ruby gems: =colorize pry=
-- Installs the following packages:
-  - screen
-  - emacs
-  - zsh
-  - gnutls-bin
-  - git
-  - wget
-  - curl
-  - rsync
-  - tree
-  - htop
-  - aria2
-  - gcc
-  - gdb
-  - valgrind
-  - strace
-  - build-essential
-  - cmake
-  - automake
-  - autoconf
-  - gettext
-  - yasm
-  - linux-headers-$(uname -r)
-  - libncurses5-dev
-  - clisp
-  - sbcl
-  - irb
-  - ruby
-  - libruby
-  - ruby-dev
-  - rubygems
-  - python
-  - nmap
-  - fail2ban
-  - denyhosts
-  - nethogs
-  - iotop
-  - tcpdump
-  - httperf
-  - siege
-  - iptraf
-  - clamav
-  - mailutils
-  - lynis
-  - usbmount
+#+begin_src sh :tangle 010-prepare.sh
+if ! [ -f /etc/apt/sources.list.ori ]; then
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+fi
 
-**** Install window managers
+sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
+sudo echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
-- Installs XOrg server
-- Installs either [[https://i3wm.org/][i3wm]] (choice 2) or [[http://openbox.org/wiki/Main_Page][Openbox]] (choice 3)
+sudo apt-get update
+#+end_src
 
-**** Install desktop apps
+** Install
 
-After installing one of the 2 window managers proposed above, it will install the following GUI apps:
+*** Base
 
-- arandr
-- feh
-- terminator
-- tango-icon-theme
-- suckless-tools
-- ttf-bitstream-vera
-- ttf-mscorefonts-installer
-- thunar
-- orage
-- libnotify-bin
-- notification-daemon
-- numlockx
-- alsa-tools
-- alsa-utils
-- alsa-oss
-- alsamixergui
-- chromium
-- scrot
-- pidgin
-- xpdf
-- mirage
-- filezilla
-- transmission-gtk
-- vlc
-- flashplugin-nonfree
-- firmware-iwlwifi
-- wicd
-- wicd-gtk
-- wicd-daemon
+Install the base system packages
 
-**** Install pententing tools
+#+begin_src sh :tangle 020-install-base.sh
+sudo apt-get update
+sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups
+sudo apt-get install -y aspell \
+                        aspell-en \
+                        aspell-fr \
+                        autoconf \
+                        automake \
+                        build-essential \
+                        clamav \
+                        clisp \
+                        cmake \
+                        curl \
+                        emacs \
+                        fail2ban \
+                        gcc \
+                        gdb \
+                        gettext \
+                        git \
+                        gnutls-bin \
+                        irb \
+                        libncurses5-dev \
+                        libruby \
+                        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+                        mailutils \
+                        manpages-dev \
+                        mutt-patched \
+                        nmap \
+                        offlineimap \
+                        p7zip \
+                        python \
+                        rsync \
+                        ruby \
+                        ruby-dev \
+                        rubygems \
+                        sbcl \
+                        strace \
+                        tcpdump \
+                        tree \
+                        unrar \
+                        unzip \
+                        usbmount \
+                        valgrind \
+                        wget \
+                        yasm \
+                        zip
+#+end_src
 
-Installs these packages:
+*** Window manager
 
-- nmap
-- w3af
-- sqlmap
-- tcpdump
-- tcptrace
-- ettercap
-- dsniff
-- netcat
-- ngrep
-- john
-- kismet
-- siege
-- ratproxy
-- nikto
-- build-essential
-- subversion
-- ruby
-- libruby
-- irb
-- rdoc
-- libyaml-ruby
-- libzlib-ruby
-- libopenssl-ruby
-- libdl-ruby
-- libreadline-ruby
-- libiconv-ruby
-- rubygems
-- sqlite3
-- libsqlite3-ruby
-- libsqlite3-dev
-- python-pycurl
-- python-beautifulsoup
-- python-libxml2
-- python-geoip
+Install i3wm and some GUI apps
 
-Also installs from source:
+#+begin_src sh :tangle 021-install-wm.sh
+sudo apt-get update
+sudo apt-get install -y alsa-oss \
+                        alsa-tools \
+                        alsa-utils \
+                        alsamixergui \
+                        arandr \
+                        chromium \
+                        compton \
+                        dunst \
+                        feh \
+                        firmware-iwlwifi \
+                        flashplugin-nonfree \
+                        fonts-inconsolata \
+                        i3 \
+                        i3lock \
+                        i3status \
+                        libnotify-bin \
+                        mirage \
+                        notification-daemon \
+                        numlockx \
+                        orage \
+                        rxvt-unicode-256color \
+                        scrot \
+                        suckless-tools \
+                        tango-icon-theme \
+                        thunar \
+                        transmission-gtk \
+                        ttf-bitstream-vera \
+                        ttf-dejavu \
+                        ttf-inconsolata \
+                        vlc \
+                        xclip \
+                        xorg \
+                        xpdf
 
-- metasploit
-- xsser
+Xorg -configure
 
-**** Install VirtualBox
+echo "exec i3" > ~/.xinitrc
+#+end_src
 
-Simply installs these packages:
+*** Pentest
 
-- virtualbox-ose
-- virtualbox-ose-dkms
-- linux-headers-amd64
+Install some pentest tools
 
-**** Install Emacs from sources
+#+begin_src sh :tangle 022-install-pentest.sh
+sudo apt-get update
+sudo apt-get install -y dsniff \
+                        ettercap \
+                        john \
+                        kismet \
+                        libdl-ruby \
+                        libiconv-ruby \
+                        libopenssl-ruby \
+                        libreadline-ruby \
+                        libsqlite3-dev \
+                        libsqlite3-ruby \
+                        libyaml-ruby \
+                        libzlib-ruby \
+                        netcat \
+                        ngrep \
+                        nikto \
+                        python-beautifulsoup \
+                        python-geoip
+                        python-libxml2 \
+                        python-pycurl \
+                        ratproxy \
+                        siege \
+                        sqlite3 \
+                        sqlmap \
+                        subversion \
+                        tcpdump \
+                        tcptrace \
+                        w3af
 
-- Get emacs sources from the git repository (git://git.savannah.gnu.org/emacs.git)
-- Configures it
-- Compiles it
-- Installs it
+sudo mkdir -p /usr/local/bin
 
-**** Install Acme from sources
+svn co http://www.metasploit.com/svn/framework3/trunk /usr/local/metasploit;
+sudo ln -s /usr/local/metasploit/msfconsole /usr/local/bin/msfconsole
 
-- Get acme sources from the mercurial repository (https://code.google.com/p/acme-sac)
-- builds it
-- installs it
+svn co https://xsser.svn.sourceforge.net/svnroot/xsser /usr/local/xsser
+sudo ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
+#+end_src
 
-**** Install a guitar studio
+*** Virtualizers
 
-Installs these needed packages for a recording session:
+Install some virtualizers (virtualbox and kvm)
 
-- jackd
-- qjackctl
-- ardour
-- guitarix
-- audacity
-- alsa-tools
-- alsa-utils
-- alsa-oss
-- alsamixergui
+#+begin_src sh :tangle 023-install-virt.sh
+sudo apt-get update
 
-** Deploy config script
+sudo apt-get install -y linux-headers-amd64 \
+                        virtualbox-ose \
+                        virtualbox-ose-dkms
 
-This script will create symbolic links between the =dotfiles= folder and your home folder.
+sudo modprobe vboxdrv
 
-It deploys configurations for:
+sudo apt-get install -y bridge-utils \
+                        libvirt-bin \
+                        qemu-kvm \
+                        virt-manager \
+                        virtinst
+#+end_src
 
-- dunst
-- gtk
-- i3 and i3 status
-- openbox
-- tint2
-- bash
-- zsh
-- conky
-- git
-- screen
-- xmodmap
+*** Emacs
 
-It also create a few folders (~/.mail, ~/work/src, ~/work/bin) and copies the images directory.
+Compile Emacs from source and install it
+
+#+begin_src sh :tangle 024-install-emacs.sh
+sudo apt-get update
+sudo apt-get install -y aspell \
+                        aspell-en \
+                        aspell-fr \
+                        autoconf \
+                        build-essential \
+                        cvs \
+                        fetchmail \
+                        fonts-inconsolata \
+                        gcc \
+                        gdb \
+                        git \
+                        libcanberra-gtk3-dev \
+                        libdbus-1-dev \
+                        libgif-dev \
+                        libgnutls-dev \
+                        libgtk-3-dev \
+                        libjpeg-dev \
+                        libncurses5-dev \
+                        libtiff5-dev \
+                        libxml2-dev \
+                        libxpm-dev \
+                        libxslt-dev \
+                        linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+                        mailutils \
+                        texi2html \
+                        texify \
+                        texinfo \
+                        texlive \
+                        texlive-base \
+                        texlive-generic-recommended \
+                        texlive-latex-base \
+                        texlive-latex-extra \
+                        w3m \
+                        yasm
+
+git clone git://git.savannah.gnu.org/emacs.git ~/emacs.src
+
+cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
+#+end_src
+
+** Deploy config
+
+*** Prepare directories
+
+Prepare filesystem
+
+#+begin_src sh :tangle 050-deploy-prepare.sh
+mkdir -p ~/.mail/mailboxes
+mkdir -p ~/work/src
+mkdir -p ~/.config
+#+end_src
+
+*** Clone repositories
+
+Clone wanted repositories
+
+#+begin_src sh :tangle 051-deploy-clone.sh
+git clone https://github.com/pierre-lecocq/emacs.d ~/work/src/emacs.d
+git clone https://github.com/pierre-lecocq/mail.d ~/work/src/mail.d
+git clone https://github.com/pierre-lecocq/org-files ~/org-files
+#+end_src
+
+*** Create links
+
+Link config files
+
+#+begin_src sh :tangle 052-deploy-link.sh
+curdir=`pwd`
+
+ln -s $curdir/dotfiles/Xdefaults ~/.Xdefaults
+ln -s $curdir/dotfiles/screenrc ~/.screenrc
+ln -s $curdir/dotfiles/gitconfig ~/.gitconfig
+ln -s $curdir/dotfiles/gemrc ~/.gemrc
+ln -s $curdir/dotfiles/bashrc ~/.bashrc
+ln -s $curdir/dotfiles/bashrc_profile ~/.bashrc_profile
+ln -s $curdir/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
+ln -s $curdir/dotfiles/gtk-3.0 ~/.gtk-3.0
+
+ln -s $curdir/dotfiles/tint2 ~/.config/tint2
+ln -s $curdir/dotfiles/i3 ~/.config/i3
+ln -s $curdir/dotfiles/i3status ~/.config/i3status
+ln -s $curdir/dotfiles/dunst ~/.config/dunst
+ln -s $curdir/dotfiles/user-dirs.dirs ~/.config/user-dirs.dirs
+
+ln -s $curdir/bin ~/work/bin
+chmod 700 ~/work/bin/*
+
+ln -s $curdir/images ~/images
+#+end_src
+
+** Setup

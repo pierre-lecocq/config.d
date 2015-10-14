@@ -7,13 +7,14 @@
 
 *** Grub timeout
 
-#+begin_src sh :tangle 010-prepare.sh
+#+begin_src sh
 sudo sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/ /etc/default/grub
 sudo update-grub
 #+end_src
+
 *** Apt
 
-#+begin_src sh :tangle 010-prepare.sh
+#+begin_src sh
 if ! [ -f /etc/apt/sources.list.ori ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
 fi
@@ -30,7 +31,7 @@ sudo apt-get update
 
 Install the base system packages
 
-#+begin_src sh :tangle 020-install-base.sh
+#+begin_src sh
 sudo apt-get update
 sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups
 sudo apt-get install -y aspell \
@@ -82,7 +83,7 @@ sudo apt-get install -y aspell \
 
 Install i3wm and some GUI apps
 
-#+begin_src sh :tangle 021-install-wm.sh
+#+begin_src sh
 sudo apt-get update
 sudo apt-get install -y alsa-oss \
                         alsa-tools \
@@ -127,7 +128,7 @@ echo "exec i3" > ~/.xinitrc
 
 Install some pentest tools
 
-#+begin_src sh :tangle 022-install-pentest.sh
+#+begin_src sh
 sudo apt-get update
 sudo apt-get install -y dsniff \
                         ettercap \
@@ -170,7 +171,7 @@ sudo ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
 
 Install some virtualizers (virtualbox and kvm)
 
-#+begin_src sh :tangle 023-install-virt.sh
+#+begin_src sh
 sudo apt-get update
 
 sudo apt-get install -y linux-headers-amd64 \
@@ -190,7 +191,7 @@ sudo apt-get install -y bridge-utils \
 
 Compile Emacs from source and install it
 
-#+begin_src sh :tangle 024-install-emacs.sh
+#+begin_src sh
 sudo apt-get update
 sudo apt-get install -y aspell \
                         aspell-en \
@@ -238,7 +239,7 @@ cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 
 Prepare filesystem
 
-#+begin_src sh :tangle 050-deploy-prepare.sh
+#+begin_src sh
 mkdir -p ~/.mail/mailboxes
 mkdir -p ~/work/src
 mkdir -p ~/.config
@@ -248,7 +249,7 @@ mkdir -p ~/.config
 
 Clone wanted repositories
 
-#+begin_src sh :tangle 051-deploy-clone.sh
+#+begin_src sh
 git clone https://github.com/pierre-lecocq/emacs.d ~/work/src/emacs.d
 git clone https://github.com/pierre-lecocq/mail.d ~/work/src/mail.d
 git clone https://github.com/pierre-lecocq/org-files ~/org-files
@@ -258,8 +259,7 @@ git clone https://github.com/pierre-lecocq/org-files ~/org-files
 
 Link config files
 
-#+begin_src sh :tangle 052-deploy-link.sh
-
+#+begin_src sh
 ln -s ~/work/src/config.d/dotfiles/Xdefaults ~/.Xdefaults
 ln -s ~/work/src/config.d/dotfiles/screenrc ~/.screenrc
 ln -s ~/work/src/config.d/dotfiles/gitconfig ~/.gitconfig
@@ -282,3 +282,36 @@ ln -s ~/work/src/config.d/images ~/images
 #+end_src
 
 ** Setup
+
+*** Wifi
+
+Prepare
+
+#+begin_src sh
+sudo apt-get install wpasupplicant
+sudo chmod 0600 /etc/network/interfaces
+sudo iwlist scan
+#+end_src
+
+List wifi networks
+
+#+begin_src sh
+sudo iwlist scan
+#+end_src
+
+In =/etc/network/interfaces=, add:
+
+#+begin_src sh
+auto wlan0
+iface wlan0 inet dhcp
+        wireless-essid MyESSID
+        wireless-mode ad-hoc
+        wpa-ssid MyESSID
+    	wpa-psk MyPASSWD
+#+end_src
+
+Ifup the interface
+
+#+begin_src sh
+sudo ifup wlan0
+#+end_src

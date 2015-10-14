@@ -11,7 +11,6 @@
 sudo sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/ /etc/default/grub
 sudo update-grub
 #+end_src
-
 *** Apt
 
 #+begin_src sh :tangle 010-prepare.sh
@@ -260,27 +259,26 @@ git clone https://github.com/pierre-lecocq/org-files ~/org-files
 Link config files
 
 #+begin_src sh :tangle 052-deploy-link.sh
-curdir=`pwd`
 
-ln -s $curdir/dotfiles/Xdefaults ~/.Xdefaults
-ln -s $curdir/dotfiles/screenrc ~/.screenrc
-ln -s $curdir/dotfiles/gitconfig ~/.gitconfig
-ln -s $curdir/dotfiles/gemrc ~/.gemrc
-ln -s $curdir/dotfiles/bashrc ~/.bashrc
-ln -s $curdir/dotfiles/bashrc_profile ~/.bashrc_profile
-ln -s $curdir/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
-ln -s $curdir/dotfiles/gtk-3.0 ~/.gtk-3.0
+ln -s ~/work/src/config.d/dotfiles/Xdefaults ~/.Xdefaults
+ln -s ~/work/src/config.d/dotfiles/screenrc ~/.screenrc
+ln -s ~/work/src/config.d/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/work/src/config.d/dotfiles/gemrc ~/.gemrc
+ln -s ~/work/src/config.d/dotfiles/bashrc ~/.bashrc
+ln -s ~/work/src/config.d/dotfiles/bashrc_profile ~/.bashrc_profile
+ln -s ~/work/src/config.d/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
+ln -s ~/work/src/config.d/dotfiles/gtk-3.0 ~/.gtk-3.0
 
-ln -s $curdir/dotfiles/tint2 ~/.config/tint2
-ln -s $curdir/dotfiles/i3 ~/.config/i3
-ln -s $curdir/dotfiles/i3status ~/.config/i3status
-ln -s $curdir/dotfiles/dunst ~/.config/dunst
-ln -s $curdir/dotfiles/user-dirs.dirs ~/.config/user-dirs.dirs
+ln -s ~/work/src/config.d/dotfiles/tint2 ~/.config/tint2
+ln -s ~/work/src/config.d/dotfiles/i3 ~/.config/i3
+ln -s ~/work/src/config.d/dotfiles/i3status ~/.config/i3status
+ln -s ~/work/src/config.d/dotfiles/dunst ~/.config/dunst
+ln -s ~/work/src/config.d/dotfiles/user-dirs.dirs ~/.config/user-dirs.dirs
 
-ln -s $curdir/bin ~/work/bin
+ln -s ~/work/src/config.d/bin ~/work/bin
 chmod 700 ~/work/bin/*
 
-ln -s $curdir/images ~/images
+ln -s ~/work/src/config.d/images ~/images
 #+end_src
 
 ** Setup

@@ -282,7 +282,7 @@ ln -s ~/work/src/config.d/images ~/images
 Prepare
 
 #+begin_src sh
-sudo apt-get install wpasupplicant
+sudo apt-get install firmware-iwlwifi wpasupplicant
 sudo chmod 0600 /etc/network/interfaces
 #+end_src
 

@@ -17,9 +17,11 @@ sudo update-grub
 #+begin_src sh
 if ! [ -f /etc/apt/sources.list.ori ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.ori
+    sudo dpkg -l > /etc/apt/pkg.list.ori
 fi
 
 sudo sed -e 's/ main$/ main contrib non-free/g' -i /etc/apt/sources.list
+sudo echo "deb ftp://ftp.deb-multimedia.org `lsb_release -c | cut -f2` main contrib non-free" >> /etc/apt/sources.list
 sudo echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
 sudo apt-get update
@@ -169,7 +171,7 @@ sudo ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
 Install some virtualizers (virtualbox and kvm)
 
 #+begin_src sh
-sudo apt-get install -y linux-headers-amd64 \
+sudo apt-get install -y linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
                         virtualbox-ose \
                         virtualbox-ose-dkms
 
@@ -276,6 +278,24 @@ ln -s ~/work/src/config.d/images ~/images
 #+end_src
 
 ** Setup
+
+*** SELinux
+
+Install needed packages
+
+#+begin_src sh
+sudo apt-get install selinux-basics policycoreutils
+sudo selinux-activate
+#+end_src
+
+/Reboot system/
+
+Then check install with:
+
+#+begin_src sh
+sudo id -Z
+sudo check-selinux-installation
+#+end_src
 
 *** Wifi
 

@@ -32,7 +32,6 @@ sudo apt-get update
 Install the base system packages
 
 #+begin_src sh
-sudo apt-get update
 sudo apt-get autoremove --purge -y exim4-.\* portmap rpcbind cups
 sudo apt-get install -y aspell \
                         aspell-en \
@@ -84,7 +83,6 @@ sudo apt-get install -y aspell \
 Install i3wm and some GUI apps
 
 #+begin_src sh
-sudo apt-get update
 sudo apt-get install -y alsa-oss \
                         alsa-tools \
                         alsa-utils \
@@ -129,7 +127,6 @@ echo "exec i3" > ~/.xinitrc
 Install some pentest tools
 
 #+begin_src sh
-sudo apt-get update
 sudo apt-get install -y dsniff \
                         ettercap \
                         john \
@@ -172,8 +169,6 @@ sudo ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
 Install some virtualizers (virtualbox and kvm)
 
 #+begin_src sh
-sudo apt-get update
-
 sudo apt-get install -y linux-headers-amd64 \
                         virtualbox-ose \
                         virtualbox-ose-dkms
@@ -192,7 +187,6 @@ sudo apt-get install -y bridge-utils \
 Compile Emacs from source and install it
 
 #+begin_src sh
-sudo apt-get update
 sudo apt-get install -y aspell \
                         aspell-en \
                         aspell-fr \

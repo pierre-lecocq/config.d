@@ -317,6 +317,29 @@ Change password 30 days or if account is inactive during 10 days
 sudo chage -I 10 -M 30 pierre
 #+end_src
 
+*** Cron
+
+As user, execute:
+
+#+begin_src sh
+crontab -e
+#+end_src
+
+And add these lines:
+
+#+begin_src sh
+0,30 *  * * *   HOME=/home/pierre DISPLAY=:0 ruby /home/pierre/bin/wallroll
+#+end_src
+
+All user oriented cron commands are stored in =/var/spool/cron/crontabs/<username>=
+
+But for system wide tasks,  edit =/etc/crontab= and add:
+
+#+begin_src sh
+0 0  *  * * * root  faillog | mail pierre -s "Login failures report (use `faillog -r -u username' to unlock)"
+0 0  * * Sat  root  chage -l pierre | mail pierre -s "Chage report"
+#+end_src
+
 *** Wifi
 
 Prepare
@@ -349,20 +372,3 @@ Ifup the interface
 #+begin_src sh
 sudo ifup wlan0
 #+end_src
-
-*** Cron
-
-As user, execute:
-
-#+begin_src sh
-crontab -e
-#+end_src
-
-And add these lines:
-
-#+begin_src sh
-0,30 *  * * *   HOME=/home/pierre DISPLAY=:0 ruby /home/pierre/bin/wallroll
-0 0 * * Sat chage -l pierre | mail pierre -s "Chage report"
-#+end_src
-
-All user oriented cron commands are stored in =/var/spool/cron/crontabs=

@@ -284,7 +284,6 @@ Prepare
 #+begin_src sh
 sudo apt-get install wpasupplicant
 sudo chmod 0600 /etc/network/interfaces
-sudo iwlist scan
 #+end_src
 
 List wifi networks
@@ -298,8 +297,8 @@ In =/etc/network/interfaces=, add:
 #+begin_src sh
 auto wlan0
 iface wlan0 inet dhcp
-        wireless-essid MyESSID
         wireless-mode ad-hoc
+        wireless-essid MyESSID
         wpa-ssid MyESSID
     	wpa-psk MyPASSWD
 #+end_src

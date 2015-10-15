@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 # Add this line to the crontab to run it every 30mn:
-# 0,30 *  * * *   pierre  HOME=/home/pierre DISPLAY=:0 ruby /home/pierre
+# 0,30 *  * * *   pierre  HOME=/home/pierre DISPLAY=:0 ruby /home/pierre/bin/wallroll
 
 require 'rbconfig'
 
@@ -15,7 +15,7 @@ os = case RbConfig::CONFIG['host_os']
      end
 
 # Set variables
-walldir = File.expand_path(os == "linux" ? "~/images/wallpapers" : "~/Pictures")
+walldir = File.expand_path "~/work/src/config.d/images/wallpapers"
 savefile = File.expand_path "~/.wallroll"
 file, cmd = nil, nil
 
@@ -35,7 +35,7 @@ begin
   # Build command
   cmd = case os
         when 'mac' then
-          'osascript -e \'tell application "Finder" to set desktop picture to POSIX file "' + file + '"\''
+          'osascript -e \'tell application "Finder" to set desktop picture to "' + file + '"\' as POSIX file'
         when 'linux' then
           "feh --bg-scale #{file}"
         end

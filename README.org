@@ -309,3 +309,19 @@ Ifup the interface
 #+begin_src sh
 sudo ifup wlan0
 #+end_src
+
+*** Cron
+
+As user, execute:
+
+#+begin_src sh
+crontab -e
+#+end_src
+
+And add these lines:
+
+#+begin_src sh
+0,30 *  * * *   HOME=/home/pierre DISPLAY=:0 ruby /home/pierre/bin/wallroll
+#+end_src
+
+All user oriented cron commands are stored in =/var/spool/cron/crontabs=

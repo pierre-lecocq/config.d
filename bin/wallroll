@@ -15,7 +15,7 @@ os = case RbConfig::CONFIG['host_os']
      end
 
 # Set variables
-walldir = File.expand_path "~/work/src/config.d/images/wallpapers"
+walldir = File.expand_path "~/images/wallpapers"
 savefile = File.expand_path "~/.wallroll"
 file, cmd = nil, nil
 

@@ -297,6 +297,14 @@ sudo id -Z
 sudo check-selinux-installation
 #+end_src
 
+*** Password
+
+Change password 30 days or if account is inactive during 10 days
+
+#+begin_src sh
+sudo chage -I 10 -M 30 pierre
+#+end_src
+
 *** Wifi
 
 Prepare
@@ -342,6 +350,7 @@ And add these lines:
 
 #+begin_src sh
 0,30 *  * * *   HOME=/home/pierre DISPLAY=:0 ruby /home/pierre/bin/wallroll
+0 0 * * Sat chage -l pierre | mail pierre -s "Chage report"
 #+end_src
 
 All user oriented cron commands are stored in =/var/spool/cron/crontabs=

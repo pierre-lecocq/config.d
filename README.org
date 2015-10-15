@@ -299,6 +299,18 @@ sudo check-selinux-installation
 
 *** Password
 
+Install some password related packages
+
+#+begin_src sh
+sudo apt-get install chage libpam-cracklib
+#+end_src
+
+Then set password policies (1 lowercase char, 1 uppercase char, 1 digit, 1 special char and 4 different char from the previous password) by editing =/etc/pam.d/common-password= with:
+
+#+begin_src sh
+password requisite pam_cracklib.so try_first_pass retry=3 minlength=8 lcredit=1 ucredit=1 dcredit=1 ocredit=1 difok=4
+#+end_src
+
 Change password 30 days or if account is inactive during 10 days
 
 #+begin_src sh

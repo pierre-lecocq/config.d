@@ -32,16 +32,24 @@ begin
     end
   end
 
-  # Build command
-  cmd = case os
+  # Build commands
+  cmds = case os
         when 'mac' then
-          'osascript -e \'tell application "Finder" to set desktop picture to "' + file + '"\' as POSIX file'
+          [
+            'osascript -e \'tell application "Finder" to set desktop picture to "#{file}"\' as POSIX file',
+            'osascript -e \'display notification "Wallpaper is now #{file}" with title "Wallroll"\''
+          ]
         when 'linux' then
-          "feh --bg-scale #{file}"
+          [
+            "feh --bg-scale #{file}",
+            "notify-send 'Wallroll' 'Wallpaper is now #{file}'"
+          ]
         end
 
-  # Run command
-  `#{cmd}`
+  # Run commands
+  cmds.each do |cmd|
+    `#{cmd}`
+  end
 rescue Exception => e
   puts "Error: #{e.message}"
 end

@@ -54,7 +54,7 @@ fi
 if [ $(id -u) -eq 0 ];
 then
     if [ $remote_session = 1 ]; then
-        PS1="\e[0;31m[\A] \u@\h - \w # \e[m"
+        PS1="\e[0;31m[\A] (\u@\h) \w # \e[m"
     else
         PS1="\e[0;31m[\A] \w # \e[m"
     fi
@@ -63,7 +63,7 @@ else
         PS1="\[\e[1m\][\A] \w\[\e[0m\] \360\237\215\272  "
     else
         if [ $remote_session = 1 ]; then
-            PS1="\[\e[1m\][\A] \u@\h - \w $\[\e[0m\] "
+            PS1="\[\e[1m\][\A] (\u@\h) \w $\[\e[0m\] "
         else
             PS1="\[\e[1m\][\A] \w $\[\e[0m\] "
         fi

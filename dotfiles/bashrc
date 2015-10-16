@@ -1,6 +1,7 @@
 arch=`uname`
 
 # Env vars
+export LC_ALL=C
 export LANG=en_US.UTF-8
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/work/bin:~/.rvm/bin
 export TERM=xterm-256color
@@ -8,6 +9,16 @@ export EDITOR=emacs
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+# Remote session flag
+remote_session=0
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    remote_session=1
+else
+    case $(ps -o comm= -p $PPID) in
+        sshd|*/sshd) remote_session=1;;
+    esac
+fi
 
 # Don't put duplicate lines in the history.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
@@ -42,12 +53,20 @@ fi
 # Prompt
 if [ $(id -u) -eq 0 ];
 then
-    PS1="\e[0;31m[\A] \w # \e[m"
+    if [ $remote_session = 1 ]; then
+        PS1="\e[0;31m[\A] \u@\h - \w # \e[m"
+    else
+        PS1="\e[0;31m[\A] \w # \e[m"
+    fi
 else
     if [ $arch = "Darwin" ]; then
         PS1="\[\e[1m\][\A] \w\[\e[0m\] \360\237\215\272  "
     else
-        PS1="\[\e[1m\][\A] \w $\[\e[0m\] "
+        if [ $remote_session = 1 ]; then
+            PS1="\[\e[1m\][\A] \u@\h - \w $\[\e[0m\] "
+        else
+            PS1="\[\e[1m\][\A] \w $\[\e[0m\] "
+        fi
     fi
 fi
 

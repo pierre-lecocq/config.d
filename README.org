@@ -259,7 +259,7 @@ ln -s ~/work/src/config.d/images ~/images
 Install needed packages
 
 #+begin_src sh
-sudo apt-get -y install selinux-basics policycoreutils
+sudo apt-get -y install selinux-basics policycoreutils auditd
 sudo echo "FSCKFIX=yes" >> /etc/default/rcS
 sudo selinux-activate
 #+end_src

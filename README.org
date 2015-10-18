@@ -259,7 +259,7 @@ ln -s ~/work/src/config.d/images ~/images
 Install needed packages
 
 #+begin_src sh
-sudo apt-get install selinux-basics policycoreutils
+sudo apt-get -y install selinux-basics policycoreutils
 sudo selinux-activate
 #+end_src
 
@@ -277,7 +277,7 @@ sudo check-selinux-installation
 Install some password related packages
 
 #+begin_src sh
-sudo apt-get install libpam-cracklib
+sudo apt-get install -y libpam-cracklib
 #+end_src
 
 Then set password policies (1 lowercase char, 1 uppercase char, 1 digit, 1 special char and 4 different char from the previous password) by editing =/etc/pam.d/common-password= with:

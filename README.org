@@ -260,6 +260,7 @@ Install needed packages
 
 #+begin_src sh
 sudo apt-get -y install selinux-basics policycoreutils
+sudo echo "FSCKFIX=yes" >> /etc/default/rcS
 sudo selinux-activate
 #+end_src
 
@@ -270,6 +271,7 @@ Then check install with:
 #+begin_src sh
 sudo id -Z
 sudo check-selinux-installation
+sudo sestatus
 #+end_src
 
 *** Password

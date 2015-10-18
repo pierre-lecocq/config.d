@@ -196,7 +196,7 @@ sudo apt-get install -y aspell \
                         texlive-latex-extra \
                         w3m
 
-git clone git://git.savannah.gnu.org/emacs.git ~/emacs.src
+git clone --depth=1 git://git.savannah.gnu.org/emacs.git ~/emacs.src
 
 cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 #+end_src

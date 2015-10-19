@@ -36,13 +36,13 @@ begin
   cmds = case os
         when 'mac' then
           [
-            'osascript -e \'tell application "Finder" to set desktop picture to "#{file}"\' as POSIX file',
-            'osascript -e \'display notification "Wallpaper is now #{file}" with title "Wallroll"\''
+            'osascript -e \'tell application "Finder" to set desktop picture to "' + file + '" as POSIX file\'',
+            'osascript -e \'display notification "Wallpaper has been updated" with title "Wallroll"\''
           ]
         when 'linux' then
           [
             "feh --bg-scale #{file}",
-            "notify-send 'Wallroll'"
+            "notify-send 'Wallroll' 'Wallpaper has been updated'"
           ]
         end
 

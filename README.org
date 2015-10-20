@@ -74,7 +74,6 @@ sudo apt-get install -y aspell \
                         tree \
                         unrar \
                         unzip \
-                        usbmount \
                         valgrind \
                         wget \
                         yasm \
@@ -210,7 +209,6 @@ cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 Prepare filesystem
 
 #+begin_src sh
-mkdir -p ~/.mail/mailboxes
 mkdir -p ~/work/src
 mkdir -p ~/.config
 #+end_src
@@ -234,11 +232,9 @@ Link config files
 mv ~/.bashrc ~/.bashrc.ori
 
 ln -s ~/work/src/config.d/dotfiles/Xdefaults ~/.Xdefaults
-ln -s ~/work/src/config.d/dotfiles/screenrc ~/.screenrc
 ln -s ~/work/src/config.d/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/work/src/config.d/dotfiles/gemrc ~/.gemrc
 ln -s ~/work/src/config.d/dotfiles/bashrc ~/.bashrc
-ln -s ~/work/src/config.d/dotfiles/bashrc_profile ~/.bashrc_profile
 ln -s ~/work/src/config.d/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
 ln -s ~/work/src/config.d/dotfiles/gtk-3.0 ~/.gtk-3.0
 

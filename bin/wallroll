@@ -42,7 +42,7 @@ begin
         when 'linux' then
           [
             "feh --bg-scale #{file}",
-            "notify-send 'Wallroll' 'Wallpaper has been updated'"
+            # "notify-send 'Wallroll' 'Wallpaper has been updated'"
           ]
         end
 

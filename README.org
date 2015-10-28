@@ -57,6 +57,7 @@ sudo apt-get install -y aspell \
                         libncurses5-dev \
                         libruby \
                         linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
+                        locales \
                         mailutils \
                         manpages-dev \
                         mutt-patched \
@@ -78,6 +79,12 @@ sudo apt-get install -y aspell \
                         wget \
                         yasm \
                         zip
+#+end_src
+
+Set locales (i.e add =fr_FR.UTF-8=)
+
+#+begin_src sh
+sudo dpkg-reconfigure locales
 #+end_src
 
 *** Window manager

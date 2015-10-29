@@ -81,12 +81,6 @@ sudo apt-get install -y aspell \
                         zip
 #+end_src
 
-Set locales (i.e add =fr_FR.UTF-8=)
-
-#+begin_src sh
-sudo dpkg-reconfigure locales
-#+end_src
-
 *** Window manager
 
 Install i3wm and some GUI apps
@@ -127,7 +121,7 @@ sudo apt-get install -y alsa-oss \
 
 Xorg -configure
 
-echo "exec i3" > ~/.xinitrc
+echo "exec i3" > $HOME/.xinitrc
 #+end_src
 
 *** Pentest
@@ -204,9 +198,9 @@ sudo apt-get install -y aspell \
                         texlive-latex-extra \
                         w3m
 
-git clone --depth=1 git://git.savannah.gnu.org/emacs.git ~/emacs.src
+git clone --depth=1 git://git.savannah.gnu.org/emacs.git $HOME/emacs.src
 
-cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
+cd $HOME/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 #+end_src
 
 ** Deploy config
@@ -216,8 +210,8 @@ cd ~/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 Prepare filesystem
 
 #+begin_src sh
-mkdir -p ~/work/src
-mkdir -p ~/.config
+mkdir -p $HOME/work/src
+mkdir -p $HOME/.config
 #+end_src
 
 *** Clone repositories
@@ -225,10 +219,10 @@ mkdir -p ~/.config
 Clone wanted repositories
 
 #+begin_src sh
-git clone https://github.com/pierre-lecocq/config.d ~/work/src/config.d
-git clone https://github.com/pierre-lecocq/emacs.d ~/work/src/emacs.d
-git clone https://github.com/pierre-lecocq/mail.d ~/work/src/mail.d
-git clone https://github.com/pierre-lecocq/org-files ~/org-files
+git clone https://github.com/pierre-lecocq/config.d $HOME/work/src/config.d
+git clone https://github.com/pierre-lecocq/emacs.d $HOME/work/src/emacs.d
+git clone https://github.com/pierre-lecocq/mail.d $HOME/work/src/mail.d
+git clone https://github.com/pierre-lecocq/org-files $HOME/org-files
 #+end_src
 
 *** Create links
@@ -236,28 +230,53 @@ git clone https://github.com/pierre-lecocq/org-files ~/org-files
 Link config files
 
 #+begin_src sh
-mv ~/.bashrc ~/.bashrc.ori
+mv $HOME/.bashrc $HOME/.bashrc.ori
+mv $HOME/.bash_profile $HOME/.bash_profile.ori
 
-ln -s ~/work/src/config.d/dotfiles/Xdefaults ~/.Xdefaults
-ln -s ~/work/src/config.d/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/work/src/config.d/dotfiles/gemrc ~/.gemrc
-ln -s ~/work/src/config.d/dotfiles/bashrc ~/.bashrc
-ln -s ~/work/src/config.d/dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
-ln -s ~/work/src/config.d/dotfiles/gtk-3.0 ~/.gtk-3.0
+ln -s $HOME/work/src/config.d/dotfiles/Xdefaults $HOME/.Xdefaults
+ln -s $HOME/work/src/config.d/dotfiles/gitconfig $HOME/.gitconfig
+ln -s $HOME/work/src/config.d/dotfiles/gemrc $HOME/.gemrc
+ln -s $HOME/work/src/config.d/dotfiles/bashrc $HOME/.bashrc
+ln -s $HOME/work/src/config.d/dotfiles/bash_profile $HOME/.bash_profile
+ln -s $HOME/work/src/config.d/dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
+ln -s $HOME/work/src/config.d/dotfiles/gtk-3.0 $HOME/.gtk-3.0
 
-ln -s ~/work/src/config.d/dotfiles/tint2 ~/.config/tint2
-ln -s ~/work/src/config.d/dotfiles/i3 ~/.config/i3
-ln -s ~/work/src/config.d/dotfiles/i3status ~/.config/i3status
-ln -s ~/work/src/config.d/dotfiles/dunst ~/.config/dunst
-ln -s ~/work/src/config.d/dotfiles/user-dirs.dirs ~/.config/user-dirs.dirs
+ln -s $HOME/work/src/config.d/dotfiles/tint2 $HOME/.config/tint2
+ln -s $HOME/work/src/config.d/dotfiles/i3 $HOME/.config/i3
+ln -s $HOME/work/src/config.d/dotfiles/i3status $HOME/.config/i3status
+ln -s $HOME/work/src/config.d/dotfiles/dunst $HOME/.config/dunst
+ln -s $HOME/work/src/config.d/dotfiles/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
-ln -s ~/work/src/config.d/bin ~/bin
-chmod 700 ~/bin/*
+ln -s $HOME/work/src/config.d/bin $HOME/bin
+chmod 700 $HOME/bin/*
 
-ln -s ~/work/src/config.d/images ~/images
+ln -s $HOME/work/src/config.d/images $HOME/images
 #+end_src
 
 ** Setup
+
+*** Locales
+
+Set locales (i.e add =fr_FR.UTF-8=)
+
+#+begin_src sh
+sudo dpkg-reconfigure locales
+#+end_src
+
+*** GnuPG
+
+Add a few options to GPG user's config
+
+#+begin_src sh
+echo "cipher-algo AES256" >> $HOME/.gnupg/gpg.conf
+echo "use-agent" >> $HOME/.gnupg/gpg.conf
+#+end_src
+
+And configure the gpg-agent. Note that the agent is started from the =.bash_profile= file.
+
+#+begin_src sh
+echo "default-cache-ttl 14400" >> $HOME/.gnupg/gpg-agent.conf
+#+end_src
 
 *** SELinux
 

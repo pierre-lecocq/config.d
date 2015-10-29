@@ -52,6 +52,8 @@ sudo apt-get install -y aspell \
                         gdb \
                         gettext \
                         git \
+                        gnupg \
+                        gnupg-agent \
                         gnutls-bin \
                         irb \
                         libncurses5-dev \

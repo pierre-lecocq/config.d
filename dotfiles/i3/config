@@ -99,6 +99,11 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -c 0 set Master 1+ toggle"
+
+# bindsym XF86AudioPlay exec ""
+# bindsym XF86AudioNext exec ""
+# bindsym XF86AudioPrev exec ""
+
 bindsym $mod+Shift+P exec "scrot"
 
 # i3 bar

@@ -68,12 +68,12 @@ bindsym $mod+a focus parent
 #bindcode $mod+d focus child
 
 # Workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+minus workspace 6
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -98,6 +98,7 @@ bindsym $mod+r mode "resize"
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 5%- unmute"
+bindsym XF86AudioMute exec "amixer -c 0 set Master 1+ toggle"
 bindsym $mod+Shift+P exec "scrot"
 
 # i3 bar

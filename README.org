@@ -211,7 +211,7 @@ cd $HOME/emacs.src && ./autogen.sh && ./configure && make && sudo make install
 Prepare filesystem
 
 #+begin_src sh
-mkdir -p $HOME/work/src
+mkdir -p $HOME/src
 mkdir -p $HOME/.config
 #+end_src
 
@@ -220,9 +220,9 @@ mkdir -p $HOME/.config
 Clone wanted repositories
 
 #+begin_src sh
-git clone https://github.com/pierre-lecocq/config.d $HOME/work/src/config.d
-git clone https://github.com/pierre-lecocq/emacs.d $HOME/work/src/emacs.d
-git clone https://github.com/pierre-lecocq/mail.d $HOME/work/src/mail.d
+git clone https://github.com/pierre-lecocq/config.d $HOME/src/config.d
+git clone https://github.com/pierre-lecocq/emacs.d $HOME/src/emacs.d
+git clone https://github.com/pierre-lecocq/mail.d $HOME/src/mail.d
 #+end_src
 
 *** Create links
@@ -233,24 +233,24 @@ Link config files
 mv $HOME/.bashrc $HOME/.bashrc.ori
 mv $HOME/.bash_profile $HOME/.bash_profile.ori
 
-ln -s $HOME/work/src/config.d/dotfiles/Xdefaults $HOME/.Xdefaults
-ln -s $HOME/work/src/config.d/dotfiles/gitconfig $HOME/.gitconfig
-ln -s $HOME/work/src/config.d/dotfiles/gemrc $HOME/.gemrc
-ln -s $HOME/work/src/config.d/dotfiles/bashrc $HOME/.bashrc
-ln -s $HOME/work/src/config.d/dotfiles/bash_profile $HOME/.bash_profile
-ln -s $HOME/work/src/config.d/dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
-ln -s $HOME/work/src/config.d/dotfiles/gtk-3.0 $HOME/.gtk-3.0
+ln -s $HOME/src/config.d/dotfiles/Xdefaults $HOME/.Xdefaults
+ln -s $HOME/src/config.d/dotfiles/gitconfig $HOME/.gitconfig
+ln -s $HOME/src/config.d/dotfiles/gemrc $HOME/.gemrc
+ln -s $HOME/src/config.d/dotfiles/bashrc $HOME/.bashrc
+ln -s $HOME/src/config.d/dotfiles/bash_profile $HOME/.bash_profile
+ln -s $HOME/src/config.d/dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
+ln -s $HOME/src/config.d/dotfiles/gtk-3.0 $HOME/.gtk-3.0
 
-ln -s $HOME/work/src/config.d/dotfiles/tint2 $HOME/.config/tint2
-ln -s $HOME/work/src/config.d/dotfiles/i3 $HOME/.config/i3
-ln -s $HOME/work/src/config.d/dotfiles/i3status $HOME/.config/i3status
-ln -s $HOME/work/src/config.d/dotfiles/dunst $HOME/.config/dunst
-ln -s $HOME/work/src/config.d/dotfiles/user-dirs.dirs $HOME/.config/user-dirs.dirs
+ln -s $HOME/src/config.d/dotfiles/tint2 $HOME/.config/tint2
+ln -s $HOME/src/config.d/dotfiles/i3 $HOME/.config/i3
+ln -s $HOME/src/config.d/dotfiles/i3status $HOME/.config/i3status
+ln -s $HOME/src/config.d/dotfiles/dunst $HOME/.config/dunst
+ln -s $HOME/src/config.d/dotfiles/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
-ln -s $HOME/work/src/config.d/bin $HOME/bin
+ln -s $HOME/src/config.d/bin $HOME/bin
 chmod 700 $HOME/bin/*
 
-ln -s $HOME/work/src/config.d/images $HOME/images
+ln -s $HOME/src/config.d/images $HOME/images
 #+end_src
 
 ** Setup

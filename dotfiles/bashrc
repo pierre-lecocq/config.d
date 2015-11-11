@@ -8,9 +8,14 @@ export LC_TIME=fr_FR.UTF-8
 unset LC_ALL
 
 # Env vars
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/work/bin:~/.rvm/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/.rvm/bin
 export TERM=xterm-256color
-export EDITOR=emacs
+
+if [ -e /tmp/emacs$UID/server ]; then
+    export EDITOR="emacsclient -c"
+else
+    export EDITOR=emacs
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -113,10 +118,14 @@ alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -print | xargs etags -a'
-alias en='emacs -nw'
-alias enq='emacs -nw -Q'
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
+
+alias e='emacs'
+alias en='emacs -nw'
+alias enq='emacs -nw -Q'
+alias ec='emacsclient -c -a emacs'
+alias enc='emacsclient -c -t -a emacs'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

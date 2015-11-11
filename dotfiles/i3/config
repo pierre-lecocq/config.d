@@ -18,8 +18,8 @@ set $maincolor #1D68C4
 # set $maincolor #D64937
 
 # Gaps
-gaps inner 10
-gaps outer 10
+# gaps inner 10
+# gaps outer 10
 
 # Remove title bar
 new_window 1pixel

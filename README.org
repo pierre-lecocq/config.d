@@ -246,11 +246,19 @@ ln -s $HOME/src/config.d/dotfiles/i3 $HOME/.config/i3
 ln -s $HOME/src/config.d/dotfiles/i3status $HOME/.config/i3status
 ln -s $HOME/src/config.d/dotfiles/dunst $HOME/.config/dunst
 ln -s $HOME/src/config.d/dotfiles/user-dirs.dirs $HOME/.config/user-dirs.dirs
+ln -s $HOME/src/config.d/dotfiles/systemd $HOME/.config/systemd
 
 ln -s $HOME/src/config.d/bin $HOME/bin
 chmod 700 $HOME/bin/*
 
 ln -s $HOME/src/config.d/images $HOME/images
+#+end_src
+
+*** Startup services
+
+#+begin_src sh
+systemctl enable --user emacs
+systemctl start --user emacs
 #+end_src
 
 ** Setup

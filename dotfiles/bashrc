@@ -114,6 +114,7 @@ elif [ $arch = "Linux" ]; then
     alias mousefix='sudo modprobe -r psmouse && sudo modprobe psmouse && synclient tapButton1=1'
 fi
 
+alias less='less -N'
 alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
 alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'

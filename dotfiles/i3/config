@@ -111,10 +111,10 @@ bar {
     position top
     status_command i3status
     colors {
-           background #313131
+           background #212121
            focused_workspace  #ffffff $maincolor
            active_workspace   #ffffff #313131
-           inactive_workspace #888888 #313131
+           inactive_workspace #888888 #212121
     }
 }
 

@@ -109,7 +109,7 @@ bindsym $mod+Shift+P exec "scrot"
 # i3 bar
 bar {
     position top
-    status_command i3status
+    status_command i3status --config ~/.config/i3/status.config
     colors {
            background #212121
            focused_workspace  #ffffff $maincolor

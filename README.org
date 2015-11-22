@@ -243,7 +243,6 @@ ln -s $HOME/src/config.d/dotfiles/gtk-3.0 $HOME/.gtk-3.0
 
 ln -s $HOME/src/config.d/dotfiles/tint2 $HOME/.config/tint2
 ln -s $HOME/src/config.d/dotfiles/i3 $HOME/.config/i3
-ln -s $HOME/src/config.d/dotfiles/i3status $HOME/.config/i3status
 ln -s $HOME/src/config.d/dotfiles/dunst $HOME/.config/dunst
 ln -s $HOME/src/config.d/dotfiles/user-dirs.dirs $HOME/.config/user-dirs.dirs
 ln -s $HOME/src/config.d/dotfiles/systemd $HOME/.config/systemd

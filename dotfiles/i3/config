@@ -99,12 +99,16 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -c 0 set Master 1+ toggle"
-
 # bindsym XF86AudioPlay exec ""
 # bindsym XF86AudioNext exec ""
 # bindsym XF86AudioPrev exec ""
 
-bindsym $mod+Shift+P exec "scrot"
+# Screenshot fullscreen
+bindsym Print exec "scrot -q 100 '~/screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+# Screenshot with selection
+bindsym $mod+Print exec "sleep 0.2; scrot -q 100 -s '~/screenshot-selection-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+# Screenshot current focused window
+bindsym Shift+Print exec "scrot -q 100 -u '~/screenshot-window-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
 
 # i3 bar
 bar {

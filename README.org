@@ -56,6 +56,7 @@ sudo apt-get install -y aspell \
                         gnupg-agent \
                         gnutls-bin \
                         irb \
+                        john \
                         libncurses5-dev \
                         libruby \
                         linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
@@ -63,6 +64,7 @@ sudo apt-get install -y aspell \
                         mailutils \
                         manpages-dev \
                         mutt-patched \
+                        netcat \
                         nmap \
                         offlineimap \
                         p7zip \
@@ -72,6 +74,8 @@ sudo apt-get install -y aspell \
                         ruby-dev \
                         rubygems \
                         sbcl \
+                        siege \
+                        sqlmap \
                         strace \
                         tcpdump \
                         tree \
@@ -126,47 +130,15 @@ Xorg -configure
 echo "exec i3" > $HOME/.xinitrc
 #+end_src
 
-*** Pentest
-
-Install some pentest tools
-
-#+begin_src sh
-sudo apt-get install -y dsniff \
-                        ettercap-text-only \
-                        john \
-                        netcat \
-                        ngrep \
-                        nikto \
-                        python-beautifulsoup \
-                        python-geoip
-                        python-libxml2 \
-                        python-pycurl \
-                        ratproxy \
-                        siege \
-                        sqlite3 \
-                        sqlmap \
-                        subversion \
-                        tcpdump \
-                        tcptrace \
-                        w3af
-
-sudo mkdir -p /usr/local/bin
-
-svn co http://www.metasploit.com/svn/framework3/trunk /usr/local/metasploit;
-sudo ln -s /usr/local/metasploit/msfconsole /usr/local/bin/msfconsole
-
-svn co https://xsser.svn.sourceforge.net/svnroot/xsser /usr/local/xsser
-sudo ln -s /usr/local/xsser/xsser /usr/local/bin/xsser
-#+end_src
-
 *** Virtualizers
 
 Install some virtualizers (virtualbox and kvm)
 
 #+begin_src sh
 sudo apt-get install -y linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
-                        virtualbox-ose \
-                        virtualbox-ose-dkms
+                        virtualbox \
+                        virtualbox-dkms \
+                        virtualbox-guest-additions-iso
 
 sudo modprobe vboxdrv
 

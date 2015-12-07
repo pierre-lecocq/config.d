@@ -202,6 +202,8 @@ git clone https://github.com/pierre-lecocq/mail.d $HOME/src/mail.d
 Link config files
 
 #+begin_src sh
+ln -s $HOME/src/emacs.d $HOME/.emacs.d
+
 mv $HOME/.bashrc $HOME/.bashrc.ori
 mv $HOME/.bash_profile $HOME/.bash_profile.ori
 

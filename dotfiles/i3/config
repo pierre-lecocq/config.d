@@ -96,9 +96,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Multimedia keys
-bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 5%+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 5%- unmute"
-bindsym XF86AudioMute exec "amixer -c 0 set Master 1+ toggle"
+bindsym XF86AudioRaiseVolume exec "~/bin/volume inc"
+bindsym XF86AudioLowerVolume exec "~/bin/volume dec"
+bindsym XF86AudioMute exec "~/bin/volume mute"
 # bindsym XF86AudioPlay exec ""
 # bindsym XF86AudioNext exec ""
 # bindsym XF86AudioPrev exec ""

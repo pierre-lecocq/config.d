@@ -1,0 +1,23 @@
+#!/bin/sh
+
+os=`uname`
+
+if [ $1 = "inc" ]; then
+    if [ $os = "Linux" ]; then
+        amixer -c 0 set Master 5%+ unmute
+    elif [ $os = "FreeBSD" ]; then
+        mixer vol +5:+5
+    fi
+elif [ $1 = "dec" ]; then
+    if [ $os = "Linux" ]; then
+        amixer -c 0 set Master 5%- unmute
+    elif [ $os = "FreeBSD" ]; then
+        mixer vol -5:-5
+    fi
+elif [ $1 = "mute" ]; then
+    if [ $os = "Linux" ]; then
+        amixer -c 0 set Master 1+ toggle
+    elif [ $os = "FreeBSD" ]; then
+        mixer vol 0:0
+    fi
+fi

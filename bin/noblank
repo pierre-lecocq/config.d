@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Deactivate the default screen blanking process during the execution
+# of an app passed in parameter and reactivate it after
+
+# example: noblank chromium https://youtube.com
+
+/usr/bin/setterm -blank 0 && `$@` && /usr/bin/setterm -blank 10

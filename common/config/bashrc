@@ -8,7 +8,7 @@ export LC_TIME=fr_FR.UTF-8
 unset LC_ALL
 
 # Env vars
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/.rvm/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin
 export TERM=xterm-256color
 
 if [ -e /tmp/emacs$UID/server ]; then
@@ -132,5 +132,3 @@ else
     alias ec='emacsclient -c -a emacs'
     alias enc='emacsclient -c -t -a emacs'
 fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

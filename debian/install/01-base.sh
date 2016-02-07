@@ -30,6 +30,7 @@ sudo apt-get install -y aspell \
                         locales \
                         mailutils \
                         manpages-dev \
+			mg \
                         mutt-patched \
                         netcat \
                         nmap \

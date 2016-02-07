@@ -123,10 +123,14 @@ alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
 
-alias e='emacs'
-alias en='emacs -nw'
-alias enq='emacs -nw -Q'
-alias ec='emacsclient -c -a emacs'
-alias enc='emacsclient -c -t -a emacs'
+if ! emacs_bin="$(type -p "emacs")" || [ -z "$emacs_bin" ]; then
+    alias emacs='mg'
+else
+    alias e='emacs'
+    alias en='emacs -nw'
+    alias enq='emacs -nw -Q'
+    alias ec='emacsclient -c -a emacs'
+    alias enc='emacsclient -c -t -a emacs'
+fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

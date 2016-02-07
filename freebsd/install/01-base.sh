@@ -7,6 +7,7 @@ sudo pkg install -y bash \
      curl \
      emacs-nox11 \
      git \
+     mg \
      nano \
      nmap \
      python \

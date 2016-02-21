@@ -125,7 +125,7 @@ alias curl='curl --progress-bar'
 alias tree='tree -C'
 
 if ! emacs_bin="$(type -p "emacs")" || [ -z "$emacs_bin" ]; then
-    alias emacs='mg'
+    alias emacs='mg -n'
 else
     alias e='emacs'
     alias en='emacs -nw'

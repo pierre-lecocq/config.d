@@ -106,8 +106,8 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="ls -lh"
     alias la="ls -lhA"
-    alias xemacs='/Applications/Emacs.app/Contents/MacOS/Emacs -g 321x84+0+70 &'
-    alias gnus='/Applications/Emacs.app/Contents/MacOS/Emacs -g 321x84+0+70 -f gnus &'
+    alias xemacs='/Applications/Emacs.app/Contents/MacOS/Emacs &'
+    alias gnus='/Applications/Emacs.app/Contents/MacOS/Emacs -f gnus &'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"

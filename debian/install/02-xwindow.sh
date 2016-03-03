@@ -12,8 +12,6 @@ sudo apt-get install -y alsa-oss \
                         compton \
                         dunst \
                         feh \
-                        firmware-iwlwifi \
-                        flashplugin-nonfree \
                         fonts-inconsolata \
                         i3 \
                         i3lock \
@@ -50,4 +48,4 @@ ln -s $HOME/src/config.d/common/config/i3 $HOME/.config/i3
 ln -s $HOME/src/config.d/common/config/dunst $HOME/.config/dunst
 ln -s $HOME/src/config.d/common/config/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
-ln -s $HOME/src/config.d/images $HOME/images
+ln -s $HOME/src/config.d/common/images $HOME/images

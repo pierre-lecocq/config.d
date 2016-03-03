@@ -55,12 +55,12 @@ sudo apt-get install -y aspell \
                         zip
 
 mv $HOME/.bashrc $HOME/.bashrc.ori
-mv $HOME/.bash_profile $HOME/.bash_profile.ori
+# mv $HOME/.bash_profile $HOME/.bash_profile.ori
 
 ln -s $HOME/src/config.d/common/config/gitconfig $HOME/.gitconfig
 ln -s $HOME/src/config.d/common/config/gemrc $HOME/.gemrc
 ln -s $HOME/src/config.d/common/config/bashrc $HOME/.bashrc
-ln -s $HOME/src/config.d/common/config/bash_profile $HOME/.bash_profile
+# ln -s $HOME/src/config.d/common/config/bash_profile $HOME/.bash_profile
 
 ln -s $HOME/src/config.d/common/bin $HOME/bin
 chmod 700 $HOME/bin/*

@@ -112,8 +112,8 @@ elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
     alias gnus='env DBUS_SESSION_BUS_ADDRESS="autolaunch:" emacs -f gnus &'
-    alias poweroff='su -c "'"systemctl poweroff"'"'
-    alias restart='su -c "'"systemctl reboot"'"'
+    alias poweroff='sudo systemctl poweroff'
+    alias restart='sudo systemctl reboot'
 fi
 
 alias less='less -N'

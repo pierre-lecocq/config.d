@@ -40,7 +40,7 @@ conky.text = [[
     ${color1}IP${alignr}${color2}${addr eth0} - ${exec sh ~/.config/conky/scripts/ip.sh}
 
     ${color1}Download ${color2}${downspeed eth0}${alignr}${color1}Upload ${color2}${upspeed eth0}
-    ${color3}${downspeedgraph eth0 21,130 2385FC 0F335E}${alignr}${upspeedgraph eth0 21,130 0F335E 2385FC}
+    ${color3}${downspeedgraph eth0 21,130 0F335E 2385FC}${alignr}${upspeedgraph eth0 21,130 2385FC 0F335E}
 
     ${color4}Media ${hr 2}
 

@@ -11,7 +11,7 @@ if ! [ -d "$cache_dir" ]; then
     mkdir -p $cache_dir
 fi
 
-date=$(date +"%d-%m-%Y")
+date=$(date +"%d-%m-%Y-%H-%M")
 cache_file="$cache_dir/weather-$date"
 
 if ! [ -f "$cache_file-location" ]; then

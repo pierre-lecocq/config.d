@@ -5,7 +5,7 @@
 # Copyright (C) 2016 Pierre Lecocq
 # Description:
 
-cache_dir="~/cache/conky"
+cache_dir="$HOME/.cache/conky"
 
 if ! [ -d "$cache_dir" ]; then
     echo "Create"

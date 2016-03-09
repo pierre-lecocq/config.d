@@ -5,7 +5,7 @@
 # Copyright (C) 2016 Pierre Lecocq
 # Description:
 
-cache_dir="~/.cache/conky"
+cache_dir="$HOME/.cache/conky"
 
 if ! [ -d "$cache_dir" ]; then
     mkdir -p $cache_dir
@@ -15,7 +15,7 @@ date=$(date +"%d-%m-%Y-%H-%M")
 cache_file="$cache_dir/weather-$date"
 
 if ! [ -f "$cache_file-location" ]; then
-    rm "$cache_dir/weather-*" 2> /dev/null
+    rm -f "$cache_dir/weather-*"
 
     data=$(\curl -s http://www.accuweather.com/en/fr/paris/623/weather-forecast/623 \
            | grep "acm_RecentLocationsCarousel.push" | head -1 \

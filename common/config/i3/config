@@ -134,6 +134,6 @@ exec --no-startup-id numlockx on
 exec --no-startup-id synclient tapButton1=1
 exec --no-startup-id dunst
 #exec --no-startup-id feh --bg-scale ~/images/wallpapers/frenchtouch.jpg
-exec --no-stratup-id setxkbmap -option grp:alt_shift_toggle gb,fr
+exec --no-startup-id setxkbmap -option grp:alt_shift_toggle gb,fr
 exec xsetroot -solid '#121212'
-exec --no-stratup-id conky -c ~/.config/conky/conkyrc
+exec --no-startup-id conky -c ~/.config/conky/conkyrc

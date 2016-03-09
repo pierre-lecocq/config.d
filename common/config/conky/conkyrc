@@ -1,0 +1,55 @@
+conky.config = {
+    background = yes,
+    out_to_console = no,
+    use_xft = yes,
+    own_window_transparent = yes,
+    xftalpha = 0.8,
+    update_interval = 1.0,
+    cpu_avg_samples = 2,
+    font = '-*-terminal-medium-*-*-*-14-*-*-*-*-*-*-*',
+    temperature_unit = 'celsius',
+
+    gap_x = 10,
+    gap_y = 40,
+    maximum_width = 300,
+    alignment = 'top_right',
+
+    color1 = 'ffffff',
+    color2 = '757575',
+    color3 = '1D68C4',
+    color4 = 'b5b5b5'
+}
+
+conky.text = [[
+    ${color4}System ${hr 2}
+
+    ${color1}${nodename_short} ${color2}${sysname} ${kernel}
+    ${color1}Uptime ${color2}${uptime}${color1} Load ${color2}${loadavg}
+
+    ${color4}Hardware ${hr 2}
+
+    ${color1}CPU ${color2}${acpitemp}°${alignr}${cpu}%
+    ${color3}${cpubar}
+    ${color1}RAM${alignr}${color2}${memperc}%
+    ${color3}${membar}
+    ${color1}Disk${alignr}${color2}${fs_used_perc /}%
+    ${color3}${fs_bar /}
+
+    ${color4}Network ${hr 2}
+
+    ${color1}IP${alignr}${color2}${addr eth0} - ${exec sh ~/.config/conky/scripts/ip.sh}
+
+    ${color1}Download ${color2}${downspeed eth0}${alignr}${color1}Upload ${color2}${upspeed eth0}
+    ${color3}${downspeedgraph eth0 21,130 2385FC 0F335E}${alignr}${upspeedgraph eth0 21,130 0F335E 2385FC}
+
+    ${color4}Media ${hr 2}
+
+    ${color1}Volume${alignr}${color2}${exec sh ~/.config/conky/scripts/volume.sh}
+    ${color3}${execbar sh ~/.config/conky/scripts/volume.sh}
+
+    ${color4}Weather ${hr 2}
+
+    ${color1}Location${alignr}${color2}${exec sh ~/.config/conky/scripts/weather.sh location}
+    ${color1}Comment${alignr}${color2}${exec sh ~/.config/conky/scripts/weather.sh comment}
+    ${color1}Temperature${alignr}${color2}${exec sh ~/.config/conky/scripts/weather.sh temperature}
+]]

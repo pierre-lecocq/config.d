@@ -10,6 +10,7 @@ sudo apt-get install -y alsa-oss \
                         arandr \
                         chromium \
                         compton \
+			conky \
                         dunst \
                         feh \
                         fonts-inconsolata \

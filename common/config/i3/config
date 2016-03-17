@@ -25,9 +25,9 @@ set $maincolor #1D68C4
 new_window 1pixel
 
 # Apps
-bindsym $mod+Return exec rxvt-unicode #bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt-unicode
 bindsym $mod+d exec dmenu_run -nb '#313131' -nf '#cccccc' -p run
-bindsym $mod+l exec i3lock -c 414141
+bindsym $mod+l exec --no-startup-id "i3lock -c 121212; systemctl suspend;"
 
 # Actions
 bindsym $mod+Shift+Q kill

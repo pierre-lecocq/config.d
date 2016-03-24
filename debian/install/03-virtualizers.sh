@@ -10,6 +10,8 @@ sudo apt-get install -y linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') \
 
 sudo modprobe vboxdrv
 
+vagrant plugin install vagrant-vbguest
+
 sudo apt-get install -y bridge-utils \
                         libvirt-bin \
                         qemu-kvm \

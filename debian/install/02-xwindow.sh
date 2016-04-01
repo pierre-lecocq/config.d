@@ -10,10 +10,11 @@ sudo apt-get install -y alsa-oss \
                         arandr \
                         chromium \
                         compton \
-			conky \
+                        conky \
                         dunst \
                         feh \
                         fonts-inconsolata \
+                        fonts-font-awesome \
                         i3 \
                         i3lock \
                         i3status \
@@ -50,3 +51,5 @@ ln -s $HOME/src/config.d/common/config/dunst $HOME/.config/dunst
 ln -s $HOME/src/config.d/common/config/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
 ln -s $HOME/src/config.d/common/images $HOME/images
+
+fc-cache -fv

@@ -37,7 +37,7 @@ begin
         when 'mac' then
           [
             'osascript -e \'tell application "Finder" to set desktop picture to "' + file + '" as POSIX file\'',
-            'osascript -e \'display notification "Wallpaper has been updated" with title "Wallroll"\''
+            # 'osascript -e \'display notification "Wallpaper has been updated" with title "Wallroll"\''
           ]
         when 'linux' then
           [

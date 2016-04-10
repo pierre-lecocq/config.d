@@ -30,11 +30,10 @@ sudo apt-get install -y aspell \
                         locales \
                         mailutils \
                         manpages-dev \
-			mg \
+                        mg \
                         mutt-patched \
                         netcat \
                         nmap \
-                        offlineimap \
                         p7zip \
                         python \
                         rsync \
@@ -64,3 +63,11 @@ ln -s $HOME/src/config.d/common/config/bashrc $HOME/.bashrc
 
 ln -s $HOME/src/config.d/common/bin $HOME/bin
 chmod 700 $HOME/bin/*
+
+curl -O https://beta.quicklisp.org/quicklisp.lisp
+mv quicklisp.lisp ~/
+sbcl --load ~/quicklisp.lisp \
+     --eval "(quicklisp-quickstart:install)" \
+     --eval "(ql:quickload \"quicklisp-slime-helper\")" \
+     --eval "(ql:add-to-init-file)" \
+     --eval "(quit)"

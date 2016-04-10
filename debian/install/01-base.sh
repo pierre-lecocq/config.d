@@ -66,8 +66,10 @@ chmod 700 $HOME/bin/*
 
 curl -O https://beta.quicklisp.org/quicklisp.lisp
 mv quicklisp.lisp ~/
+cd ~/
 sbcl --load ~/quicklisp.lisp \
      --eval "(quicklisp-quickstart:install)" \
      --eval "(ql:quickload \"quicklisp-slime-helper\")" \
      --eval "(ql:add-to-init-file)" \
      --eval "(quit)"
+rm -f ~/quicklisp.lisp

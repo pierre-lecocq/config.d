@@ -64,12 +64,16 @@ ln -s $HOME/src/config.d/common/config/bashrc $HOME/.bashrc
 ln -s $HOME/src/config.d/common/bin $HOME/bin
 chmod 700 $HOME/bin/*
 
+mkdir -p $HOME/src/lisp/systems
+curl -O https://common-lisp.net/project/asdf/asdf.lisp
+mv asdf.lisp $HOME/src/lisp/systems/
+
 curl -O https://beta.quicklisp.org/quicklisp.lisp
-mv quicklisp.lisp ~/
+mv quicklisp.lisp $HOME/
 cd ~/
-sbcl --load ~/quicklisp.lisp \
+sbcl --load $HOME/quicklisp.lisp \
      --eval "(quicklisp-quickstart:install)" \
      --eval "(ql:quickload \"quicklisp-slime-helper\")" \
      --eval "(ql:add-to-init-file)" \
      --eval "(quit)"
-rm -f ~/quicklisp.lisp
+rm -f $HOME/quicklisp.lisp

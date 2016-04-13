@@ -124,6 +124,7 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -p
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
+alias psync='rsync --archive --compress --verbose --delete'
 
 if ! emacs_bin="$(type -p "emacs")" || [ -z "$emacs_bin" ]; then
     alias emacs='mg -n'

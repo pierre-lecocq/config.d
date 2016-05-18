@@ -106,11 +106,9 @@ bindsym XF86AudioMute exec "~/bin/volume mute"
 # bindsym XF86AudioPrev exec ""
 
 # Screenshot fullscreen
-bindsym Print exec "scrot -q 100 '~/screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
-# Screenshot with selection
-bindsym $mod+Print exec "sleep 0.2; scrot -q 100 -s '~/screenshot-selection-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+bindsym Print exec "scrot -q 100 ~/screenshot-%Y%m%d-%H%M%S.png"
 # Screenshot current focused window
-bindsym Shift+Print exec "scrot -q 100 -u '~/screenshot-window-%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+bindsym Shift+Print exec "scrot -q 100 -u ~/screenshot-%Y%m%d-%H%M%S.png"
 
 # i3 bar
 bar {

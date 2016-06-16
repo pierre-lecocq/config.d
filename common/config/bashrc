@@ -100,14 +100,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
-# Aliases (a.k.a evil)
+# Aliases
 if [ $arch = "Darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="ls -lh"
     alias la="ls -lhA"
-    alias xemacs='/Applications/Emacs.app/Contents/MacOS/Emacs &'
-    alias gnus='/Applications/Emacs.app/Contents/MacOS/Emacs -f gnus &'
+    alias xemacs='open -a /Applications/Emacs.app "$@"'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
@@ -132,6 +131,4 @@ else
     alias e='emacs'
     alias en='emacs -nw'
     alias enq='emacs -nw -Q'
-    alias ec='emacsclient -c -a emacs'
-    alias enc='emacsclient -c -t -a emacs'
 fi

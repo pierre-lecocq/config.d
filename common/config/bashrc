@@ -132,3 +132,9 @@ else
     alias en='emacs -nw'
     alias enq='emacs -nw -Q'
 fi
+
+alias sbcl.run='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
+
+export DOCKER_HOST=tcp://127.0.0.1:2376
+unset DOCKER_TLS_VERIFY
+unset DOCKER_CERT_PATH

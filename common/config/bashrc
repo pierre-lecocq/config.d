@@ -106,6 +106,7 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="ls -lh"
     alias la="ls -lhA"
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
     alias xemacs='open -a /Applications/Emacs.app "$@"'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
@@ -125,13 +126,9 @@ alias curl='curl --progress-bar'
 alias tree='tree -C'
 alias psync='rsync --archive --compress --verbose --delete'
 
-if ! emacs_bin="$(type -p "emacs")" || [ -z "$emacs_bin" ]; then
-    alias emacs='mg -n'
-else
-    alias e='emacs'
-    alias en='emacs -nw'
-    alias enq='emacs -nw -Q'
-fi
+alias e='emacs'
+alias en='emacs -nw'
+alias enq='emacs -nw -Q'
 
 alias sbcl.run='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
 

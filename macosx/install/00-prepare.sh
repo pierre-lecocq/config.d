@@ -7,3 +7,4 @@ sudo brew install nmap
 
 sudo brew install emacs --with-cocoa --HEAD --use-git-head
 sudo brew linkapps emacs
+# sudo brew services start emacs

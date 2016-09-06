@@ -5,6 +5,7 @@
 sudo brew install wget
 sudo brew install nmap
 
-sudo brew install emacs --with-cocoa --HEAD --use-git-head
+# --devel instead of --HEAD for the last dev version
+sudo brew install emacs --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --HEAD --use-git-head
 sudo brew linkapps emacs
 # sudo brew services start emacs

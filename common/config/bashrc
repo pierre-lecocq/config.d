@@ -61,22 +61,26 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 # Prompt
 if [ $(id -u) -eq 0 ];
 then
     if [ $remote_session = 1 ]; then
-        PS1="\e[0;31m[\A] (\u@\h) \w # \e[m"
+        PS1="\e[0;31m[\A] (\u@\h) \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
     else
-        PS1="\e[0;31m[\A] \w # \e[m"
+        PS1="\e[0;31m[\A] \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
     fi
 else
     if [ $arch = "Darwin" ]; then
-        PS1="\[\e[1m\][\A] \w\[\e[0m\] \360\237\215\272  "
+        PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch)\[\e[0m\] \360\237\215\272  "
     else
         if [ $remote_session = 1 ]; then
-            PS1="\[\e[1m\][\A] (\u@\h) \w $\[\e[0m\] "
+            PS1="\[\e[1m\][\A] (\u@\h) \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
         else
-            PS1="\[\e[1m\][\A] \w $\[\e[0m\] "
+            PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
         fi
     fi
 fi

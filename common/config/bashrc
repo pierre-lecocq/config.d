@@ -21,16 +21,6 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Remote session flag
-remote_session=0
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    remote_session=1
-else
-    case $(ps -o comm= -p $PPID) in
-        sshd|*/sshd) remote_session=1;;
-    esac
-fi
-
 # Don't put duplicate lines in the history.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 # ... or force ignoredups and ignorespace
@@ -43,57 +33,36 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
-fi
-
 # Enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Prompt
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
-# Prompt
 if [ $(id -u) -eq 0 ];
 then
-    if [ $remote_session = 1 ]; then
-        PS1="\e[0;31m[\A] (\u@\h) \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
-    else
-        PS1="\e[0;31m[\A] \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
-    fi
+    PS1="\e[0;31m[\A] \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
 else
     if [ $arch = "Darwin" ]; then
         PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch)\[\e[0m\] \360\237\215\272  "
     else
-        if [ $remote_session = 1 ]; then
-            PS1="\[\e[1m\][\A] (\u@\h) \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
-        else
-            PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
-        fi
+        PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
     fi
 fi
 
 # Set term title
 function termtitle {
-  if [ -z $1 ]; then
-    title=$USER"@"`hostname`
-  else
-    title=$1
-  fi
+    if [ -z $1 ]; then
+        title=$USER"@"`hostname`
+    else
+        title=$1
+    fi
 
-  echo -n -e "\033]0;"$title"\007"
+    echo -n -e "\033]0;"$title"\007"
 }
 
 termtitle

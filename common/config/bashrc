@@ -56,16 +56,10 @@ fi
 
 # Set term title
 function termtitle {
-    if [ -z $1 ]; then
-        title=$USER"@"`hostname`
-    else
-        title=$1
-    fi
-
-    echo -n -e "\033]0;"$title"\007"
+    echo -n -e "\033]0;"$1"\007"
 }
 
-termtitle
+termtitle $USER"@"`hostname`
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -84,7 +78,6 @@ if [ $arch = "Darwin" ]; then
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
-    alias gnus='env DBUS_SESSION_BUS_ADDRESS="autolaunch:" emacs -f gnus &'
     alias poweroff='sudo systemctl poweroff'
     alias restart='sudo systemctl reboot'
 fi
@@ -97,14 +90,13 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -p
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
-alias psync='rsync --archive --compress --verbose --delete'
 
 alias e='emacs'
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 
-alias sbcl.run='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
+alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
 
-export DOCKER_HOST=tcp://127.0.0.1:2376
-unset DOCKER_TLS_VERIFY
-unset DOCKER_CERT_PATH
+# export DOCKER_HOST=tcp://127.0.0.1:2376
+# unset DOCKER_TLS_VERIFY
+# unset DOCKER_CERT_PATH

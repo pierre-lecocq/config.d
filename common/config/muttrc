@@ -1,0 +1,69 @@
+# ------------------
+# Mutt Configuration
+# ------------------
+#
+# mkdir -p ~/.mutt
+# echo "P." > ~/.mutt/signature
+#
+# echo "set my_realname=\"XXXXXXX XXXXXXX\"" > ~/.mutt/passwords
+# echo "set my_username=\"XXXXXXX.XXXXXXX\"" >> ~/.mutt/passwords
+# echo "set my_password=\"XXXXXXXXXXXXXXX\"" >> ~/.mutt/passwords
+# gpg -r XXXXXXXX@gmail.com -e ~/.mutt/passwords && rm ~/.mutt/passwords
+#
+# wget -P ~/.mutt https://raw.githubusercontent.com/altercation/mutt-colors-solarized/master/mutt-colors-solarized-dark-256.muttrc
+#
+
+# General
+
+set     timeout = 60 # Current IMAP refresh
+set     mail_check = 60 # All IMAPs refresh
+set     imap_keepalive = 300 # Ping every 300s
+unset   imap_passive # Open new imap connection automatically
+set     header_cache = ~/.mutt/hcache # Set header cache file
+set     sort = threads # Sort by threads ...
+set     sort_aux = reverse-last-date-received #  ... then by date ...
+set     copy # Save copy of sent messages
+set     edit_headers # Display headers when editing a message
+set     fast_reply # Don't prompt for stuff when replying
+unset   mark_old # Don't mark unread messages as Old
+set     narrow_tree # Narrow threading trees
+set     pager_stop # Don't go to next message at end of message
+set     sleep_time = 0
+set     arrow_cursor
+set     charset = "utf-8"
+
+# Colors
+
+source "~/.mutt/mutt-colors-solarized-dark-256.muttrc"
+
+# Account
+
+source "gpg -d ~/.mutt/passwords.gpg |"
+
+# IMAP
+
+set imap_user = "$my_username@gmail.com"
+set imap_pass = "$my_password"
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = +INBOX
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+
+# SMTP
+
+set smtp_url = "smtp://$my_username@gmail.com@smtp.gmail.com:587/"
+set smtp_pass = "$my_password"
+set signature="~/.mutt/signature"
+set realname = "$my_realname"
+set from = "$my_username@gmail.com"
+set use_from = yes
+set envelope_from = yes
+set record=""
+
+# Macros
+
+bind index G imap-fetch-mail
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"

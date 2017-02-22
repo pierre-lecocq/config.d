@@ -8,7 +8,7 @@
 # echo "set my_realname=\"XXXXXXX XXXXXXX\"" > ~/.mutt/passwords
 # echo "set my_username=\"XXXXXXX.XXXXXXX\"" >> ~/.mutt/passwords
 # echo "set my_password=\"XXXXXXXXXXXXXXX\"" >> ~/.mutt/passwords
-# gpg -r XXXXXXXX@gmail.com -e ~/.mutt/passwords && rm ~/.mutt/passwords
+# gpg -r XXXXXXXX@gmail.com -e ~/.mutt/passwords && rm ~/.mutt/passwords && chmod 600 ~/.mutt/passwords.gpg
 #
 # wget -P ~/.mutt https://raw.githubusercontent.com/altercation/mutt-colors-solarized/master/mutt-colors-solarized-dark-256.muttrc
 #

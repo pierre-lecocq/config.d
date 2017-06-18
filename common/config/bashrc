@@ -76,10 +76,11 @@ fi
 if [ $arch = "Darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
-    alias l="ls -lh"
-    alias la="ls -lhA"
+    alias l="/bin/ls -lh"
+    alias la="/bin/ls -lhA"
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
-    alias xemacs='open -a /Applications/Emacs.app "$@"'
+    # alias xemacs='open -a /Applications/Emacs.app "$@"'
+    alias xemacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"

@@ -1,0 +1,40 @@
+#!/bin/sh
+# -*- mode: sh; -*-
+
+# File: soundcard
+# Time-stamp: <2017-06-18 23:00:48>
+# Copyright (C) 2017 pierre
+# Description: Manage soundcards
+
+set -o errexit
+
+cfg_file="/etc/asound.conf"
+choices=$(cat /proc/asound/cards | grep '\[' | awk '{print $1$2"\n"}' | tr "[" ":")
+
+if ! [ -f $cfg_file ]; then
+    echo "File $cfg_file not found"
+else
+    selected=$(cat $cfg_file | grep "card" | uniq)
+    echo "Selected soundcard: $selected"
+fi
+
+echo "\nAvailable soundcards:"
+for c in $choices; do
+    echo "\t$c"
+done
+
+writeCfgFile () {
+    sudo sh -c "echo \"pcm.!default {\" > $cfg_file"
+    sudo sh -c "echo \"    type hw\" >> $cfg_file"
+    sudo sh -c "echo \"    card $1\" >> $cfg_file"
+    sudo sh -c "echo \"}\" >> $cfg_file"
+    sudo sh -c "echo \"ctl.!default {\" >> $cfg_file"
+    sudo sh -c "echo \"    type hw\" >> $cfg_file"
+    sudo sh -c "echo \"    card $1\" >> $cfg_file"
+    sudo sh -c "echo \"}\" >> $cfg_file"
+}
+
+echo "\nSelect a new soundcard:"
+read answer
+
+writeCfgFile $answer && echo "\n$cfg_file written successfully.\nYou may restart now to apply the changes."

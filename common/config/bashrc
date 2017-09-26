@@ -78,9 +78,8 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="/bin/ls -lh"
     alias la="/bin/ls -lhA"
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
-    # alias xemacs='open -a /Applications/Emacs.app "$@"'
-    alias xemacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs'
+    alias emacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
+    alias xemacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs "$@"'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
@@ -90,19 +89,15 @@ fi
 
 alias less='less -N'
 alias grep='grep --color=auto'
-alias rcl='find . -name "*~" -exec rm -f {} \; ; find . -name ".*~" -exec rm -f {} \; ; find . -name "._*" -exec rm -f {} \; ; find . -name ".DS*" -exec rm -f {} \;'
-alias modified='find . | while read FILE;do ls -dl "$FILE";done | grep `date +"%b"` | grep `date +"%_d"`'
+alias rcl='find . -name "*~" -o -name ".*~" -o -name "._*" -o -name ".DS*" -exec rm -f {} \;'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -print | xargs etags -a'
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
+alias ipinfo='curl ipinfo.io'
 
 alias e='emacs'
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
-
-# export DOCKER_HOST=tcp://127.0.0.1:2376
-# unset DOCKER_TLS_VERIFY
-# unset DOCKER_CERT_PATH

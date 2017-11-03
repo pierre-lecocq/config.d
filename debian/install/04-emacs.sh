@@ -23,6 +23,3 @@ sudo apt-get install -y aspell \
 
 git clone --depth=1 git://git.savannah.gnu.org/emacs.git $HOME/emacs.src
 cd $HOME/emacs.src && ./autogen.sh && ./configure && make && sudo make install
-
-git clone https://github.com/pierre-lecocq/emacs.d $HOME/src/emacs.d
-ln -s $HOME/src/emacs.d $HOME/.emacs.d

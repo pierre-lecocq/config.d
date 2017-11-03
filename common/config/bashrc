@@ -80,6 +80,7 @@ if [ $arch = "Darwin" ]; then
     alias la="/bin/ls -lhA"
     alias emacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
     alias xemacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs "$@"'
+    alias xgnus='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs --eval "(gnus)"'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
@@ -99,5 +100,6 @@ alias ipinfo='curl ipinfo.io'
 alias e='emacs'
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
+alias gnus='emacs --eval "(gnus)"'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005

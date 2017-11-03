@@ -31,7 +31,7 @@ sudo apt-get install -y aspell \
                         mailutils \
                         manpages-dev \
                         mg \
-                        mutt-patched \
+                        mutt \
                         netcat \
                         nmap \
                         p7zip \

@@ -18,7 +18,8 @@ else
     base_br="$1"
 fi
 
-read -p "Rebase branch \"${name_br}\" from \"${base_br}\" ? (y/n): " ans
+read -p "Rebase branch \"${name_br}\" from \"${base_br}\" ? (y/n): " -n 1 ans
+
 case "$ans" in
     "y" | "Y")
 	git checkout ${base_br} \
@@ -33,7 +34,8 @@ case "$ans" in
 	;;
 esac
 
-read -p "Rebase interactive against \"${base_br}\" ? (y/n): " ans
+read -p "Rebase interactive against \"${base_br}\" ? (y/n): " -n 1 ans
+
 case "$ans" in
     "y" | "Y")
 	git rebase -i ${base_br}

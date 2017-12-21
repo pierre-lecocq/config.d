@@ -90,7 +90,7 @@ fi
 
 alias less='less -N'
 alias grep='grep --color=auto'
-alias rcl='find . -name "*~" -o -name ".*~" -o -name "._*" -o -name ".DS*" -exec rm -f {} \;'
+alias rcl='find . -name "*~" -o -name ".*~" -o -name "._*" -o -name ".DS*" | xargs rm -f'
 alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -print | xargs etags -a'
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
@@ -101,5 +101,7 @@ alias e='emacs'
 alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias gnus='emacs --eval "(gnus)"'
+
+alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q)'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005

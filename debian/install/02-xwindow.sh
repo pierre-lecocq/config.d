@@ -12,9 +12,10 @@ sudo apt-get install -y alsa-oss \
                         compton \
                         conky \
                         dunst \
+                        fakeroot \
                         feh \
-                        fonts-inconsolata \
                         fonts-font-awesome \
+                        fonts-inconsolata \
                         i3 \
                         i3lock \
                         i3status \
@@ -23,6 +24,11 @@ sudo apt-get install -y alsa-oss \
                         notification-daemon \
                         numlockx \
                         orage \
+                        pavucontrol \
+                        pulseaudio \
+                        python-all \
+                        python-pip \
+                        python-stdeb \
                         rxvt-unicode-256color \
                         scrot \
                         suckless-tools \
@@ -39,6 +45,9 @@ sudo apt-get install -y alsa-oss \
 echo "exec i3" > $HOME/.xinitrc
 
 Xorg -configure
+
+pip install wheel
+sudo pypi-install install py3status
 
 mkdir -p $HOME/.config
 

@@ -100,7 +100,7 @@ bindsym $mod+r mode "resize"
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "~/bin/volume inc"
 bindsym XF86AudioLowerVolume exec "~/bin/volume dec"
-bindsym XF86AudioMute exec "~/bin/volume mute"
+# bindsym XF86AudioMute exec "~/bin/volume mute"
 # bindsym XF86AudioPlay exec ""
 # bindsym XF86AudioNext exec ""
 # bindsym XF86AudioPrev exec ""
@@ -113,7 +113,9 @@ bindsym Shift+Print exec "scrot -q 100 -u ~/screenshot-%Y%m%d-%H%M%S.png"
 # i3 bar
 bar {
     position top
-    status_command i3status --config ~/.config/i3/status.config
+    # status_command i3status --config ~/.config/i3/status.config
+    status_command py3status -c ~/.config/i3/py3status.config
+
     colors {
            background #212121
            focused_workspace  #ffffff $maincolor

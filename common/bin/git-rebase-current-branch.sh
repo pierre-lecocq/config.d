@@ -1,8 +1,8 @@
 #!/bin/sh
 
-branch=$(git branch | grep "*" | cut -d' ' -f2)
+name_br=$(git branch | grep "*" | cut -d' ' -f2)
 
-if [ "$branch" = "master" ]; then
+if [ "$name_br" = "master" ]; then
     echo "Current branch is master. Will only pull origin."
 
     git pull \
@@ -12,14 +12,21 @@ if [ "$branch" = "master" ]; then
     exit 0;
 fi
 
-read -p "Rebase branch $branch ? (y/n): " ans
+if [ -z "$1"  ]; then
+    base_br="master"
+else
+    base_br="$1"
+fi
+
+read -p "Rebase branch \"${name_br}\" from \"${base_br}\" ? (y/n): " -n 1 ans
+
 case "$ans" in
     "y" | "Y")
-	git checkout master \
+	git checkout ${base_br} \
 	    && git pull \
 	    && git submodule update \
-	    && git checkout $branch \
-	    && git rebase master $branch
+	    && git checkout ${name_br} \
+	    && git rebase ${base_br} ${name_br}
 	;;
     *)
 	echo "Nothing to do. Exiting."
@@ -27,10 +34,11 @@ case "$ans" in
 	;;
 esac
 
-read -p "Rebase interactive against master ? (y/n): " ans
+read -p "Rebase interactive against \"${base_br}\" ? (y/n): " -n 1 ans
+
 case "$ans" in
     "y" | "Y")
-	git rebase -i master
+	git rebase -i ${base_br}
 	;;
     *)
 	;;

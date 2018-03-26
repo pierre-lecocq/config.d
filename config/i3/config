@@ -20,8 +20,8 @@ set $maincolor #1D68C4
 # set $maincolor #D64937
 
 # Gaps : https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-gaps inner 10
-gaps outer 5
+# gaps inner 10
+# gaps outer 5
 
 # Remove title bar
 new_window 1pixel
@@ -114,7 +114,7 @@ bindsym Shift+Print exec "scrot -q 100 -u ~/screenshot-%Y%m%d-%H%M%S.png"
 bar {
     position top
     # status_command i3status --config ~/.config/i3/status.config
-    status_command py3status -c ~/.config/i3/py3status.config
+    status_command py3status -c ~/.config/i3/status.config
 
     colors {
            background #212121

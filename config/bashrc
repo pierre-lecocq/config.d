@@ -1,12 +1,12 @@
 arch=`uname`
 
 # Locale related env vars
-export LANG=fr_FR.UTF-8
-export LC_CTYPE=fr_FR.UTF-8
-export LC_MESSAGE=fr_FR.UTF-8
-export LC_TIME=fr_FR.UTF-8
+# export LANG=fr_FR.UTF-8
+# export LC_CTYPE=fr_FR.UTF-8
+# export LC_MESSAGE=fr_FR.UTF-8
+# export LC_TIME=fr_FR.UTF-8
 # unset LC_ALL
-export LC_ALL=fr_FR.UTF-8
+# export LC_ALL=fr_FR.UTF-8
 
 # Env vars
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin

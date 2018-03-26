@@ -45,7 +45,8 @@ echo "exec i3" > $HOME/.xinitrc
 Xorg -configure
 
 pip install wheel
-sudo pypi-install install py3status
+pip install py3status
+ln -s ~/.local/bin/py3status ~/bin/py3status
 
 mkdir -p $HOME/.config
 

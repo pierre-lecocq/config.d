@@ -28,8 +28,8 @@ new_window 1pixel
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode
-bindsym $mod+d exec dmenu_run -nb '#313131' -nf '#cccccc' -p run
-bindsym $mod+l exec --no-startup-id "i3lock -c 121212; systemctl suspend;"
+bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=13' -p launch
+bindsym $mod+l exec --no-startup-id "i3lock -c 212121; systemctl suspend;"
 
 # Actions
 bindsym $mod+Shift+Q kill

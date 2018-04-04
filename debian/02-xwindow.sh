@@ -9,6 +9,7 @@ sudo apt-get install -y alsa-oss \
                         alsamixergui \
                         arandr \
                         chromium \
+                        clementine \
                         compton \
                         conky \
                         dunst \

@@ -22,7 +22,6 @@ sudo apt-get install -y alsa-oss \
                         libnotify-bin \
                         notification-daemon \
                         numlockx \
-                        orage \
                         pavucontrol \
                         pulseaudio \
                         python-all \

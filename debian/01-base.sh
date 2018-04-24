@@ -13,7 +13,6 @@ sudo apt-get install -y aspell \
                         clamav \
                         cmake \
                         curl \
-                        emacs \
                         fail2ban \
                         gcc \
                         gdb \
@@ -56,12 +55,12 @@ sudo apt-get install -y aspell \
 mv $HOME/.bashrc $HOME/.bashrc.ori
 # mv $HOME/.bash_profile $HOME/.bash_profile.ori
 
-ln -s $HOME/src/config.d/common/config/gitconfig $HOME/.gitconfig
-ln -s $HOME/src/config.d/common/config/gemrc $HOME/.gemrc
-ln -s $HOME/src/config.d/common/config/bashrc $HOME/.bashrc
-# ln -s $HOME/src/config.d/common/config/bash_profile $HOME/.bash_profile
+ln -s $HOME/src/config.d/config/gitconfig $HOME/.gitconfig
+ln -s $HOME/src/config.d/config/gemrc $HOME/.gemrc
+ln -s $HOME/src/config.d/config/bashrc $HOME/.bashrc
+# ln -s $HOME/src/config.d/config/bash_profile $HOME/.bash_profile
 
-ln -s $HOME/src/config.d/common/bin $HOME/bin
+ln -s $HOME/src/config.d/bin $HOME/bin
 chmod 700 $HOME/bin/*
 
 mkdir -p $HOME/src/lisp/systems

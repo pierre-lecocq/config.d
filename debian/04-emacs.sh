@@ -3,7 +3,7 @@
 [ "$(id -u)" = "0" ] && { echo "ERROR: Do not run as root"; exit 1; }
 [ -f /usr/bin/sudo ] || { echo "ERROR: Install sudo first"; exit 1; }
 
-sudo apt-get build-dep -y emacs24
+sudo apt-get build-dep -y emacs25
 
 sudo apt-get install -y aspell \
      aspell-en \

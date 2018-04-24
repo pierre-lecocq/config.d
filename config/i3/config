@@ -22,14 +22,15 @@ set $maincolor #1D68C4
 # Gaps : https://github.com/Airblader/i3/wiki/Compiling-&-Installing
 gaps inner 10
 gaps outer 5
+smart_gaps on
 
 # Remove title bar
 new_window 1pixel
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode
-bindsym $mod+d exec dmenu_run -nb '#313131' -nf '#cccccc' -p run
-bindsym $mod+l exec --no-startup-id "i3lock -c 121212; systemctl suspend;"
+bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=13' -p launch
+bindsym $mod+l exec --no-startup-id "i3lock -c 212121; systemctl suspend;"
 
 # Actions
 bindsym $mod+Shift+Q kill
@@ -100,7 +101,7 @@ bindsym $mod+r mode "resize"
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "~/bin/volume inc"
 bindsym XF86AudioLowerVolume exec "~/bin/volume dec"
-bindsym XF86AudioMute exec "~/bin/volume mute"
+# bindsym XF86AudioMute exec "~/bin/volume mute"
 # bindsym XF86AudioPlay exec ""
 # bindsym XF86AudioNext exec ""
 # bindsym XF86AudioPrev exec ""
@@ -113,7 +114,9 @@ bindsym Shift+Print exec "scrot -q 100 -u ~/screenshot-%Y%m%d-%H%M%S.png"
 # i3 bar
 bar {
     position top
-    status_command i3status --config ~/.config/i3/status.config
+    # status_command i3status --config ~/.config/i3/status.config
+    status_command py3status -c ~/.config/i3/status.config
+
     colors {
            background #212121
            focused_workspace  #ffffff $maincolor
@@ -133,7 +136,8 @@ exec --no-startup-id xset b 0 0
 exec --no-startup-id numlockx on
 exec --no-startup-id synclient tapButton1=1
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-scale ~/images/wallpapers/wallpaper.jpg
+# exec --no-startup-id feh --bg-scale ~/images/wallpapers/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/images/wallpapers/`ls ~/images/wallpapers/ | sort -R | head -1`
 exec --no-startup-id setxkbmap -option grp:alt_shift_toggle gb,fr
 # exec --no-startup-id xsetroot -solid '#121212'
 # exec --no-startup-id conky -c ~/.config/conky/conkyrc

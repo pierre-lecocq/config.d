@@ -78,9 +78,8 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="/bin/ls -lh"
     alias la="/bin/ls -lhA"
-    alias emacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
-    alias xemacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs "$@"'
-    alias xgnus='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs --eval "(gnus)"'
+    alias emacs='/usr/local/bin/emacs -nw "$@"'
+    alias xemacs='/usr/local/bin/emacs "$@"'
 elif [ $arch = "Linux" ]; then
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
@@ -102,6 +101,6 @@ alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias gnus='emacs --eval "(gnus)"'
 
-alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q)'
+alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker network prune'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005

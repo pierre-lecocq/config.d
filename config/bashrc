@@ -9,7 +9,8 @@ arch=`uname`
 # export LC_ALL=fr_FR.UTF-8
 
 # Env vars
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin
+export GOPATH=$HOME/src/go
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
 export TERM=xterm-256color
 export PAGER="less -F -X"
 

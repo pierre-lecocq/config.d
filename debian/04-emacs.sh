@@ -5,7 +5,8 @@
 
 sudo apt-get build-dep -y emacs25
 
-sudo apt-get install -y aspell \
+sudo apt-get install -y at-spi2-core \
+     aspell \
      aspell-en \
      aspell-fr \
      fonts-inconsolata \

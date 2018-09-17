@@ -29,6 +29,7 @@ sudo apt-get install -y alsa-oss \
                         python-pip \
                         python-stdeb \
                         rxvt-unicode-256color \
+                        screenfetch \
                         scrot \
                         suckless-tools \
                         tango-icon-theme \

@@ -135,9 +135,11 @@ client.unfocused #414141 #414141 #cccccc #cccccc
 exec --no-startup-id xset b 0 0
 exec --no-startup-id numlockx on
 exec --no-startup-id synclient tapButton1=1
-exec --no-startup-id dunst
-# exec --no-startup-id feh --bg-scale ~/images/wallpapers/wallpaper.jpg
-exec --no-startup-id feh --bg-scale ~/images/wallpapers/`ls ~/images/wallpapers/ | sort -R | head -1`
 exec --no-startup-id setxkbmap -option grp:alt_shift_toggle gb,fr
-# exec --no-startup-id xsetroot -solid '#121212'
+
+exec --no-startup-id dunst
 # exec --no-startup-id conky -c ~/.config/conky/conkyrc
+
+exec --no-startup-id feh --bg-scale ~/images/wallpapers/wallpaper.jpg
+# exec --no-startup-id feh --bg-scale ~/images/wallpapers/`ls ~/images/wallpapers/ | sort -R | head -1`
+# exec --no-startup-id xsetroot -solid '#121212'

@@ -13,12 +13,7 @@ export GOPATH=$HOME/src/go
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
 export TERM=xterm-256color
 export PAGER="less -F -X"
-
-if [ -e /tmp/emacs$UID/server ]; then
-    export EDITOR="emacsclient -c"
-else
-    export EDITOR=emacs
-fi
+export EDITOR=emacs
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -41,7 +36,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Git completion
-
 [ -f ~/.git-completion.bash ] || (curl -s https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash)
 . ~/.git-completion.bash
 
@@ -50,8 +44,7 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
-if [ $(id -u) -eq 0 ];
-then
+if [ $(id -u) -eq 0 ]; then
     PS1="\e[0;31m[\A] \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
 else
     if [ $arch = "Darwin" ]; then
@@ -103,6 +96,6 @@ alias en='emacs -nw'
 alias enq='emacs -nw -Q'
 alias gnus='emacs --eval "(gnus)"'
 
-alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker network prune -f'
+alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005

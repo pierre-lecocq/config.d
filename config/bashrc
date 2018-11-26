@@ -54,6 +54,8 @@ else
     fi
 fi
 
+PS1="\e[0;90m"$(printf "%*s" $(tput cols) "" | sed "s/ /-/g")"\[\e[0m\]\n$PS1"
+
 # Set term title
 function termtitle {
     echo -n -e "\033]0;"$1"\007"

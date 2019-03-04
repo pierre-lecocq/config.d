@@ -87,6 +87,7 @@ elif [ $arch = "Linux" ]; then
     alias la="ls -lhA --color=auto"
     alias poweroff='sudo systemctl poweroff'
     alias restart='sudo systemctl reboot'
+    alias clock='tty-clock -sc -C 7'
 fi
 
 alias less='less -N'

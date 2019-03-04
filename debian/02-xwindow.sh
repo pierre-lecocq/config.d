@@ -36,6 +36,7 @@ sudo apt-get install -y alsa-oss \
                         thunar \
                         ttf-bitstream-vera \
                         ttf-dejavu \
+                        tty-clock \
                         vlc \
                         xclip \
                         xorg \

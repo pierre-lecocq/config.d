@@ -32,7 +32,7 @@ bindsym $mod+Return exec rxvt-unicode
 bindsym $mod+l exec --no-startup-id "i3lock -c 212121; systemctl suspend;"
 
 # bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=13' -p launch
-bindsym $mod+d exec  --no-startup-id "rofi -modi 'combi,run,window' -show combi -show-icons -matching fuzzy -sidebar-mode -autoselect -disable-history -hide-scrollbar -color-window '#212121, #1D68C4, #212121' -color-normal '#212121, #cccccc, #252525, #1D68C4, #ffffff' -color-active '#1D68C4, #cccccc, #1D68C4, #1D68C4, #ffffff'"
+bindsym $mod+d exec  --no-startup-id "rofi -modi 'combi,run,window' -show combi -show-icons -matching fuzzy -sidebar-mode -autoselect -separator-style none -disable-history -hide-scrollbar -color-window '#212121, #1D68C4, #212121' -color-normal '#212121, #cccccc, #252525, #1D68C4, #ffffff' -color-active '#1D68C4, #cccccc, #1D68C4, #1D68C4, #ffffff' -font 'Source Sans Pro 10'"
 
 # Actions
 bindsym $mod+Shift+Q kill

@@ -5,32 +5,29 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# Colors (1D68C4 = blue, D64937 = red)
+
 set $mod Mod4
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font -misc-fixed-medium-r-normal--13-120-75-75-c-80-iso10646-1
-#font -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
-#font pango:DejaVu Sans Mono 10
-font pango:Source Sans Pro, IconicIcons 10
+set $maincolor #1D68C4
 
 floating_modifier $mod
 
-# Colors (1D68C4 = blue, D64937 = red)
-
-set $maincolor #1D68C4
-# set $maincolor #D64937
+font pango:Source Sans Pro, IconicIcons 10
 
 # Gaps : https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-gaps inner 10
-gaps outer 5
-smart_gaps on
+# gaps inner 10
+# gaps outer 5
+# smart_gaps on
 
 # Remove title bar
 new_window 1pixel
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode
-bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=13' -p launch
 bindsym $mod+l exec --no-startup-id "i3lock -c 212121; systemctl suspend;"
+
+# bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=13' -p launch
+bindsym $mod+d exec --no-startup-id "rofi -show run -show-icons -matching fuzzy -sidebar-mode -autoselect -separator-style none -disable-history -hide-scrollbar -color-window '#212121, #1D68C4, #212121' -color-normal '#212121, #cccccc, #252525, #1D68C4, #ffffff' -color-active '#1D68C4, #cccccc, #1D68C4, #1D68C4, #ffffff' -font 'Source Sans Pro 10'"
 
 # Actions
 bindsym $mod+Shift+Q kill

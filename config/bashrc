@@ -40,17 +40,17 @@ fi
 . ~/.git-completion.bash
 
 # Prompt
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
+git_current_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 if [ $(id -u) -eq 0 ]; then
-    PS1="\e[0;31m[\A] \w\[\033[33m\]\$(parse_git_branch) # \[\e[0m\]"
+    PS1="\e[0;31m[\A] \w\[\033[33m\]:\$(git_current_branch) # \[\e[0m\]"
 else
     if [ $arch = "Darwin" ]; then
-        PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch)\[\e[0m\] \360\237\215\272  "
+        PS1="\[\e[1m\][\A] \w\[\033[33m\]:\$(git_current_branch)\[\e[0m\] \360\237\215\272  "
     else
-        PS1="\[\e[1m\][\A] \w\[\033[33m\]\$(parse_git_branch) $\[\e[0m\] "
+        PS1="\[\e[1m\][\A] \w\[\033[33m\]:\$(git_current_branch) $\[\e[0m\] "
     fi
 fi
 

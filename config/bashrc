@@ -1,13 +1,5 @@
 arch=`uname`
 
-# Locale related env vars
-# export LANG=fr_FR.UTF-8
-# export LC_CTYPE=fr_FR.UTF-8
-# export LC_MESSAGE=fr_FR.UTF-8
-# export LC_TIME=fr_FR.UTF-8
-# unset LC_ALL
-# export LC_ALL=fr_FR.UTF-8
-
 # Env vars
 export GOPATH=$HOME/src/go
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
@@ -26,8 +18,7 @@ HISTCONTROL=ignoreboth
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# Check the window size after each command and update LINES and COLUMNS.
 shopt -s checkwinsize
 
 # Enable programmable completion features
@@ -53,8 +44,6 @@ else
         PS1="\[\e[1m\][\A] \w\[\033[33m\]:\$(git_current_branch) $\[\e[0m\] "
     fi
 fi
-
-PS1="\e[0;90m"$(printf "%*s" $(tput cols) "" | sed "s/ /-/g")"\[\e[0m\]\n$PS1"
 
 # Set term title
 function termtitle {

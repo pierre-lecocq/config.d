@@ -60,6 +60,7 @@ fi
 
 # Aliases
 if [ $arch = "Darwin" ]; then
+    export HOMEBREW_NO_ANALYTICS=1
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="/bin/ls -lh"

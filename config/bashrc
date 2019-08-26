@@ -70,7 +70,9 @@ if [ $arch = "Darwin" ]; then
     alias la="/bin/ls -lhA"
     alias emacs='/usr/local/bin/emacs -nw "$@"'
     alias xemacs='/usr/local/bin/emacs "$@"'
+    alias e.='xemacs . &'
 elif [ $arch = "Linux" ]; then
+    alias e.='emacs . &'
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
     alias poweroff='sudo systemctl poweroff'
@@ -86,11 +88,6 @@ alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
 alias ipinfo='curl ipinfo.io'
-
-alias e='emacs'
-alias en='emacs -nw'
-alias enq='emacs -nw -Q'
-alias gnus='emacs --eval "(gnus)"'
 
 alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
 

@@ -70,7 +70,8 @@ if [ $arch = "Darwin" ]; then
     alias la="/bin/ls -lhA"
     alias emacs='/usr/local/bin/emacs -nw "$@"'
     alias xemacs='/usr/local/bin/emacs "$@"'
-    alias e.='xemacs . &'
+    alias x='xemacs'
+    alias x.='xemacs . &'
 elif [ $arch = "Linux" ]; then
     alias e.='emacs . &'
     alias l="ls -lh --color=auto"

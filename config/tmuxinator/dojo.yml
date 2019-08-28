@@ -1,0 +1,18 @@
+# /Users/lecocq/.config/tmuxinator/dojo.yml
+
+name: dojo
+root: ~/src/dojo-service
+
+windows:
+  - dojo:
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start

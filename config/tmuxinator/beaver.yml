@@ -1,0 +1,18 @@
+# /Users/lecocq/.config/tmuxinator/beaver.yml
+
+name: beaver
+root: ~/src/beaver-service
+
+windows:
+  - beaver:
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start

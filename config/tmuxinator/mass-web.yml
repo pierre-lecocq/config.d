@@ -1,0 +1,15 @@
+# /Users/lecocq/.config/tmuxinator/mass-web.yml
+
+name: mass-web
+root: ~/src/mass-web
+
+windows:
+  - web:
+      layout: main-vertical
+      panes:
+        - server:
+            - cd local
+            - make build && make start
+        - shell:
+            - cd local
+            - make shell

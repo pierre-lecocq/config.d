@@ -1,0 +1,19 @@
+# /Users/lecocq/.config/tmuxinator/octopus.yml
+
+name: octopus
+root: ~/src/octopus-service
+
+windows:
+  - octopus:
+      root: ~/src/octopus-service
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start

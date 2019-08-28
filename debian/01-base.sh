@@ -55,9 +55,12 @@ sudo apt-get install -y aspell \
 mv $HOME/.bashrc $HOME/.bashrc.ori
 # mv $HOME/.bash_profile $HOME/.bash_profile.ori
 
+mkdir -p $HOME/.config
+
 ln -s $HOME/src/config.d/config/gitconfig $HOME/.gitconfig
 ln -s $HOME/src/config.d/config/gemrc $HOME/.gemrc
 ln -s $HOME/src/config.d/config/bashrc $HOME/.bashrc
+ln -s $HOME/src/config.d/config/tmuxinator $HOME/.config/tmuxinator
 # ln -s $HOME/src/config.d/config/bash_profile $HOME/.bash_profile
 
 ln -s $HOME/src/config.d/bin $HOME/bin

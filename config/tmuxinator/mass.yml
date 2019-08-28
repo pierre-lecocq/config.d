@@ -1,0 +1,55 @@
+# /Users/lecocq/.config/tmuxinator/mass.yml
+
+name: mass
+root: ~/src
+
+windows:
+  - beaver:
+      root: ~/src/beaver-service
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start
+  - dojo:
+      root: ~/src/dojo-service
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start
+  - octopus:
+      root: ~/src/octopus-service
+      layout: tiled
+      panes:
+        - shell:
+            - cd local
+            - make shell
+        - database:
+            - cd local
+            - make database
+        - server:
+            - cd local
+            - make build && make start
+  - web:
+      root: ~/src/mass-web
+      layout: main-vertical
+      panes:
+        - server:
+            - cd local
+            - make build && make start
+        - shell:
+            - cd local
+            - make shell

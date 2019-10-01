@@ -24,9 +24,9 @@ new_window 1pixel
 
 # Apps
 bindsym $mod+Return exec rxvt-unicode
-bindsym $mod+l exec --no-startup-id "i3lock -c 212121; systemctl suspend;"
+bindsym $mod+l exec --no-startup-id "i3lock -c 1A1A1A; systemctl suspend;"
 
-bindsym $mod+d exec dmenu_run -nb '#212121' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=14' -p launch
+bindsym $mod+d exec dmenu_run -nb '#1A1A1A' -nf '#cccccc' -sb '#1D68C4' -fn 'pango:Source Sans Pro:pixelsize=14' -p launch
 
 # Actions
 bindsym $mod+Shift+Q kill
@@ -114,10 +114,10 @@ bar {
     status_command py3status -c ~/.config/i3/status.config
 
     colors {
-           background #212121
+           background #1A1A1A
            focused_workspace  #ffffff $maincolor
            active_workspace   #ffffff #313131
-           inactive_workspace #888888 #212121
+           inactive_workspace #888888 #1A1A1A
     }
 }
 

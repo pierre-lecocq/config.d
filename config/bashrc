@@ -32,13 +32,13 @@ fi
 
 # Prompt
 git_current_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 
 if [ $(id -u) -eq 0 ]; then
-    PS1="\e[1m\e[31m[\A] \w\$(git_current_branch) #"
+    PS1="\e[1m\e[31m\A \w\$(git_current_branch) #"
 else
-    PS1="\e[1m[\A] \w\e[33m\$(git_current_branch)\e[1m"
+    PS1="\e[1m\A \w\e[33m\$(git_current_branch)\e[1m"
     if [ $arch = "Darwin" ] && [ -z "$INSIDE_EMACS" ]; then
         PS1="$PS1 \360\237\215\272"
     else

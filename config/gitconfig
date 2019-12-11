@@ -6,7 +6,7 @@
 [gc]
     auto = 1
 [core]
-    editor = emacs -nw
+	editor = mg
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [alias]
     l = log --pretty=format:'%C(red bold)%h%Creset %C(yellow)%<(15)%ar%Creset %<(18)%an %C(cyan)%d%Creset %s'

@@ -35,18 +35,12 @@ git_current_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 
+PS1="\e[1m\w\e[33m\$(git_current_branch)\e[0m\e[1m"
 if [ $(id -u) -eq 0 ]; then
-    PS1="\e[1m\e[31m\A \w\$(git_current_branch) #"
+   PS1="$PS1 #\e[0m  "
 else
-    PS1="\e[1m\A \w\e[33m\$(git_current_branch)\e[1m"
-    if [ $arch = "Darwin" ] && [ -z "$INSIDE_EMACS" ]; then
-        PS1="$PS1 \360\237\215\272"
-    else
-        PS1="$PS1 $"
-    fi
+   PS1="$PS1 $\e[0m  "
 fi
-
-PS1="$PS1  \e[0m"
 
 # Set term title
 function termtitle {
@@ -72,6 +66,7 @@ if [ $arch = "Darwin" ]; then
     alias xemacs='/usr/local/bin/emacs "$@"'
     alias x='xemacs'
     alias x.='xemacs . &'
+    alias xnotes='xemacs ~/src/_notes &'
 elif [ $arch = "Linux" ]; then
     alias e.='emacs . &'
     alias l="ls -lh --color=auto"

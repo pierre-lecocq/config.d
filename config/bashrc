@@ -32,14 +32,15 @@ fi
 
 # Prompt
 git_current_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+    br=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    [ -z "$br" ] || echo ":$br";
 }
 
-PS1="\e[1m\w\e[33m\$(git_current_branch)\e[0m\e[1m"
+PS1="\e[1m[\A] \w\e[33m\$(git_current_branch)\e[0m\e[1m"
 if [ $(id -u) -eq 0 ]; then
    PS1="$PS1 #\e[0m  "
 else
-   PS1="$PS1 $\e[0m  "
+   PS1="$PS1 \\$\e[0m  "
 fi
 
 # Set term title

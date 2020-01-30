@@ -2,8 +2,8 @@ export ZSH="/Users/lecocq/.oh-my-zsh"
 
 # Prompt
 
-PROMPT='%(?,%{$fg[green]%}λ ,%{$fg[red]%}λ )%{$reset_color%}'
-RPROMPT=' %{$fg_bold[white]%}%~ %{$fg_bold[yellow]%}$(git_current_branch)$(parse_git_dirty)%{$reset_color%}'
+PROMPT='%T %(?,%{$fg[green]%}λ ,%{$fg[red]%}λ )%{$reset_color%}'
+RPROMPT=' %{$fg_bold[white]%}%~ %{$fg_bold[yellow]%}$(git_current_branch)$(parse_git_dirty)%{$reset_color%} '
 
 # Plugins
 

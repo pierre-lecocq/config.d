@@ -1,3 +1,7 @@
+# !!
+# Note: environment variables are loaded in ~/.zprofile
+# !!
+
 export ZSH="/Users/lecocq/.oh-my-zsh"
 
 # Prompt
@@ -15,14 +19,6 @@ plugins=(
 # Load oh-my-zsh
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export GOPATH=$HOME/src/go
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
-export TERM=xterm-256color
-export PAGER="less -F -X"
-export EDITOR=emacs
 
 # Aliases
 

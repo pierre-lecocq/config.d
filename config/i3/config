@@ -109,6 +109,10 @@ bindsym Shift+Print exec "scrot -q 100 -u ~/screenshot-%Y%m%d-%H%M%S.png"
 
 # i3 bar
 bar {
+    mode hide
+    hidden_state hide
+    modifier Mod1
+
     position top
     # status_command i3status --config ~/.config/i3/status.config
     status_command py3status -c ~/.config/i3/status.config

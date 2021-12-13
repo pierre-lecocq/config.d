@@ -2,7 +2,7 @@ arch=`uname`
 
 # Env vars
 export GOPATH=$HOME/src/go
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
 export TERM=xterm-256color
 export PAGER="less -F -X"
 export EDITOR=emacs

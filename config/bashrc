@@ -30,18 +30,18 @@ fi
 [ -f ~/.git-completion.bash ] || (curl -s https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash)
 . ~/.git-completion.bash
 
-# Prompt
-git_current_branch() {
-    br=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-    [ -z "$br" ] || echo ":$br";
+
+# Git branch
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]; then
+		echo ":${BRANCH}"
+	else
+		echo ""
+	fi
 }
 
-PS1="\e[1m[\A] \w\e[33m\$(git_current_branch)\e[0m\e[1m"
-if [ $(id -u) -eq 0 ]; then
-   PS1="$PS1 #\e[0m  "
-else
-   PS1="$PS1 \\$\e[0m  "
-fi
+export PS1="\[\e[1m\][\A] \w\[\e[33m\]\`parse_git_branch\`\[\e[m\] \\$ \[\e[0m\]"
 
 # Set term title
 function termtitle {
@@ -84,7 +84,9 @@ alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -p
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
-alias ipinfo='curl ipinfo.io'
+
+alias ipinfo='curl -s ipinfo.io | jq'
+alias meteo='curl https://fr.wttr.in/?1F'
 
 alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
 

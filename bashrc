@@ -43,13 +43,6 @@ else
    PS1="$PS1 \\$\e[0m  "
 fi
 
-# Set term title
-function termtitle {
-    echo -n -e "\033]0;"$1"\007"
-}
-
-termtitle $USER"@"`hostname`
-
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -69,23 +62,18 @@ if [ $arch = "Darwin" ]; then
     alias x.='xemacs . &'
     alias xnotes='xemacs ~/src/_notes &'
 elif [ $arch = "Linux" ]; then
+    alias e='emacs'
     alias e.='emacs . &'
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
-    alias poweroff='sudo systemctl poweroff'
-    alias restart='sudo systemctl reboot'
-    alias clock='tty-clock -sc -C 7'
 fi
 
 alias less='less -N'
 alias grep='grep --color=auto'
 alias rcl='find . -name "*~" -o -name ".*~" -o -name "._*" -o -name ".DS*" | xargs rm -f'
-alias etagsup='rm -f TAGS; find . -regex ".*\.\(c\|cpp\|go\|h\|rb\|py\|php\)" -print | xargs etags -a'
 alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
 alias ipinfo='curl ipinfo.io'
-
 alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
-
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005

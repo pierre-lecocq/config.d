@@ -91,3 +91,6 @@ alias meteo='curl https://fr.wttr.in/?1F'
 alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

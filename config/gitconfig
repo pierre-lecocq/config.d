@@ -18,3 +18,5 @@
     ui = true
 [grep]
     extendRegexp = true
+[init]
+	defaultBranch = main

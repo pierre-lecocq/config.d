@@ -1,0 +1,20 @@
+# Load files
+
+# [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+# [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Start the gpg-agent if needed
+
+if pgrep "gpg-agent" > /dev/null
+then
+    echo "GPG Agent is already running."
+else
+    gpg_envfile="$HOME/.gnupg/gpg-agent.env"
+    if [[ -e "$gpg_envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$gpg_envfile" | cut -d: -f 2) 2>/dev/null; then
+        eval "$(cat "$gpg_envfile")"
+    else
+        eval "$(gpg-agent --daemon --enable-ssh-support "$gpg_envfile")"
+    fi
+    export GPG_AGENT_INFO
+fi

@@ -1,11 +1,15 @@
 arch=`uname`
 
 # Env vars
-export GOPATH=$HOME/src/go
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
 export TERM=xterm-256color
 export PAGER="less -F -X"
 export EDITOR=emacs
+export LANG=en_US.UTF-8
+
+export GOPATH=$HOME/src/go
+export PATH=$PATH:/opt/homebrew/opt/libpq/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/local/go/bin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
+
+source ~/.bash_profile
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -30,7 +34,6 @@ fi
 [ -f ~/.git-completion.bash ] || (curl -s https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash)
 . ~/.git-completion.bash
 
-
 # Git branch
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -41,14 +44,8 @@ function parse_git_branch() {
 	fi
 }
 
+# Prompt
 export PS1="\[\e[1m\][\A] \w\[\e[33m\]\`parse_git_branch\`\[\e[m\] \\$ \[\e[0m\]"
-
-# Set term title
-function termtitle {
-    echo -n -e "\033]0;"$1"\007"
-}
-
-termtitle $USER"@"`hostname`
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -63,11 +60,8 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="/bin/ls -lh"
     alias la="/bin/ls -lhA"
-    alias emacs='/usr/local/bin/emacs -nw "$@"'
-    alias xemacs='/usr/local/bin/emacs "$@"'
-    alias x='xemacs'
-    alias x.='xemacs . &'
-    alias xnotes='xemacs ~/src/_notes &'
+    alias x='emacs "$@"'
+    alias x.='emacs . &'
 elif [ $arch = "Linux" ]; then
     alias e.='emacs . &'
     alias l="ls -lh --color=auto"
@@ -85,12 +79,9 @@ alias irb='irb --simple-prompt'
 alias curl='curl --progress-bar'
 alias tree='tree -C'
 
-alias ipinfo='curl -s ipinfo.io | jq'
-alias meteo='curl https://fr.wttr.in/?1F'
-
 alias fuckdocker='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker rmi -f $(docker images -q); docker volume rm -f $(docker volume ls -qf dangling=true); docker network prune -f'
 
 alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com/a/9056005
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+# eval "$(atuin init bash)"

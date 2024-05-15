@@ -4,6 +4,10 @@
 # [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 # Start the gpg-agent if needed
 
 if pgrep "gpg-agent" > /dev/null
@@ -18,3 +22,5 @@ else
     fi
     export GPG_AGENT_INFO
 fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

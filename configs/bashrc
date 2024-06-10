@@ -19,6 +19,9 @@ HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
 
+# Expand environment variables in paths
+shopt -s direxpand
+
 # Append to the history file, don't overwrite it
 shopt -s histappend
 

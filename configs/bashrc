@@ -7,9 +7,9 @@ export EDITOR=emacs
 export LANG=en_US.UTF-8
 
 export GOPATH=$HOME/src/go
-export PATH=$PATH:/opt/homebrew/opt/libpq/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/local/go/bin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
+export PATH=$PATH:/Users/lecocq/Library/Python/3.9/bin:/Users/lecocq/.local/bin:/opt/homebrew/opt/libpq/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/local/go/bin:$HOME/bin:$HOME/.rvm/bin:$GOPATH/bin
 
-source ~/.bash_profile
+# source ~/.bash_profile
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -20,7 +20,7 @@ HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 HISTCONTROL=ignoreboth
 
 # Expand environment variables in paths
-shopt -s direxpand
+# shopt -s direxpand
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
@@ -56,6 +56,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
+function xemacs() {
+    emacs $@ &
+}
+
 # Aliases
 if [ $arch = "Darwin" ]; then
     export HOMEBREW_NO_ANALYTICS=1
@@ -63,10 +67,10 @@ if [ $arch = "Darwin" ]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
     alias l="/bin/ls -lh"
     alias la="/bin/ls -lhA"
-    alias x='emacs "$@"'
-    alias x.='emacs . &'
+    alias x=xemacs
+    alias x.="xemacs ."
 elif [ $arch = "Linux" ]; then
-    alias e.='emacs . &'
+    # alias e.='emacs . &'
     alias l="ls -lh --color=auto"
     alias la="ls -lhA --color=auto"
     alias poweroff='sudo systemctl poweroff'
@@ -88,3 +92,9 @@ alias sbclscript='sbcl --non-interactive --load "$@"' # http://stackoverflow.com
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 # eval "$(atuin init bash)"
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.4.1
+
+# uv
+export PATH="/Users/lecocq/.local/bin:$PATH"

@@ -1,5 +1,7 @@
 # Load files
 
+[ -s ~/.bashrc ] && . ~/.bashrc
+
 # [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 # [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -24,3 +26,6 @@ else
 fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# uv
+export PATH="/Users/lecocq/.local/bin:$PATH"
